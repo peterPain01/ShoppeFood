@@ -6,10 +6,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 
-class HorizontalAdapter(private val dataList: List<String>) : RecyclerView.Adapter<HorizontalAdapter.ViewHolder>() {
+class HorizontalAdapter(private val dataList: List<String>, private val res : Int) : RecyclerView.Adapter<HorizontalAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_horizontal, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(res, parent, false)
         return ViewHolder(view)
     }
 
@@ -24,6 +24,7 @@ class HorizontalAdapter(private val dataList: List<String>) : RecyclerView.Adapt
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textView: TextView = itemView.findViewById(R.id.btnHorizontal)
 
+        // binding Hinh anh
         fun bind(data: String) {
             textView.text = data
         }

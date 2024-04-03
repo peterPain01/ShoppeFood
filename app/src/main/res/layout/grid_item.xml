@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:elevation="8dp"
+        >
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="86dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_corner_background"
+            android:clipToOutline="true"
+            android:layout_gravity="center"
+            android:src="@drawable/TEMP_GRID_URL" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="European Pizza"
+            android:textSize="15sp"
+            android:fontFamily="@font/sen_bold"
+            android:textColor="#32343E"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Uttora Coffe House"
+            android:textSize="13sp"
+            android:textColor="#646982"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
