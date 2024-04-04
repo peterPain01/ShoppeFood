@@ -24,7 +24,7 @@
             android:background="@drawable/rounded_corner_background"
             android:backgroundTint="@color/transparent"
             android:clipToOutline="true"
-            android:src="@drawable/pizza_icon"/>
+            android:src="@drawable/ic_pizza"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/star"
+                android:drawableLeft="@drawable/ic_star"
                 android:drawablePadding="4dp"
                 android:fontFamily="@font/sen_bold"
                 android:gravity="center_vertical"

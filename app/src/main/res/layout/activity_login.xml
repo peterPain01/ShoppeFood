@@ -239,7 +239,7 @@
                       android:scaleType="fitCenter"
                       android:contentDescription="Facebook"
                       android:background="@color/transparent"
-                      android:src="@drawable/facebook_icon"
+                      android:src="@drawable/ic_facebook"
                      />
 
                   <ImageButton
@@ -247,7 +247,7 @@
                       android:layout_width="40dp"
                       android:layout_height="40dp"
                       android:scaleType="fitCenter"
-                      android:src="@drawable/twitter_icon"
+                      android:src="@drawable/ic_twitter"
                       android:background="@color/transparent"
                       android:contentDescription="Twitter"
                       android:layout_marginStart="40dp" />
@@ -257,7 +257,7 @@
                       android:layout_width="40dp"
                       android:layout_height="40dp"
                       android:scaleType="fitCenter"
-                      android:src="@drawable/apple_icon"
+                      android:src="@drawable/ic_apple"
                       android:contentDescription="Apple"
                       android:background="@color/transparent"
                       android:layout_marginStart="40dp" />

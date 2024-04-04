@@ -52,7 +52,7 @@
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/star"
+                android:drawableLeft="@drawable/ic_star"
                 android:drawablePadding="4dp"
                 android:fontFamily="@font/sen_bold"
                 android:gravity="center_vertical"
@@ -67,7 +67,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/delivery"
+                android:drawableLeft="@drawable/ic_delivery"
                 android:drawablePadding="4dp"
                 android:fontFamily="@font/sen_bold"
                 android:gravity="center_vertical"
@@ -82,7 +82,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/clock"
+                android:drawableLeft="@drawable/ic_clock"
                 android:drawablePadding="4dp"
                 android:fontFamily="@font/sen_bold"
                 android:gravity="center_vertical"

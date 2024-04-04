@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="42dp"
         android:backgroundTint="@color/white"
-        android:drawableLeft="@drawable/pizza_icon"
+        android:drawableLeft="@drawable/ic_pizza"
         android:drawablePadding="8dp"
         android:padding="16dp"
         android:text="Content"

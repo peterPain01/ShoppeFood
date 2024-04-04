@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_margin="5dp"
+    app:cardElevation="5dp"
+    app:cardCornerRadius="5dp"
+    android:layout_marginBottom="30dp"
+    android:layout_marginHorizontal="12dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:elevation="8dp"
+        android:padding="8dp"
+        >
+        <ImageView
+            android:id="@+id/imageUrl"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_corner_background"
+            android:clipToOutline="true"
+            android:src="@drawable/temp_grid_image" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="European Pizza"
+            android:textSize="15sp"
+            android:fontFamily="@font/sen_bold"
+            android:textColor="#32343E"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Uttora Coffee House"
+            android:textSize="13sp"
+            android:textColor="#646982"
+            android:gravity="center_horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+          >
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$40"
+                android:textSize="16sp"
+                android:fontFamily="@font/sen_bold"
+                android:textColor="#32343E"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="4dp"
+                android:layout_weight="1"
+                />
+           <ImageButton
+               android:layout_width="30dp"
+               android:layout_height="30dp"
+               android:background="@drawable/circle_button_background"
+               android:backgroundTint="@color/orange"
+               android:src="@drawable/ic_plus"
+               />
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

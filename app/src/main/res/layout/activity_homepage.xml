@@ -35,7 +35,7 @@
                         android:layout_height="60dp"
                         android:background="@drawable/circle_button_background"
                         android:backgroundTint="#ECF0F4"
-                        android:src="@drawable/menu" />
+                        android:src="@drawable/ic_menu" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                             android:layout_height="60dp"
                             android:background="@drawable/circle_button_background"
                             android:backgroundTint="#181C2E"
-                            android:src="@drawable/shopping_bag_icon" />
+                            android:src="@drawable/ic_shopping_bag" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/counter"
@@ -136,7 +136,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_edittext_background"
                 android:backgroundTint="#F6F6F6"
-                android:drawableStart="@drawable/search"
+                android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="Search dishes, restaurants"

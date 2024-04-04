@@ -15,7 +15,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".view.main.HomePage"
+            android:name=".view.main.Search"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.Homepage"
             android:exported="false" />
         <activity
             android:name=".view.auth.Verification"
@@ -30,7 +33,7 @@
             android:name=".view.auth.Login"
             android:exported="false" />
         <activity
-            android:name=".view.main.Search"
+            android:name=".view.main.FoodDetail"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,13 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 import com.foodapp.adapter.HorizontalAdapter
-import com.foodapp.data.model.Restaurant
 import com.foodapp.adapter.VerticalAdapter
-import com.foodapp.data.repository.UserRepository
 import com.foodapp.utils.FakeData
-import java.sql.Time
 
-class HomePage : AppCompatActivity() {
+class Homepage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
