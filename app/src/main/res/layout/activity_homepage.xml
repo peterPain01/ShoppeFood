@@ -31,6 +31,7 @@
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/homepage_setting"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:background="@drawable/circle_button_background"
@@ -70,7 +71,7 @@
                         android:layout_height="match_parent">
 
                         <androidx.appcompat.widget.AppCompatImageButton
-                            android:id="@+id/button"
+                            android:id="@+id/homepage_notify"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:background="@drawable/circle_button_background"
@@ -81,8 +82,8 @@
                             android:id="@+id/counter"
                             android:layout_width="26dp"
                             android:layout_height="26dp"
-                            android:layout_alignTop="@id/button"
-                            android:layout_alignEnd="@id/button"
+                            android:layout_alignTop="@id/homepage_notify"
+                            android:layout_alignEnd="@id/homepage_notify"
                             android:layout_alignParentBottom="true"
                             android:layout_marginTop="4dp"
                             android:layout_marginEnd="4dp"
@@ -130,7 +131,7 @@
 
             <!--    Search bar-->
             <EditText
-                android:id="@+id/editTextText"
+                android:id="@+id/homepage_searchBar"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="16dp"
@@ -161,6 +162,7 @@
                         android:text="All Categories" />
 
                     <TextView
+                        android:id="@+id/homepage_txtSeeAllCateGory"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="See All &gt;"
@@ -169,7 +171,7 @@
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView_horizontal"
+                    android:id="@+id/homepage_recyclerView_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -206,7 +208,7 @@
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginTop="20dp"
-                android:id="@+id/recyclerView_vertical"
+                android:id="@+id/homepage_recyclerView_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </LinearLayout>
