@@ -110,7 +110,6 @@
                     />
 
                 <EditText
-                    android:id="@+id/editTextName"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
                     android:ems="10"
@@ -134,7 +133,6 @@
                     />
 
                 <EditText
-                    android:id="@+id/editTextText"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
                     android:ems="10"
@@ -163,7 +161,6 @@
                     android:layout_height="wrap_content"
                     >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etPassword"
                         android:ems="10"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
@@ -192,7 +189,6 @@
                     android:layout_height="wrap_content"
                     >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etConfirmPassword"
                         android:ems="10"
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
@@ -216,7 +212,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnSignup"
+                    android:id="@+id/signup_btnSignup"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp"

@@ -25,13 +25,12 @@ class Signup : AppCompatActivity() {
         binding.lifecycleOwner = this
 
     }
-
     override fun onStart() {
         super.onStart()
 
         val context = this
         val errorMsg = findViewById<TextView>(R.id.errorMsg)
-        val btnSignup = findViewById<AppCompatButton>(R.id.btnSignup)
+        val btnSignup = findViewById<AppCompatButton>(R.id.signup_btnSignup)
         btnSignup.setOnClickListener {
             authViewModel.signUp { isSuccess, Message ->
                 if(isSuccess)

@@ -15,8 +15,8 @@ class Homepage : AppCompatActivity() {
         setContentView(R.layout.activity_homepage)
         val dummyList = FakeData.createDummyData()
 
-        val recyclerView_vertical: RecyclerView = findViewById<RecyclerView>(R.id.recyclerView_vertical)
-        val recyclerView_horizontal: RecyclerView = findViewById<RecyclerView>(R.id.recyclerView_horizontal)
+        val recyclerView_vertical: RecyclerView = findViewById<RecyclerView>(R.id.homepage_recyclerView_vertical)
+        val recyclerView_horizontal: RecyclerView = findViewById<RecyclerView>(R.id.homepage_recyclerView_horizontal)
 
         recyclerView_vertical.layoutManager = LinearLayoutManager(this)
         recyclerView_horizontal.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)

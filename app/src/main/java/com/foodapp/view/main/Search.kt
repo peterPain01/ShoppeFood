@@ -22,9 +22,9 @@ class Search : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        val recyclerView_horizontal = findViewById<RecyclerView>(R.id.recyclerView_horizontal)
-        val recyclerView_vertical = findViewById<RecyclerView>(R.id.recyclerView_vertical)
-        val gridView = findViewById<RecyclerView>(R.id.gridView)
+        val recyclerView_horizontal = findViewById<RecyclerView>(R.id.search_recyclerView_horizontal)
+        val recyclerView_vertical = findViewById<RecyclerView>(R.id.search_recyclerView_vertical)
+        val gridView = findViewById<RecyclerView>(R.id.search_gridView)
 
         val dummyList = FakeData.createDummyData()
         recyclerView_vertical.layoutManager = LinearLayoutManager(this)
