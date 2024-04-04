@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
-import com.foodapp.adapter.HorizontalAdapter
-import com.foodapp.adapter.VerticalAdapter
+import com.foodapp.view.adapter.HorizontalAdapter
+import com.foodapp.view.adapter.VerticalAdapter
 import com.foodapp.utils.FakeData
 
 class Homepage : AppCompatActivity() {

@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
-import com.foodapp.adapter.GridAdapter
-import com.foodapp.adapter.VerticalAdapter
+import com.foodapp.view.adapter.GridAdapter
+import com.foodapp.view.adapter.VerticalAdapter
 import com.foodapp.utils.FakeData
 import com.google.android.material.button.MaterialButton
 

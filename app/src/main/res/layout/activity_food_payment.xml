@@ -2,9 +2,267 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/Food_payment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.main.food_payment">
 
+    <ImageButton
+        android:id="@+id/Food_payment_btn_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:contentDescription="back"
+        android:background="@drawable/btn_circle"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintBottom_toBottomOf="@+id/Food_payment_btn_back"
+        app:layout_constraintEnd_toEndOf="@+id/Food_payment_btn_back"
+        app:layout_constraintStart_toStartOf="@+id/Food_payment_btn_back"
+        app:layout_constraintTop_toTopOf="@+id/Food_payment_btn_back" />
+
+    <TextView
+        android:id="@+id/Food_payment_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="48dp"
+        android:text="Details"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/Food_payment_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="184dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/Food_payment_BackGroundFood"
+            android:layout_width="match_parent"
+            android:layout_height="182dp"
+            android:scaleType="fitXY"
+            tools:srcCompat="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/Food_payment_NameFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="test"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Food_payment_cardView" />
+
+    <TextView
+        android:id="@+id/Food_payment_DetailFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textColor="#A0A5BA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Food_payment_NameFood" />
+
+
+    <ImageView
+        android:id="@+id/Food_payment_imageView2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_detail_page_star"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Food_payment_DetailFood" />
+
+
+    <TextView
+        android:id="@+id/Food_payment_Rating"
+        android:layout_width="26dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="15dp"
+        android:text="4.7"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/Food_payment_imageView2"
+        app:layout_constraintTop_toTopOf="@+id/Food_payment_imageView2" />
+
+    <ImageView
+        android:id="@+id/Food_payment_imageView3"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="50dp"
+        android:src="@drawable/ic_detail_page_delivery"
+        app:layout_constraintStart_toEndOf="@+id/Food_payment_Rating"
+        app:layout_constraintTop_toTopOf="@+id/Food_payment_Rating" />
+
+    <TextView
+        android:id="@+id/Food_payment_Status"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="15dp"
+        android:text="Free"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/Food_payment_imageView3"
+        app:layout_constraintTop_toTopOf="@+id/Food_payment_imageView3" />
+
+    <ImageView
+        android:id="@+id/Food_payment_imageView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="50dp"
+        android:src="@drawable/ic_detail_page_time"
+        app:layout_constraintStart_toEndOf="@+id/Food_payment_Status"
+        app:layout_constraintTop_toTopOf="@+id/Food_payment_imageView2" />
+
+    <TextView
+        android:id="@+id/Food_payment_textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="SIZE: "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/Food_payment_imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/Food_payment_imageView2" />
+
+    <Button
+        android:id="@+id/Food_payment_Size1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_circle"
+        android:text="10&quot;"
+        app:layout_constraintStart_toEndOf="@+id/Food_payment_textView3"
+        app:layout_constraintTop_toBottomOf="@+id/Food_payment_Rating" />
+
+    <Button
+        android:id="@+id/Food_payment_Size2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/btn_circle"
+        android:text="15&quot;"
+        app:layout_constraintStart_toEndOf="@+id/Food_payment_Size1"
+        app:layout_constraintTop_toTopOf="@+id/Food_payment_Size1" />
+
+    <Button
+        android:id="@+id/Food_payment_Size3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/btn_circle"
+        android:text="20&quot;"
+        app:layout_constraintStart_toEndOf="@+id/Food_payment_Size2"
+        app:layout_constraintTop_toTopOf="@+id/Food_payment_Size2" />
+
+    <TextView
+        android:id="@+id/Food_payment_TimePrepare"
+        android:layout_width="49dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="15dp"
+        android:text="20 min"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/Food_payment_imageView"
+        app:layout_constraintTop_toTopOf="@+id/Food_payment_imageView" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="184dp"
+        android:background="@drawable/detail_page_relative_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/Food_payment_Price"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="38dp"
+            android:text="$32"
+            android:textColor="@color/black"
+            android:textSize="28dp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="31dp"
+            app:cardBackgroundColor="#121223"
+            app:cardCornerRadius="30dp">
+
+            <Button
+                android:id="@+id/Food_payment_DecreaseBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/btn_circle"
+                android:text="-"
+                android:textSize="25dp"/>
+
+            <Button
+                android:id="@+id/Food_payment_IncreaseBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:layout_gravity="end|top"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/btn_circle"
+                android:textSize="25dp"
+                android:text="+" />
+
+            <TextView
+                android:id="@+id/Food_payment_myTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="1"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/Food_payment_AddToCard"
+            android:layout_width="327dp"
+            android:layout_height="62dp"
+            android:text="ADD TO CART"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:background="@drawable/btn_primary"
+            android:textColor="@android:color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp" />
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
