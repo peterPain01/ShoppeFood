@@ -17,7 +17,6 @@ class Login : AppCompatActivity() {
     lateinit var authViewModel: AuthViewModel
     lateinit var userRepository: UserRepository
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -33,7 +32,7 @@ class Login : AppCompatActivity() {
         super.onStart()
         val context = this
         val errorMsg = findViewById<TextView>(R.id.errorMsg)
-        val btnLogin = findViewById<AppCompatButton>(R.id.btnLogin)
+        val btnLogin = findViewById<AppCompatButton>(R.id.login_btnLogin)
         btnLogin.setOnClickListener{
             authViewModel.login { isSuccess, Message ->
                 if(isSuccess)
