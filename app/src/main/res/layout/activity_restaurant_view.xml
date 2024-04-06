@@ -162,6 +162,7 @@
         app:layout_constraintTop_toTopOf="@+id/Restaurant_view_btn_option" />
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="399dp"
         android:layout_height="47dp"
         android:layout_marginTop="20dp"
@@ -169,13 +170,37 @@
         app:layout_constraintStart_toStartOf="@+id/Restaurant_view_imageView2"
         app:layout_constraintTop_toBottomOf="@+id/Restaurant_view_imageView2"
         tools:ignore="MissingConstraints">
+
         <LinearLayout
-        android:id="@+id/Restaurant_view_LinearLayout"
+            android:id="@+id/Restaurant_view_LinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/restaurant_view_gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_view_name" />
+
+    <TextView
+        android:id="@+id/restaurant_view_name"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-    </LinearLayout>
-</HorizontalScrollView>
-
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Popular Burgers"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

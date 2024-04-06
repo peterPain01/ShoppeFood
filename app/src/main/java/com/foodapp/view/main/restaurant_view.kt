@@ -8,9 +8,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 import com.foodapp.helper.helper
-import com.foodapp.view.fragment.filter_restaurant_view
+import com.foodapp.utils.FakeData
+import com.foodapp.view.adapter.GridAdapter
+import com.foodapp.view.Dialog_fragment.filter_restaurant_view
 import kotlin.math.roundToInt
 class restaurant_view : AppCompatActivity() {
     var avatarFood : ImageView?= null;
@@ -19,7 +23,7 @@ class restaurant_view : AppCompatActivity() {
     var ratingFood : TextView ?= null;
     var timePrepare : TextView ?= null;
     var btn_back : ImageButton?= null;
-    var btn_view_more : Button?= null;
+    var btn_view_more : ImageButton?= null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_view)
@@ -28,6 +32,17 @@ class restaurant_view : AppCompatActivity() {
         AddButton()
         HandleShowMoreDialogFragment()
     }
+
+    override fun onStart() {
+        super.onStart()
+        val dummyList = FakeData.createDummyData()
+
+        val gridView = findViewById<RecyclerView>(R.id.restaurant_view_gridView)
+        gridView.layoutManager = GridLayoutManager(this, 2)
+        val adapte_grid = GridAdapter(dummyList, R.layout.item_grid_checkout)
+        gridView.adapter = adapte_grid
+
+    }
     private fun init() {
         avatarFood = findViewById<ImageView>(R.id.Restaurant_view_BackGroundFood)
         nameFood = findViewById<TextView>(R.id.Restaurant_view_NameFood)
@@ -35,7 +50,7 @@ class restaurant_view : AppCompatActivity() {
         ratingFood = findViewById<TextView>(R.id.Restaurant_view_Rating)
         timePrepare = findViewById<TextView>(R.id.Restaurant_view_TimePrepare)
         btn_back = findViewById<ImageButton>(R.id.Restaurant_view_btn_back)
-        btn_view_more = findViewById<Button>(R.id.Restaurant_view_btn_option)
+        btn_view_more = findViewById<ImageButton>(R.id.Restaurant_view_btn_option)
     }
     private fun LoadData() {
         avatarFood?.let { imageView ->

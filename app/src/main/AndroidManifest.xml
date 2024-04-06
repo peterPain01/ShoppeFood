@@ -15,10 +15,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.main.restaurant_view"
+            android:exported="false" />
+        <activity
             android:name=".view.main.CategoryDetail"
             android:exported="false" />
         <activity
-            android:name=".view.main.restaurant_view"
+            android:name=".view.main.food_payment"
             android:exported="false" />
         <activity
             android:name=".view.main.Search"
@@ -39,7 +42,7 @@
             android:name=".view.auth.Login"
             android:exported="false" />
         <activity
-            android:name=".view.main.food_payment"
+            android:name=".view.main.seller_page"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,4 +51,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

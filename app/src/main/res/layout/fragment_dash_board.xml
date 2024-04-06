@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFF0F1"
+    tools:context=".view.main.DashBoard">
+
+    <ImageButton
+        android:id="@+id/dash_board_more"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/circle_button_background"
+        android:contentDescription="."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_seller_menu"
+        app:layout_constraintBottom_toBottomOf="@+id/dash_board_more"
+        app:layout_constraintEnd_toEndOf="@+id/dash_board_more"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_more"
+        app:layout_constraintTop_toTopOf="@+id/dash_board_more" />
+
+    <TextView
+        android:id="@+id/dash_board_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="LOCATION"
+        android:textColor="#FC6E2A"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/dash_board_more"
+        app:layout_constraintTop_toTopOf="@+id/dash_board_more" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="277 Nguyen Van Cu"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_location"
+        app:layout_constraintTop_toBottomOf="@+id/dash_board_location" />
+
+    <ImageButton
+        android:id="@+id/dash_board_running"
+        android:layout_width="170dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_seller_quantity"
+        android:contentDescription="Back"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_more"
+        app:layout_constraintTop_toBottomOf="@+id/dash_board_more" />
+
+    <TextView
+        android:id="@+id/dash_board_location5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="52"
+        android:textColor="@color/black"
+        android:textSize="49dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_running"
+        app:layout_constraintTop_toTopOf="@+id/dash_board_running" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Running Orders"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_location5"
+        app:layout_constraintTop_toBottomOf="@+id/dash_board_location5" />
+
+    <ImageButton
+        android:id="@+id/dash_board_order"
+        android:layout_width="170dp"
+        android:layout_height="115dp"
+        android:background="@drawable/btn_seller_quantity"
+        android:contentDescription="Back"
+        app:layout_constraintEnd_toEndOf="@+id/dash_board_constraintLayout2"
+        app:layout_constraintStart_toEndOf="@+id/dash_board_running"
+        app:layout_constraintTop_toTopOf="@+id/dash_board_running" />
+
+    <TextView
+        android:id="@+id/dash_board_location6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="10"
+        android:textColor="@color/black"
+        android:textSize="49dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_order"
+        app:layout_constraintTop_toTopOf="@+id/dash_board_order" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Order Request"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_location6"
+        app:layout_constraintTop_toBottomOf="@+id/dash_board_location6" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dash_board_constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="204dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/btn_seller_quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dash_board_running">
+
+        <TextView
+            android:id="@+id/dash_board_text_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Total Revenue"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dash_board_revenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="$2,241"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/dash_board_text_total"
+            app:layout_constraintTop_toBottomOf="@+id/dash_board_text_total" />
+
+        <Spinner
+            android:id="@+id/dash_board_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintBottom_toBottomOf="@+id/dash_board_text_total"
+            app:layout_constraintStart_toEndOf="@+id/dash_board_text_total"
+            app:layout_constraintTop_toTopOf="@+id/dash_board_text_total" />
+
+        <!--        <com.github.mikephil.charting.charts.LineChart-->
+        <!--            android:id="@+id/lineChart"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="128dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            tools:ignore="MissingClass" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="94dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/btn_seller_quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dash_board_constraintLayout2">
+
+        <TextView
+            android:id="@+id/dash_board_text_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="Reviews"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/dash_board_icon_star"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_star_primary"
+            app:layout_constraintStart_toStartOf="@+id/dash_board_text_review"
+            app:layout_constraintTop_toBottomOf="@+id/dash_board_text_review" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Total 20 Reviews"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/dash_board_icon_star"
+            app:layout_constraintStart_toEndOf="@+id/dash_board_icon_star"
+            app:layout_constraintTop_toTopOf="@+id/dash_board_icon_star" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="See All Reviews"
+            android:textColor="#FB6D3A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dash_board_text_review" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

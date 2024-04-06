@@ -1,4 +1,4 @@
-package com.foodapp.view.fragment
+package com.foodapp.view.Dialog_fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

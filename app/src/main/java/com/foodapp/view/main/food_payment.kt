@@ -13,6 +13,10 @@ import com.foodapp.R
 import com.foodapp.helper.helper
 import android.content.res.ColorStateList
 import android.widget.ImageButton
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.foodapp.utils.FakeData
+import com.foodapp.view.adapter.GridAdapter
 
 
 class food_payment : AppCompatActivity() {
