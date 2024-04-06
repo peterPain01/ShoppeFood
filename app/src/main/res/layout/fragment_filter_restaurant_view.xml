@@ -7,16 +7,28 @@
 
 
     <TextView
+        android:id="@+id/fragment_filter_restaurant_view_delivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Offers"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/horizontalScrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
+
+    <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Offers"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView3"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -46,6 +58,7 @@
         app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_close" />
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView2"
         android:layout_width="307dp"
         android:layout_height="57dp"
         android:layout_marginTop="16dp"
@@ -65,4 +78,197 @@
 
         </LinearLayout>
     </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView3"
+        android:layout_width="307dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="33dp"
+        android:contentDescription="Scrollable content for restaurant filters"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_filter_restaurant_view_close"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_filter_restaurant_view_delivery"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:id="@+id/fragment_filter_restaurant_view_LinearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/fragment_filter_restaurant_view_textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="PRICING: "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/horizontalScrollView3"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView3" />
+
+    <TextView
+        android:id="@+id/fragment_filter_restaurant_view_textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="RATING: "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/fragment_filter_restaurant_view_Size1"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_filter_restaurant_view_Size1" />
+
+    <Button
+        android:id="@+id/fragment_filter_restaurant_view_Size1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_circle"
+        android:text="10&quot;"
+        app:layout_constraintStart_toStartOf="@+id/fragment_filter_restaurant_view_textView3"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_filter_restaurant_view_textView3" />
+
+    <Button
+        android:id="@+id/fragment_filter_restaurant_view_Size2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/btn_circle"
+        android:text="15&quot;"
+        app:layout_constraintStart_toEndOf="@+id/fragment_filter_restaurant_view_Size1"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_Size1" />
+
+    <Button
+        android:id="@+id/fragment_filter_restaurant_view_Size3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/btn_circle"
+        android:text="20&quot;"
+        app:layout_constraintStart_toEndOf="@+id/fragment_filter_restaurant_view_Size2"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_Size2" />
+
+    <ImageButton
+        android:id="@+id/fragment_filter_restaurant_view_rating1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_circle"
+        android:text="test"
+        app:layout_constraintStart_toStartOf="@+id/fragment_filter_restaurant_view_textView4"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_filter_restaurant_view_textView4" />
+
+    <ImageView
+        android:id="@+id/fragment_filter_restaurant_view_imageView2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_fragment_filter_star"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_filter_restaurant_view_rating1"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_filter_restaurant_view_rating1"
+        app:layout_constraintStart_toStartOf="@+id/fragment_filter_restaurant_view_rating1"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_rating1" />
+
+    <ImageButton
+        android:id="@+id/fragment_filter_restaurant_view_rating2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/btn_circle"
+        android:text="test"
+        app:layout_constraintStart_toEndOf="@+id/fragment_filter_restaurant_view_rating1"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_rating1" />
+
+    <ImageView
+        android:id="@+id/fragment_filter_restaurant_view_imageView3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_fragment_filter_star"
+
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_filter_restaurant_view_rating2"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_filter_restaurant_view_rating2"
+        app:layout_constraintStart_toStartOf="@+id/fragment_filter_restaurant_view_rating2"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_rating2" />
+
+    <ImageButton
+        android:id="@+id/fragment_filter_restaurant_view_rating3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/btn_circle"
+        android:text="test"
+        app:layout_constraintStart_toEndOf="@+id/fragment_filter_restaurant_view_rating2"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_rating2" />
+
+    <ImageView
+        android:id="@+id/fragment_filter_restaurant_view_imageView4"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_fragment_filter_star"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_filter_restaurant_view_rating3"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_filter_restaurant_view_rating3"
+        app:layout_constraintStart_toStartOf="@+id/fragment_filter_restaurant_view_rating3"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_rating3" />
+
+    <ImageButton
+        android:id="@+id/fragment_filter_restaurant_view_rating4"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/btn_circle"
+        android:text="test"
+        app:layout_constraintStart_toEndOf="@+id/fragment_filter_restaurant_view_rating3"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_rating3" />
+
+    <ImageView
+        android:id="@+id/fragment_filter_restaurant_view_imageView5"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_fragment_filter_star"
+
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_filter_restaurant_view_rating4"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_filter_restaurant_view_rating4"
+        app:layout_constraintStart_toStartOf="@+id/fragment_filter_restaurant_view_rating4"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_rating4" />
+
+    <ImageButton
+        android:id="@+id/fragment_filter_restaurant_view_rating5"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/btn_circle"
+        android:text="test"
+        app:layout_constraintStart_toEndOf="@+id/fragment_filter_restaurant_view_rating4"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_rating4" />
+
+    <ImageView
+        android:id="@+id/fragment_filter_restaurant_view_imageView6"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_fragment_filter_star"
+
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_filter_restaurant_view_rating5"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_filter_restaurant_view_rating5"
+        app:layout_constraintStart_toStartOf="@+id/fragment_filter_restaurant_view_rating5"
+        app:layout_constraintTop_toTopOf="@+id/fragment_filter_restaurant_view_rating5" />
+
+    <Button
+        android:id="@+id/fragment_filter_restaurant_view_filter"
+        android:layout_width="327dp"
+        android:layout_height="62dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_primary"
+        android:text="FILTER"
+        android:textColor="@android:color/white"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_filter_restaurant_view_rating3" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
