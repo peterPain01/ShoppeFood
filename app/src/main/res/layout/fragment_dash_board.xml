@@ -88,7 +88,6 @@
         android:background="@drawable/btn_seller_quantity"
         android:contentDescription="Back"
         app:layout_constraintEnd_toEndOf="@+id/dash_board_constraintLayout2"
-        app:layout_constraintStart_toEndOf="@+id/dash_board_running"
         app:layout_constraintTop_toTopOf="@+id/dash_board_running" />
 
     <TextView
@@ -170,6 +169,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="94dp"
         android:layout_marginStart="24dp"
