@@ -5,17 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 import com.foodapp.utils.FakeData
-import com.foodapp.view.adapter.BottomSheetDiaglogRunning
-import com.foodapp.view.adapter.VerticalAdapter
+import com.foodapp.view.adapter.myFoodAdapter
 import com.foodapp.view.adapter.runningOrderAdapter
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,14 +19,13 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [DashBoard.newInstance] factory method to
+ * Use the [my_food.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DashBoard : Fragment() {
+class my_food : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,15 +39,18 @@ class DashBoard : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_dash_board, container, false)
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_my_food, container, false)
 
-        val showBottomSheetButton = view.findViewById<ImageButton>(R.id.dash_board_running)
-        showBottomSheetButton.setOnClickListener {
-            val bottomSheet = BottomSheetDiaglogRunning()
-            bottomSheet.show(requireActivity().supportFragmentManager, "ModalBottomSheet")
-        }
+        val dummyList = FakeData.createItemMyFood()
+        // Inflate the layout for this fragment
 
-        return view
+        val adapter_vertical = myFoodAdapter(dummyList, R.layout.item_my_food_total)
+        val recyclerView_vertical = view.findViewById<RecyclerView>(R.id.my_food_total_items)
+        recyclerView_vertical.layoutManager = GridLayoutManager(requireContext(), 1)
+        recyclerView_vertical.adapter = adapter_vertical
+
+        return view;
     }
 
     companion object {
@@ -63,12 +60,12 @@ class DashBoard : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment DashBoard.
+         * @return A new instance of fragment my_food.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            DashBoard().apply {
+            my_food().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

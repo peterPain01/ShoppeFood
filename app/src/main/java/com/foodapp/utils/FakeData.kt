@@ -1,5 +1,7 @@
 package com.foodapp.utils
 
+import com.foodapp.data.model.ItemMyFood
+import com.foodapp.data.model.OrderRunning
 import com.foodapp.data.model.Restaurant
 import java.sql.Time
 
@@ -18,6 +20,39 @@ object FakeData {
                 closeHour = Time((i + 18) * 3600000L)
             )
             dummyData.add(restaurant)
+        }
+        return dummyData
+    }
+
+    // fake data
+    fun createRunningOrder(): List<OrderRunning> {
+        val dummyData = mutableListOf<OrderRunning>()
+
+        for (i in 1..8) {
+            val order = OrderRunning(
+                tag = "#breakfast",
+                name = "Chicken Thai Biriyani",
+                price = 60.0,
+                imageUrl = "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
+            )
+            dummyData.add(order)
+        }
+        return dummyData
+    }
+
+    fun createItemMyFood(): List<ItemMyFood> {
+        val dummyData = mutableListOf<ItemMyFood>()
+
+        for (i in 1..8) {
+            val order = ItemMyFood(
+                imageUrl = "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg",
+                tag = "breakfast",
+                price = 60.0,
+                star = 4.9,
+                review = "(10 reviews)",
+                name = "Chicken Thai Biriyani"
+            )
+            dummyData.add(order)
         }
         return dummyData
     }
