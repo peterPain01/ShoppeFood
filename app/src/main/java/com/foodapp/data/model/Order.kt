@@ -1,6 +1,6 @@
 package com.foodapp.data.model
 
-data class DishItems(val dish: Dish, val count: Int);
+data class DishItems(val dish: Dish, var count: Int);
 
 data class Order(
     val id: String,
