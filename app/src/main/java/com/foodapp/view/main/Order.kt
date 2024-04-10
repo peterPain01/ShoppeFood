@@ -2,6 +2,7 @@ package com.foodapp.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 import com.foodapp.data.model.DishItems
@@ -14,6 +15,8 @@ class Order : AppCompatActivity() {
         setContentView(R.layout.activity_order)
 
         val list = findViewById<RecyclerView>(R.id.activity_order_list)
-        list.adapter = CartListAdapter(FakeData.fakeDishes().map { DishItems(it, 10) }, R.layout.cart_item)
+        val dishes = FakeData.fakeDishes().map { DishItems(it, 10) }
+        list.layoutManager = LinearLayoutManager(this)
+        list.adapter = CartListAdapter(dishes, R.layout.cart_item)
     }
 }
