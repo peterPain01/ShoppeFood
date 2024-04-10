@@ -9,22 +9,26 @@
 
     <LinearLayout
         android:id="@+id/activity_order_linearLayout2"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049">
+        app:layout_constraintVertical_bias="0">
 
         <ImageButton
             android:id="@+id/activity_order_imageButton2"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="0dp"
             android:background="@drawable/circle_button_background"
             android:backgroundTint="#2A2A39"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
             app:srcCompat="@drawable/ic_arrow_left"
             app:tint="#FFFFFF" />
 
@@ -32,7 +36,7 @@
             android:id="@+id/activity_order_textView2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:background="#00FFFFFF"
             android:gravity="center|start"
             android:text="Cart"
