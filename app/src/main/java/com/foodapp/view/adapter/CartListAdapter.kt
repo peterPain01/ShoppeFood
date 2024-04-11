@@ -60,6 +60,7 @@ class CartListAdapter(private val dataList: MutableList<DishItems>, private val 
             closeButton.setOnClickListener {
                 dataList.removeAt(position)
                 notifyItemRemoved(position)
+                notifyItemRangeChanged(position, dataList.count())
                 updateTotal()
             }
         }
