@@ -46,6 +46,9 @@
             android:exported="false" />
         <activity
             android:name=".view.main.UserInfo"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.PersonalInfo"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
