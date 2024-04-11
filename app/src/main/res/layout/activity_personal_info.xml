@@ -22,6 +22,7 @@
             android:layout_height="55dp"
             android:background="@drawable/circle_button_background"
             android:backgroundTint="#ECF0F4"
+            android:onClick="onClickedBack"
             android:scaleX="0.8"
             android:scaleY="0.8"
             app:layout_constraintBottom_toBottomOf="parent"
