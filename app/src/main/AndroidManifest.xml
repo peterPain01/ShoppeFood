@@ -43,6 +43,9 @@
             android:exported="false" />
         <activity
             android:name=".view.main.Order"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.UserInfo"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
