@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.main.my_food">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <ImageButton
+            android:id="@+id/my_food_btn_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/btn_circle"
+            android:contentDescription="back"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/my_food_imageView3"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="@+id/my_food_btn_back"
+            app:layout_constraintEnd_toEndOf="@+id/my_food_btn_back"
+            app:layout_constraintStart_toStartOf="@+id/my_food_btn_back"
+            app:layout_constraintTop_toTopOf="@+id/my_food_btn_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textSize="20sp"
+            android:text="My Food List"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/my_food_btn_back"
+            app:layout_constraintStart_toEndOf="@+id/my_food_btn_back"
+            app:layout_constraintTop_toTopOf="@+id/my_food_btn_back"
+            app:layout_constraintVertical_bias="0.516" />
+
+        <TextView
+            android:id="@+id/my_food_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="All"
+            android:textColor="#FB6D3A"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/my_food_btn_back"
+            app:layout_constraintTop_toBottomOf="@+id/my_food_btn_back" />
+
+        <TextView
+            android:id="@+id/my_food_breakfast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:text="Breakfast"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/my_food_all"
+            app:layout_constraintStart_toEndOf="@+id/my_food_all"
+            app:layout_constraintTop_toTopOf="@+id/my_food_all"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/my_food_lunch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:text="Lunch"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/my_food_breakfast"
+            app:layout_constraintStart_toEndOf="@+id/my_food_breakfast"
+            app:layout_constraintTop_toTopOf="@+id/my_food_breakfast"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/my_food_dinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:text="Dinner"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/my_food_lunch"
+            app:layout_constraintStart_toEndOf="@+id/my_food_lunch"
+            app:layout_constraintTop_toTopOf="@+id/my_food_lunch"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/my_food_imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/circle_button_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_food_breakfast" />
+
+        <TextView
+            android:id="@+id/my_food_textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Total items"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/my_food_btn_back"
+            app:layout_constraintTop_toBottomOf="@+id/my_food_imageView4" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_food_total_items"
+            android:layout_width="match_parent"
+            android:layout_height="499dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_food_textView7" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

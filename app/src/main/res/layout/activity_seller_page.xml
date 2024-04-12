@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/your_fragment_id"
-        android:name="com.foodapp.view.main.DashBoard"
+        android:name="com.foodapp.view.main.my_food"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
