@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="105dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_notifications_cardView"
+        android:layout_width="83dp"
+        android:layout_height="83dp"
+        app:cardCornerRadius="54dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/item_notifications_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/item_notifications_content"
+        android:layout_width="304dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Tanbir Ahmed Placed a new order"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/item_notifications_cardView"
+        app:layout_constraintTop_toTopOf="@+id/item_notifications_cardView" />
+
+    <TextView
+        android:id="@+id/item_notifications_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="20 min ago"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="@+id/item_notifications_content"
+        app:layout_constraintTop_toBottomOf="@+id/item_notifications_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

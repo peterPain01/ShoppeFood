@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 import com.foodapp.data.model.ItemMyFood
+import com.foodapp.helper.helper
 
 class myFoodAdapter(private val dataList: List<ItemMyFood>, private val res : Int) : RecyclerView.Adapter<myFoodAdapter.ViewHolder>() {
 
@@ -39,6 +40,12 @@ class myFoodAdapter(private val dataList: List<ItemMyFood>, private val res : In
             rating.text = itemfood.star.toString();
             review.text = itemfood.review;
             price.text = itemfood.price.toString();
+            img?.let { imageView ->
+                helper.ShowImageUrl(
+                    itemfood.imageUrl,
+                    imageView
+                )
+            }
         }
     }
 }
