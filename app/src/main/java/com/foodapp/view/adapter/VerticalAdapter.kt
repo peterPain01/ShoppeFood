@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.Restaurant
 
-class VerticalAdapter(private val dataList: List<Restaurant>, private val res : Int) : RecyclerView.Adapter<VerticalAdapter.ViewHolder>() {
+class VerticalAdapter(private val dataList: List<Restaurant>, private val res: Int) : RecyclerView.Adapter<VerticalAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(res, parent, false)
