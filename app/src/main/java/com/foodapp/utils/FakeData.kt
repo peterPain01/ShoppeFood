@@ -1,6 +1,7 @@
 package com.foodapp.utils
 
 import com.foodapp.data.model.ItemMyFood
+import com.foodapp.data.model.NotificationAdmin
 import com.foodapp.data.model.OrderRunning
 import com.foodapp.data.model.Restaurant
 import java.sql.Time
@@ -51,6 +52,21 @@ object FakeData {
                 star = 4.9,
                 review = "(10 reviews)",
                 name = "Chicken Thai Biriyani"
+            )
+            dummyData.add(order)
+        }
+        return dummyData
+    }
+
+    fun createNotification(): List<NotificationAdmin> {
+        val dummyData = mutableListOf<NotificationAdmin>()
+
+        for (i in 1..8) {
+            val order =  NotificationAdmin(
+                id = i.toString(),
+                content = "Tanbir Ahmed Placed a new order",
+                imageUrl = "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg",
+                time = "20 min ago"
             )
             dummyData.add(order)
         }

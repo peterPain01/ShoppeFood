@@ -2,15 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/seller_page_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7F8F9"
     tools:context=".view.main.seller_page">
 
-    <fragment
-        android:id="@+id/your_fragment_id"
-        android:name="com.foodapp.view.main.my_food"
+    <FrameLayout
+        android:id="@+id/seller_page_your_fragment_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/seller_page_constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="89dp"
         android:background="@drawable/seller_page_relative_radius"
@@ -28,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/seller_page_imageButton"
             android:layout_width="57dp"
             android:layout_height="57dp"
             android:background="@drawable/btn_circle"
@@ -41,46 +40,48 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/seller_page_my_food"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="48dp"
             android:src="@drawable/ic_detail"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintTop_toTopOf="@+id/imageButton"
+            app:layout_constraintBottom_toBottomOf="@+id/seller_page_imageButton"
+            app:layout_constraintEnd_toStartOf="@+id/seller_page_imageButton"
+            app:layout_constraintTop_toTopOf="@+id/seller_page_imageButton"
             app:layout_constraintVertical_bias="0.484" />
 
         <ImageView
+            android:id="@+id/seller_page_dashboard"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/ic_more_detail"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
+            android:src="@drawable/ic_more_detail_primary"
+            app:layout_constraintBottom_toBottomOf="@+id/seller_page_my_food"
+            app:layout_constraintEnd_toStartOf="@+id/seller_page_my_food"
+            app:layout_constraintTop_toTopOf="@+id/seller_page_my_food"
             app:layout_constraintVertical_bias="0.0" />
 
 
         <ImageView
+            android:id="@+id/seller_page_setting"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="48dp"
             android:src="@drawable/ic_human"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/seller_page_notify"
+            app:layout_constraintStart_toEndOf="@+id/seller_page_notify"
+            app:layout_constraintTop_toTopOf="@+id/seller_page_notify"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/seller_page_notify"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="48dp"
             android:src="@drawable/ic_notify"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-            app:layout_constraintStart_toEndOf="@+id/imageButton"
-            app:layout_constraintTop_toTopOf="@+id/imageButton"
+            app:layout_constraintBottom_toBottomOf="@+id/seller_page_imageButton"
+            app:layout_constraintStart_toEndOf="@+id/seller_page_imageButton"
+            app:layout_constraintTop_toTopOf="@+id/seller_page_imageButton"
             app:layout_constraintVertical_bias="0.484" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
