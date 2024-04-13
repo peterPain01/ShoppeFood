@@ -3,6 +3,7 @@ package com.foodapp.view.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.PopupMenu
+import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,7 +36,7 @@ class CategoryDetail : AppCompatActivity() {
         recyclerView_vertical.adapter = adapter_vertical
 
         // SPINNER CATETGORY
-        val spinnerButton : MaterialButton = findViewById<MaterialButton>(R.id.category_detail_btnAsSpinner)
+        val spinnerButton : AppCompatButton = findViewById<AppCompatButton>(R.id.category_detail_btnAsSpinner)
         val items : List<String> =  listOf("Burgers", "Pizza", "BeefSteak", "Bread")
 
         spinnerButton.setOnClickListener {

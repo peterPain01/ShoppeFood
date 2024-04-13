@@ -30,9 +30,11 @@ class seller_page : AppCompatActivity() {
         var value_temp: Int ?= null;
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.seller_page_your_fragment_id, my_food())
+            .replace(R.id.seller_page_your_fragment_id, DashBoard())
             .commit()
 
+        temp = btnDashBoard;
+        value_temp = R.drawable.ic_more_detail;
 
         btnDashBoard?.setOnClickListener {
             if (value_temp != null) {

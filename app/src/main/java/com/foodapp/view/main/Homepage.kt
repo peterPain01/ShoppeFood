@@ -1,7 +1,9 @@
 package com.foodapp.view.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
@@ -26,6 +28,24 @@ class Homepage : AppCompatActivity() {
         val adapter_hori = HorizontalAdapter(listOf("All", "Pizza", "Bread", "Pasta", "BeefSteak"), R.layout.item_horizontal)
         recyclerView_vertical.adapter = adapter_ver
         recyclerView_horizontal.adapter = adapter_hori
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val btn = findViewById<AppCompatImageButton>(R.id.homepage_notify)
+        val setting = findViewById<AppCompatImageButton>(R.id.homepage_setting)
+
+        setting.setOnClickListener {
+            val intent = Intent(this, UserInfo::class.java)
+            startActivity(intent);
+        }
+
+        btn.setOnClickListener {
+            val intent = Intent(this, Order::class.java)
+            startActivity(intent);
+        }
+
     }
 
 }

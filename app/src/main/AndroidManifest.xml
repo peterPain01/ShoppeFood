@@ -39,7 +39,7 @@
             android:name=".view.auth.Signup"
             android:exported="false" />
         <activity
-            android:name=".view.auth.Login"
+            android:name=".view.main.UserInfo"
             android:exported="false" />
         <activity
             android:name=".view.main.Order"
@@ -48,7 +48,10 @@
             android:name=".view.main.PersonalInfo"
             android:exported="false" />
         <activity
-            android:name=".view.main.UserInfo"
+            android:name=".view.main.seller_page"
+            android:exported="false" />
+        <activity
+            android:name=".view.auth.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

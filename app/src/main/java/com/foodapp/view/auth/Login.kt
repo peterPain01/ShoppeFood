@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil
 import com.foodapp.R
 import com.foodapp.data.repository.UserRepository
 import com.foodapp.databinding.ActivityLoginBinding
+import com.foodapp.view.main.Homepage
+import com.foodapp.view.main.seller_page
 import com.foodapp.viewmodel.AuthViewModel
 
 class Login : AppCompatActivity() {
@@ -34,15 +36,24 @@ class Login : AppCompatActivity() {
         val errorMsg = findViewById<TextView>(R.id.errorMsg)
         val btnLogin = findViewById<AppCompatButton>(R.id.login_btnLogin)
         btnLogin.setOnClickListener{
-            authViewModel.login { isSuccess, Message ->
-                if(isSuccess)
-                {
-                    errorMsg.text = Message
-                }
-                else{
-                    errorMsg.text = Message
-                }
+            if (authViewModel.email == "user@gmail.com") {
+                val intent = Intent(this, Homepage::class.java)
+                startActivity(intent);
             }
+            else if(authViewModel.email == "seller@gmail.com"){
+                val intent = Intent(this, seller_page::class.java)
+                startActivity(intent);
+            }
+
+//            authViewModel.login { isSuccess, Message ->
+//                if(isSuccess)
+//                {
+//                    errorMsg.text = Message
+//                }
+//                else{
+//                    errorMsg.text = Message
+//                }
+//            }
         }
     }
 
