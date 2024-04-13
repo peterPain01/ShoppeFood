@@ -32,4 +32,7 @@ class Order : AppCompatActivity() {
         list.adapter = CartListAdapter(dishes, R.layout.cart_item, updateTotal)
         updateTotal()
     }
+    fun onBackClicked(view: View) {
+        this.finish()
+    }
 }

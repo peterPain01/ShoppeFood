@@ -41,7 +41,9 @@ class restaurant_view : AppCompatActivity() {
         gridView.layoutManager = GridLayoutManager(this, 2)
         val adapte_grid = GridAdapter(dummyList, R.layout.item_grid_checkout)
         gridView.adapter = adapte_grid
-
+        btn_back?.setOnClickListener{
+            finish();
+        }
     }
     private fun init() {
         avatarFood = findViewById<ImageView>(R.id.Restaurant_view_BackGroundFood)
@@ -87,7 +89,7 @@ class restaurant_view : AppCompatActivity() {
                 marginStart = dpToPx(20)
             }
             button.background = ContextCompat.getDrawable(this, R.drawable.detail_page_btn_radius)
-            button.text = "auto"
+            button.text = "Pizza"
             button.setTextColor(ContextCompat.getColor(this, R.color.black))
             button.setOnClickListener {
                 // Button click action

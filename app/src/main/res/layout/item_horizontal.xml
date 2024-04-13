@@ -5,20 +5,31 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnHorizontal"
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="42dp"
-        android:backgroundTint="@color/white"
-        android:drawableLeft="@drawable/ic_pizza"
-        android:drawablePadding="8dp"
-        android:padding="16dp"
-        android:text="Content"
-        android:textColor="#000000"
-        android:textSize="16sp"
+        android:layout_marginRight="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="0dp"
+        app:contentPaddingLeft="5dp"
+        app:contentPaddingRight="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:background="@color/transparent"
+            android:drawableLeft="@drawable/ic_pizza"
+            android:text="Content"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </androidx.cardview.widget.CardView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

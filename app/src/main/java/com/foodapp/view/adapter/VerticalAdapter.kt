@@ -1,5 +1,6 @@
 package com.foodapp.view.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.Restaurant
+import com.foodapp.view.main.restaurant_view
 
 class VerticalAdapter(private val dataList: List<Restaurant>, private val res: Int) : RecyclerView.Adapter<VerticalAdapter.ViewHolder>() {
 
@@ -36,6 +38,10 @@ class VerticalAdapter(private val dataList: List<Restaurant>, private val res: I
                 .load(data.imageUrl)
                 .into(imageView)
             titleTextView.text = data.name
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, restaurant_view::class.java)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 }

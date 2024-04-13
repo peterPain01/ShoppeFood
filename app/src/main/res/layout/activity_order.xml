@@ -23,6 +23,7 @@
             android:layout_marginStart="10dp"
             android:background="@drawable/circle_button_background"
             android:backgroundTint="#2A2A39"
+            android:onClick="onBackClicked"
             android:scaleX="0.8"
             android:scaleY="0.8"
             app:layout_constraintBottom_toBottomOf="parent"
