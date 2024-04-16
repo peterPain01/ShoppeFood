@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.foodapp.R
@@ -35,7 +36,7 @@ class CartListAdapter(private val dataList: MutableList<DishItems>, private val 
         private val count = itemView.findViewById<TextView>(R.id.cart_item_textView9)
         private val addButton = itemView.findViewById<ImageButton>(R.id.cart_item_add_button)
         private val minusButton = itemView.findViewById<ImageButton>(R.id.cart_item_minus_button)
-        private val closeButton = itemView.findViewById<ImageButton>(R.id.cart_item_close_button)
+        private val closeButton = itemView.findViewById<CardView>(R.id.cart_item_close_button)
         fun bind(data: DishItems, position: Int) {
             Glide.with(itemView.context)
                 .load(data.dish.imageUrl)

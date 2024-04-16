@@ -8,7 +8,7 @@ import com.foodapp.data.model.ItemMyFood
 import com.foodapp.data.model.NotificationAdmin
 import com.foodapp.data.model.OrderRunning
 import com.foodapp.data.model.Review
-
+import java.util.Date
 import java.sql.Time
 
 object FakeData {
@@ -44,6 +44,7 @@ object FakeData {
                     closeHour = Time((i + 18) * 3600000L)
                 ),
                 address = "",
+                date = Date()
             ))
         }
         return orders
