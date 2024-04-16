@@ -1,16 +1,22 @@
 package com.foodapp.view.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 import com.foodapp.data.model.ItemMyFood
 import com.foodapp.helper.helper
+import com.foodapp.view.main.DashBoard
+import com.foodapp.view.main.food_payment
+import com.foodapp.view.main.seller_review
 
-class myFoodAdapter(private val dataList: List<ItemMyFood>, private val res : Int) : RecyclerView.Adapter<myFoodAdapter.ViewHolder>() {
+
+class myFoodAdapter(private val dataList: List<ItemMyFood>, val supportFragmentManager : FragmentManager, private val res : Int) : RecyclerView.Adapter<myFoodAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myFoodAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(res, parent, false)
@@ -45,6 +51,11 @@ class myFoodAdapter(private val dataList: List<ItemMyFood>, private val res : In
                     itemfood.imageUrl,
                     imageView
                 )
+            }
+            itemView.setOnClickListener {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.seller_page_your_fragment_id, seller_review())
+                    .commit()
             }
         }
     }
