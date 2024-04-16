@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/activity_user_info_imageButton2"
+            android:id="@+id/activity_user_info_back_btn"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:background="@drawable/circle_button_background"
