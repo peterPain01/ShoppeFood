@@ -39,9 +39,6 @@
             android:name=".view.auth.Signup"
             android:exported="false" />
         <activity
-            android:name=".view.main.UserInfo"
-            android:exported="false" />
-        <activity
             android:name=".view.main.Order"
             android:exported="false" />
         <activity
@@ -49,6 +46,12 @@
             android:exported="false" />
         <activity
             android:name=".view.main.seller_page"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.UserInfo"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.EditUserInfo"
             android:exported="false" />
         <activity
             android:name=".view.auth.Login"
