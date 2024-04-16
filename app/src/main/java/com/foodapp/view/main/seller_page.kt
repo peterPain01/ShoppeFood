@@ -56,7 +56,7 @@ class seller_page : AppCompatActivity() {
             value_temp = R.drawable.ic_detail;
             btnMyFood?.setImageResource(R.drawable.ic_detail_primary);
             supportFragmentManager.beginTransaction()
-                .replace(R.id.seller_page_your_fragment_id, my_food())
+                .replace(R.id.seller_page_your_fragment_id, my_food(supportFragmentManager))
                 .commit()
         }
         btnNotify?.setOnClickListener {
