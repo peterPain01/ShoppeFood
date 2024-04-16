@@ -1,10 +1,13 @@
 package com.foodapp.view.main
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
@@ -44,8 +47,54 @@ class my_food(val supportFragmentManager : FragmentManager) : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_my_food, container, false)
 
+        val all = view.findViewById<TextView>(R.id.my_food_all)
+        val breakfast = view.findViewById<TextView>(R.id.my_food_breakfast)
+        val dinner = view.findViewById<TextView>(R.id.my_food_dinner)
+        val lunch = view.findViewById<TextView>(R.id.my_food_lunch)
+
+        all?.setTextColor(Color.parseColor("#FB6D3A"))
+        all?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
+        var prev: TextView = all;
+
+        all.setOnClickListener {
+            prev?.setTextColor(Color.parseColor("#A5A7B9"))
+            prev?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#A5A7B9"))
+
+            all?.setTextColor(Color.parseColor("#FB6D3A"))
+            all?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
+            prev = all;
+        }
+
+        breakfast.setOnClickListener {
+            prev?.setTextColor(Color.parseColor("#A5A7B9"))
+            prev?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#A5A7B9"))
+            breakfast?.setTextColor(Color.parseColor("#FB6D3A"))
+            breakfast?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
+            prev = breakfast
+        }
+
+        dinner.setOnClickListener {
+            if(prev != null) {
+                prev?.setTextColor(Color.parseColor("#A5A7B9"))
+                prev?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#A5A7B9"))
+            }
+            dinner?.setTextColor(Color.parseColor("#FB6D3A"))
+            dinner?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
+            prev = dinner
+        }
+
+        lunch.setOnClickListener {
+            if(prev != null) {
+                prev?.setTextColor(Color.parseColor("#A5A7B9"))
+                prev?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#A5A7B9"))
+            }
+            lunch?.setTextColor(Color.parseColor("#FB6D3A"))
+            lunch?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
+            prev = lunch
+        }
+
+
         val dummyList = FakeData.createItemMyFood()
-        // Inflate the layout for this fragment
 
         val adapter_vertical = myFoodAdapter(dummyList, supportFragmentManager, R.layout.item_my_food_total)
         val recyclerView_vertical = view.findViewById<RecyclerView>(R.id.my_food_total_items)

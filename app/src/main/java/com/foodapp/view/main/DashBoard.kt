@@ -1,5 +1,6 @@
 package com.foodapp.view.main
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,7 +16,14 @@ import com.foodapp.utils.FakeData
 import com.foodapp.view.adapter.BottomSheetDiaglogRunning
 import com.foodapp.view.adapter.VerticalAdapter
 import com.foodapp.view.adapter.runningOrderAdapter
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,8 +61,51 @@ class DashBoard : Fragment() {
             bottomSheet.show(requireActivity().supportFragmentManager, "ModalBottomSheet")
         }
 
+        // Get reference to LineChart view
+        val lineChart: LineChart = view.findViewById(R.id.lineChart)
+        drawLineChart(lineChart) // Pass the LineChart view to the function
+
         return view
     }
+
+    fun drawLineChart(lineChart: LineChart) {
+        val entries = arrayListOf<Entry>().apply {
+            add(Entry(0f, 4f))
+            add(Entry(1f, 8f))
+            add(Entry(2f, 6f))
+            add(Entry(3f, 2f))
+            add(Entry(4f, 7f))
+        }
+
+        val dataSet = LineDataSet(entries, "Sample Data")
+
+        dataSet.color = Color.BLUE
+        dataSet.valueTextColor = Color.RED
+
+        val lineData = LineData(dataSet)
+
+        lineChart.data = lineData
+
+        lineChart.description.isEnabled = false
+        lineChart.setTouchEnabled(true)
+        lineChart.isDragEnabled = true
+        lineChart.setScaleEnabled(true)
+        lineChart.setDrawGridBackground(false)
+        lineChart.setBackgroundColor(Color.WHITE)
+
+        val xAxis: XAxis = lineChart.xAxis
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
+
+        val leftAxis: YAxis = lineChart.axisLeft
+        leftAxis.setDrawGridLines(true)
+
+        val rightAxis: YAxis = lineChart.axisRight
+        rightAxis.isEnabled = false
+
+        val legend: Legend = lineChart.legend
+        legend.form = Legend.LegendForm.LINE
+    }
+
 
     companion object {
         /**

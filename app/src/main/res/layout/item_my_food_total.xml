@@ -2,14 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="120dp"
+    android:background="@drawable/textline_bottom"
+    android:backgroundTint="#E1E4E6"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/item_my_food_total_img"
-        android:layout_width="102dp"
-        android:layout_height="102dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -25,8 +28,7 @@
         android:id="@+id/item_my_food_total_running_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="16sp"
         android:text="Chicken Thai Biriyani"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -49,9 +51,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="114dp"
+        android:layout_width="90dp"
         android:layout_height="23dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/background_item_food"
         app:layout_constraintStart_toStartOf="@+id/item_my_food_total_running_name"
         app:layout_constraintTop_toBottomOf="@+id/item_my_food_total_running_name">
@@ -62,7 +64,7 @@
             android:layout_height="wrap_content"
             android:text="Breakfast"
             android:textColor="#FF7622"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,12 +73,13 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
         android:src="@drawable/ic_star_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/item_my_food_total_img"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/item_my_food_total_rating"
@@ -85,7 +88,7 @@
         android:layout_marginStart="10dp"
         android:text="4.9"
         android:textColor="#FB6D3A"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
@@ -97,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="(10 Reviews)"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_my_food_total_rating"
         app:layout_constraintStart_toEndOf="@+id/item_my_food_total_rating"
         app:layout_constraintTop_toTopOf="@+id/item_my_food_total_rating" />

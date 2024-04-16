@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 import com.foodapp.data.model.ItemMyFood
 import com.foodapp.helper.helper
-import com.foodapp.view.main.DashBoard
-import com.foodapp.view.main.food_payment
 import com.foodapp.view.main.seller_review
 
 
@@ -53,9 +51,8 @@ class myFoodAdapter(private val dataList: List<ItemMyFood>, val supportFragmentM
                 )
             }
             itemView.setOnClickListener {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.seller_page_your_fragment_id, seller_review())
-                    .commit()
+                val intent = Intent(itemView.context, seller_review::class.java)
+                itemView.context.startActivity(intent);
             }
         }
     }
