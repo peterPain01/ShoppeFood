@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".view.main.MyOrder">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_my_order_constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/activity_my_order_imageButton2"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/circle_button_background"
+            android:backgroundTint="#ECF0F4"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_left"
+            app:tint="#181C2E" />
+
+        <TextView
+            android:id="@+id/activity_my_order_textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="#00FFFFFF"
+            android:gravity="center|start"
+            android:text="My Orders"
+            android:textColor="#181C2E"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_my_order_imageButton2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/activity_my_order_imageButton3"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="end"
+            android:layout_weight="0"
+            android:background="@drawable/circle_button_background"
+            android:backgroundTint="#ECF0F4"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_more"
+            app:tint="#181C2E" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_my_order_linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/activity_my_order_constraintLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <Button
+            android:id="@+id/activity_my_order_ongoing_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/textline_bottom"
+            android:elevation="0dp"
+            android:textSize="14sp"
+            android:textColor="#FF7622"
+            android:backgroundTint="#FF7622"
+            android:layout_marginHorizontal="5dp"
+            android:text="Ongoing" />
+        <Button
+            android:id="@+id/activity_my_order_history_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/textline_bottom"
+            android:elevation="0dp"
+            android:textSize="14sp"
+            android:textColor="#A5A7B9"
+            android:backgroundTint="#A5A7B9"
+            android:layout_marginHorizontal="5dp"
+            android:text="History" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_my_order_item_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_my_order_linearLayout3">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
