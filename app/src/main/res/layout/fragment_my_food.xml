@@ -45,22 +45,26 @@
 
         <TextView
             android:id="@+id/my_food_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="90dp"
+            android:layout_height="35dp"
             android:layout_marginTop="28dp"
+            android:background="@drawable/textline_bottom"
+            android:gravity="center_horizontal"
+            android:backgroundTint="#DDE2E6"
             android:text="All"
-            android:textColor="#FB6D3A"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/my_food_btn_back"
             app:layout_constraintTop_toBottomOf="@+id/my_food_btn_back" />
 
         <TextView
             android:id="@+id/my_food_breakfast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="42dp"
+            android:layout_width="90dp"
+            android:layout_height="35dp"
+            android:background="@drawable/textline_bottom"
             android:text="Breakfast"
             android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:backgroundTint="#DDE2E6"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/my_food_all"
             app:layout_constraintStart_toEndOf="@+id/my_food_all"
@@ -69,11 +73,13 @@
 
         <TextView
             android:id="@+id/my_food_lunch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="42dp"
+            android:layout_width="90dp"
+            android:layout_height="35dp"
             android:text="Lunch"
             android:textColor="@color/black"
+            android:background="@drawable/textline_bottom"
+            android:backgroundTint="#DDE2E6"
+            android:gravity="center_horizontal"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/my_food_breakfast"
             app:layout_constraintStart_toEndOf="@+id/my_food_breakfast"
@@ -82,29 +88,18 @@
 
         <TextView
             android:id="@+id/my_food_dinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="42dp"
+            android:layout_width="90dp"
+            android:layout_height="35dp"
             android:text="Dinner"
             android:textColor="@color/black"
+            android:background="@drawable/textline_bottom"
+            android:gravity="center_horizontal"
+            android:backgroundTint="#DDE2E6"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/my_food_lunch"
             app:layout_constraintStart_toEndOf="@+id/my_food_lunch"
             app:layout_constraintTop_toTopOf="@+id/my_food_lunch"
             app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/my_food_imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/circle_button_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_food_breakfast" />
 
         <TextView
             android:id="@+id/my_food_textView7"
@@ -114,7 +109,7 @@
             android:text="Total items"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/my_food_btn_back"
-            app:layout_constraintTop_toBottomOf="@+id/my_food_imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/my_food_dinner" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/my_food_total_items"
