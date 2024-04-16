@@ -48,30 +48,24 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
-        android:id="@+id/activity_order_scrollView2"
-        android:layout_width="0dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_order_list"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/activity_order_cardview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_order_constraintLayout2">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/activity_order_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@id/activity_order_constraintLayout2" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/activity_order_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="-50dp"
+        android:background="@color/transparent"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="50dp"
         app:contentPadding="10dp"
-        android:layout_marginBottom="-50dp"
         app:contentPaddingBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent">
 

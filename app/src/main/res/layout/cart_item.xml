@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="5dp"
+    android:background="@color/transparent">
 
     <ImageView
         android:id="@+id/cart_item_imageView3"
         android:layout_width="150dp"
         android:layout_height="0dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cart_item_linearLayout2"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,32 +38,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
-                android:gravity="start|center_horizontal|left"
+                android:gravity="start|left"
                 android:paddingStart="10dp"
                 android:text="pizza calzone european"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/cart_item_imageButton3"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <androidx.cardview.widget.CardView
                 android:id="@+id/cart_item_close_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="0"
-                android:background="@drawable/btn_circle"
-                android:backgroundTint="#E04444"
-                android:scaleX="0.4"
-                android:scaleY="0.4"
-                android:src="@drawable/ic_close"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                app:cardBackgroundColor="#E04444"
+                app:cardCornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="#ffffff" />
+                app:layout_constraintTop_toTopOf="parent" >
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:src="@drawable/ic_close"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    app:tint="#ffffff" />
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -76,7 +81,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
+            android:gravity="start|center_vertical"
             android:orientation="horizontal">
 
             <ImageButton
