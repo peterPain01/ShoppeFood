@@ -1,7 +1,9 @@
 package com.foodapp.view.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import com.foodapp.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -10,23 +12,29 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.foodapp.databinding.ActivityManageAddressBinding
+import com.foodapp.databinding.ActivityDriverHomeBinding
 
-class ManageAddress : AppCompatActivity(), OnMapReadyCallback {
+class driver_home : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-    private lateinit var binding: ActivityManageAddressBinding
+    private lateinit var binding: ActivityDriverHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-     binding = ActivityManageAddressBinding.inflate(layoutInflater)
-     setContentView(binding.root)
+        binding = ActivityDriverHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment
+            .findFragmentById(R.id.driver_home_driver_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        var showMore = findViewById<ImageView>(R.id.driver_home_more);
+        showMore.setOnClickListener {
+            val new_intent = Intent(this, driver_info::class.java)
+            startActivity(new_intent)
+        }
     }
 
     /**
@@ -42,7 +50,7 @@ class ManageAddress : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(10.762849599401113, 106.68251290899643)
+        val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
