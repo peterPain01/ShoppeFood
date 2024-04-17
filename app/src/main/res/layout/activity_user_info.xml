@@ -203,6 +203,7 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/activity_user_info_address_container"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="15dp">
