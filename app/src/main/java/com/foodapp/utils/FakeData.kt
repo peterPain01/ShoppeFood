@@ -1,13 +1,16 @@
 package com.foodapp.utils
 
+import com.foodapp.data.model.Address
 import com.foodapp.data.model.Dish
 import com.foodapp.data.model.DishItems
 import com.foodapp.data.model.Order
 import com.foodapp.data.model.Restaurant
 import com.foodapp.data.model.ItemMyFood
+import com.foodapp.data.model.MapPosition
 import com.foodapp.data.model.NotificationAdmin
 import com.foodapp.data.model.OrderRunning
 import com.foodapp.data.model.Review
+import okhttp3.internal.toImmutableList
 import java.util.Date
 import java.sql.Time
 
@@ -128,5 +131,20 @@ object FakeData {
             dummyData.add(order)
         }
         return dummyData
+    }
+
+    fun createAddresses(): List<Address> {
+        val result = mutableListOf<Address>()
+        for (i in 1..10) {
+            result.add(
+                Address(
+                    name = "Home %d".format(i),
+                    address = "123 Dang Vinh Tuong, Phuong 7, Quan Phu Nhuan",
+                    position = MapPosition(0.0, 0.0),
+                    type = if (i%3 == 0) "home" else if (i%3 == 1) "work" else "other"
+                )
+            )
+        }
+        return result.toImmutableList()
     }
 }
