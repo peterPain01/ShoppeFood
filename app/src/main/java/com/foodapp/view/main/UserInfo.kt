@@ -10,6 +10,7 @@ import com.foodapp.view.auth.Login
 
 class UserInfo : AppCompatActivity() {
     private lateinit var back_btn: ImageButton
+    private lateinit var addr_container: View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_info)
@@ -20,6 +21,11 @@ class UserInfo : AppCompatActivity() {
         back_btn = findViewById<ImageButton>(R.id.activity_user_info_back_btn)
         back_btn.setOnClickListener {
             this.finish()
+        }
+        addr_container = findViewById<View>(R.id.activity_user_info_address_container)
+        addr_container.setOnClickListener {
+            val new_intent = Intent(this, UserAddress::class.java);
+            startActivity(new_intent);
         }
     }
 
