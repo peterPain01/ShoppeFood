@@ -38,10 +38,16 @@
         <!-- android:name=".view.main.driver_home" -->
         <!-- android:exported="false" -->
         <!-- android:label="@string/title_activity_driver_home" /> -->
+<!--        <activity-->
+<!--            android:name=".view.main.ManageAddress"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_manage_address" />-->
         <activity
-            android:name=".view.auth.Login"
-            android:exported="false"
-            android:label="@string/title_activity_manage_address" />
+            android:name=".view.main.ManageAddress"
+            android:exported="false" />
+        <activity
+            android:name=".view.main.driver_home"
+            android:exported="false" />
         <activity
             android:name=".view.main.seller_review"
             android:exported="false" />
@@ -91,7 +97,7 @@
             android:name=".view.main.UserAddress"
             android:exported="false" />
         <activity
-            android:name=".view.main.driver_home"
+            android:name=".view.auth.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
