@@ -11,8 +11,6 @@ import com.foodapp.R
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.data.repository.UserRepository
 import com.foodapp.databinding.ActivityLoginBinding
-import com.foodapp.view.main.Homepage
-import com.foodapp.view.main.seller_page
 import com.foodapp.viewmodel.AuthViewModel
 
 class Login : AppCompatActivity() {
@@ -23,7 +21,6 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         userRepository = UserRepository()
         val sessionManager = SessionManager(this)
