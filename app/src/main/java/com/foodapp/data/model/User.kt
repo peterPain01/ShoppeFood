@@ -1,4 +1,9 @@
 package com.foodapp.data.model
 
-data class User(val id:String , var email:String, var password:String) {
-}
+import com.google.gson.annotations.SerializedName
+
+data class User(
+    @SerializedName("_id") val id: String,
+    var email: String,
+    var password: String
+)
