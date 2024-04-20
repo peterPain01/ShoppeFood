@@ -38,7 +38,7 @@
                 android:text="ADDRESS"
                 android:textColor="#32343E"
                 android:textSize="14sp" />
-            <TextView
+            <EditText
                 android:id="@+id/activity_manage_address_box"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

@@ -3,8 +3,9 @@ package com.foodapp.view.main
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.foodapp.R
@@ -63,28 +64,65 @@ class ManageAddress : AppCompatActivity(), OnMapReadyCallback {
             marker?.position = mMap.cameraPosition.target
         }
         mMap.setOnCameraIdleListener { // call when stop moving (once)
-            try {
-                updatePosition(marker?.position!!)
-            } catch (ex: Exception) {
-                Log.d("TUONGERR1", ex.toString())
-            }
+            updateAddress(marker?.position!!)
         }
+        binding.activityManageAddressBox.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // Log.d("TUONG:77", s.toString())
+                // updateMap(s.toString())
+            }
+
+        })
     }
-    private fun updatePosition(pos: LatLng) {
+    private fun updateAddress(pos: LatLng) {
         val thread = Thread(Runnable {
             try {
                 val url =
                     URL("https://maps.googleapis.com/maps/api/geocode/json?result_type=street_address&latlng=${pos.latitude},${pos.longitude}&key=AIzaSyC0DeNxN37anGzdfW7uGQiwAueSlvnb8_U")
                 val inputStream = url.content as InputStream
                 val obj = JsonParser().parse(InputStreamReader(inputStream)).asJsonObject
-                val address =
-                    obj.get("results").asJsonArray.get(0).asJsonObject.get("formatted_address").asString
-                with(Dispatchers.Main) {
-                    Log.d("TUONG", address)
-                    binding.activityManageAddressBox.setText(address)
+                Log.i("TUONG", obj.get("status").asString)
+                val status = obj.get("status").asString == "OK"
+                if (status) {
+                    val address =
+                        obj.get("results").asJsonArray.get(0).asJsonObject.get("formatted_address").asString
+                    with(Dispatchers.Main) {
+                        Log.d("TUONG", address)
+                        binding.activityManageAddressBox.setText(address)
+                    }
                 }
             } catch(ex: Exception) {
-                Log.d("TUONGERROR", ex.toString())
+                Log.d("TUONG:UpdateAddress-ERROR", ex.toString())
+            }
+        })
+        thread.start()
+    }
+    private fun updateMap(addr: String) {
+        val thread = Thread(Runnable {
+            try {
+                val urlAddress = java.net.URLEncoder.encode(addr, "utf-8")
+                val url = URL("https://maps.googleapis.com/maps/api/geocode/json?address=${urlAddress}&key=AIzaSyC0DeNxN37anGzdfW7uGQiwAueSlvnb8_U")
+                val inputStream = url.content as InputStream
+                val obj = JsonParser().parse(InputStreamReader(inputStream)).asJsonObject
+                Log.i("TUONG", obj.get("status").asString)
+                val status = obj.get("status").asString == "OK"
+                if (status) {
+                    val location =
+                        obj.get("results").asJsonObject.get("geometry").asJsonObject.get("localtion").asJsonObject
+                    val lat = location.get("lat").asDouble
+                    val lng = location.get("lng").asDouble
+                    with(Dispatchers.Main) {
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(lat, lng)))
+                    }
+                }
+            } catch(ex: Exception) {
+                Log.d("TUONG:UpdateMap-ERROR", ex.toString())
             }
         })
         thread.start()
