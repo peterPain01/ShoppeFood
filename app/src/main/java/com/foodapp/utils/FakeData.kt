@@ -1,14 +1,15 @@
 package com.foodapp.utils
 
-import com.foodapp.data.model.Address
+import com.foodapp.data.model.UserAddress
 import com.foodapp.data.model.Dish
 import com.foodapp.data.model.DishItems
 import com.foodapp.data.model.Order
-import com.foodapp.data.model.Restaurant
+import com.foodapp.data.model.Shop
 import com.foodapp.data.model.ItemMyFood
 import com.foodapp.data.model.MapPosition
 import com.foodapp.data.model.NotificationAdmin
 import com.foodapp.data.model.OrderRunning
+import com.foodapp.data.model.Position
 import com.foodapp.data.model.Review
 import okhttp3.internal.toImmutableList
 import java.util.Date
@@ -37,14 +38,18 @@ object FakeData {
                 id = "",
                 userId = "",
                 dishes = fakeDishes().map { DishItems(it, kotlin.random.Random(10).nextInt(5, 10)) },
-                restaurant = Restaurant(
+                shop = Shop(
                     id = "ID_$i",
                     name = "Restaurant $i",
-                    imageUrl = "https://images.foody.vn/res/g119/1181120/prof/s280x175/image-686e0cf3-240130123556.jpeg",
-                    rating = 4.0 + (i % 3),
-                    location = "Location $i",
+                    image = "https://images.foody.vn/res/g119/1181120/prof/s280x175/image-686e0cf3-240130123556.jpeg",
+                    avg_rating = 4.0 + (i % 3),
+                    position = Position("Location $i", MapPosition(0.0, 0.0)),
                     openHour = Time((i + 9) * 3600000L),
-                    closeHour = Time((i + 18) * 3600000L)
+                    closeHour = Time((i + 18) * 3600000L),
+                    description = "OK",
+                    phone = "0123456789",
+                    category = listOf(""),
+                    status = "active",
                 ),
                 address = "",
                 date = Date()
@@ -52,20 +57,24 @@ object FakeData {
         }
         return orders
     }
-    fun createDummyData(): List<Restaurant> {
-        val dummyData = mutableListOf<Restaurant>()
+    fun createDummyData(): List<Shop> {
+        val dummyData = mutableListOf<Shop>()
 
         for (i in 1..8) {
-            val restaurant = Restaurant(
+            val shop = Shop(
                 id = "ID_$i",
                 name = "Restaurant $i",
-                imageUrl = "https://images.foody.vn/res/g119/1181120/prof/s280x175/image-686e0cf3-240130123556.jpeg",
-                rating = 4.0 + (i % 3),
-                location = "Location $i",
+                image = "https://images.foody.vn/res/g119/1181120/prof/s280x175/image-686e0cf3-240130123556.jpeg",
+                avg_rating = 4.0 + (i % 3),
+                position = Position("Location $i", MapPosition(0.0, 0.0)),
                 openHour = Time((i + 9) * 3600000L),
-                closeHour = Time((i + 18) * 3600000L)
+                closeHour = Time((i + 18) * 3600000L),
+                description = "OK",
+                phone = "0123456789",
+                category = listOf(""),
+                status = "active",
             )
-            dummyData.add(restaurant)
+            dummyData.add(shop)
         }
         return dummyData
     }
@@ -133,14 +142,13 @@ object FakeData {
         return dummyData
     }
 
-    fun createAddresses(): List<Address> {
-        val result = mutableListOf<Address>()
+    fun createAddresses(): List<UserAddress> {
+        val result = mutableListOf<UserAddress>()
         for (i in 1..10) {
             result.add(
-                Address(
+                UserAddress(
                     name = "Home %d".format(i),
-                    address = "123 Dang Vinh Tuong, Phuong 7, Quan Phu Nhuan",
-                    position = MapPosition(0.0, 0.0),
+                    position = Position("123 Dang Vinh Tuong, Phuong 7, Quan Phu Nhuan", MapPosition(0.0, 0.0)),
                     type = if (i%3 == 0) "home" else if (i%3 == 1) "work" else "other"
                 )
             )

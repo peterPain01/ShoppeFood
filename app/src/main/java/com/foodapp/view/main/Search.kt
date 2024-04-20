@@ -30,7 +30,7 @@ class Search : AppCompatActivity() {
         gridView.layoutManager = GridLayoutManager(this, 2)
 
 
-        val adapter_horizontal = HorizontalAdapter(listOf("Burger", "Sandwich", "Pizza", "Pasta", "BeefSteak"), R.layout.item_keyword)
+        val adapter_horizontal = HorizontalAdapter(listOf(), R.layout.item_keyword)
         val adapter_vertical = VerticalAdapter(dummyList, R.layout.item_suggest_res)
         val adapte_grid = GridAdapter(dummyList, R.layout.item_grid)
 

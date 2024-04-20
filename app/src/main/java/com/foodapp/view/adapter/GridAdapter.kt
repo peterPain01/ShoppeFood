@@ -9,10 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.foodapp.R
-import com.foodapp.data.model.Restaurant
+import com.foodapp.data.model.Shop
 import com.foodapp.view.main.food_payment
 
-class GridAdapter(private val items: List<Restaurant>, private val item_res : Int) : RecyclerView.Adapter<GridAdapter.ViewHolder>() {
+class GridAdapter(private val items: List<Shop>, private val item_res : Int) : RecyclerView.Adapter<GridAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(item_res, parent, false)
         return ViewHolder(view)
@@ -28,9 +28,9 @@ class GridAdapter(private val items: List<Restaurant>, private val item_res : In
         val imageView: ImageView = itemView.findViewById(R.id.imageUrl)
         val name: TextView = itemView.findViewById(R.id.name)
         val desc: TextView = itemView.findViewById(R.id.desc)
-        fun bind(data: Restaurant) {
+        fun bind(data: Shop) {
             Glide.with(itemView.context)
-                .load(data.imageUrl)
+                .load(data.image)
                 .into(imageView)
             name.text = data.name
             itemView.setOnClickListener {

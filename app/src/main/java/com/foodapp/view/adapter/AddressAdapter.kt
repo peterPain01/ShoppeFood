@@ -6,12 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
-import com.foodapp.data.model.Address
+import com.foodapp.data.model.UserAddress
 
-class AddressAdapter(private val addresses: List<Address>, private val res: Int): RecyclerView.Adapter<AddressAdapter.ViewHolder>()  {
+class AddressAdapter(private val userAddresses: List<UserAddress>, private val res: Int): RecyclerView.Adapter<AddressAdapter.ViewHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(res, parent, false)
@@ -19,11 +18,11 @@ class AddressAdapter(private val addresses: List<Address>, private val res: Int)
     }
 
     override fun getItemCount(): Int {
-        return addresses.count()
+        return userAddresses.count()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(addresses[position])
+        holder.bind(userAddresses[position])
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -32,9 +31,9 @@ class AddressAdapter(private val addresses: List<Address>, private val res: Int)
         private val address = itemView.findViewById<TextView>(R.id.item_address_address)
         private val editBtn = itemView.findViewById<ImageButton>(R.id.item_address_edit_btn)
         private val deleteBtn = itemView.findViewById<ImageButton>(R.id.item_address_delete_btn)
-        fun bind(data: Address) {
+        fun bind(data: UserAddress) {
             name.text = data.name
-            address.text = data.address
+            address.text = data.position.address
             if (data.type == "home") {
                 image.setImageResource(R.drawable.ic_house)
             } else if (data.type == "work") {

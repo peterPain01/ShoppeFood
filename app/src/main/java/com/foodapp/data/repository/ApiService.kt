@@ -1,9 +1,7 @@
-import android.media.session.MediaSession.Token
-import com.foodapp.data.model.Restaurant
+import com.foodapp.data.model.Category
+import com.foodapp.data.model.Shop
 import com.foodapp.data.model.User
 import com.foodapp.data.model.auth.AuthResponse
-import com.foodapp.data.model.auth.SessionManager
-import com.foodapp.data.model.auth.Tokens
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -11,6 +9,9 @@ import retrofit2.http.Headers
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
+import retrofit2.http.QueryMap
+import retrofit2.http.QueryName
 
 interface ApiService {
     @GET("api/user/{id}")
@@ -22,11 +23,13 @@ interface ApiService {
     @POST("auth/login")
     fun logIn(@Body user : User) : Call<AuthResponse>
 
-    @Headers(
-        "Content-Type: application/json")
-    @GET("api/restaurant")
-    fun getAllRestaurant(
-        @Header("User-ID") userId: String,
-        @Header("Access-Token") accessToken: String
-    ) : Call<Restaurant>
+    @GET("categories")
+    fun getAllCategories(): Call<List<Category>>
+
+    @GET("shop/top-rated")
+    fun getTopRated(
+       @Query("limit") limit: Int = 10): Call<List<Shop>>
+
+    @GET("user")
+    fun getCurrentUserInfo(): Call<User>
 }

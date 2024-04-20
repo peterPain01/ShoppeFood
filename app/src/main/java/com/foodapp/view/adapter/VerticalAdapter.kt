@@ -9,10 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.foodapp.R
-import com.foodapp.data.model.Restaurant
+import com.foodapp.data.model.Shop
 import com.foodapp.view.main.restaurant_view
 
-class VerticalAdapter(private val dataList: List<Restaurant>, private val res: Int) : RecyclerView.Adapter<VerticalAdapter.ViewHolder>() {
+class VerticalAdapter(private val dataList: List<Shop>, private val res: Int) : RecyclerView.Adapter<VerticalAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(res, parent, false)
@@ -29,19 +29,20 @@ class VerticalAdapter(private val dataList: List<Restaurant>, private val res: I
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val imageView: ImageView = itemView.findViewById(R.id.imageUrl)
-        private val titleTextView: TextView = itemView.findViewById(R.id.name)
-        private val subInfoTextView: TextView = itemView.findViewById(R.id.rating)
+        private val imageView: ImageView = itemView.findViewById(R.id.item_vertical_image)
+        private val titleTextView: TextView = itemView.findViewById(R.id.item_vertical_name)
+        private val ratingTextView: TextView = itemView.findViewById(R.id.item_vertical_rating)
 
-        fun bind(data: Restaurant) {
+        fun bind(data: Shop) {
             Glide.with(itemView.context)
-                .load(data.imageUrl)
+                .load(data.image)
                 .into(imageView)
             titleTextView.text = data.name
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, restaurant_view::class.java)
                 itemView.context.startActivity(intent)
             }
+            ratingTextView.text = data.avg_rating.toString()
         }
     }
 }

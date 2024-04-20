@@ -30,7 +30,6 @@
             app:tint="#181C2E" />
 
         <TextView
-            android:id="@+id/activity_edit_user_info_textView2"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:background="#00FFFFFF"

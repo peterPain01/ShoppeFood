@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.Order
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 
 class OrderHistoryListAdapter(val orders: List<Order>, val res: Int): RecyclerView.Adapter<OrderHistoryListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,9 +33,9 @@ class OrderHistoryListAdapter(val orders: List<Order>, val res: Int): RecyclerVi
         val date: TextView = itemView.findViewById<TextView>(R.id.item_completed_order_date)
 
         fun bind(data: Order) {
-            title.text = data.restaurant.name
+            title.text = data.shop.name
             Glide.with(itemView.context)
-                .load(data.restaurant.imageUrl)
+                .load(data.shop.image)
                 .into(image)
             price.text = String.format("$%.2f", data.totalPrice)
             count.text = String.format("%d items", data.totalDishes)
