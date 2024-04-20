@@ -36,24 +36,24 @@ class Login : AppCompatActivity() {
         val errorMsg = findViewById<TextView>(R.id.errorMsg)
         val btnLogin = findViewById<AppCompatButton>(R.id.login_btnLogin)
         btnLogin.setOnClickListener{
-            if (authViewModel.email == "user@gmail.com") {
-                val intent = Intent(this, Homepage::class.java)
-                startActivity(intent);
-            }
-            else if(authViewModel.email == "seller@gmail.com"){
-                val intent = Intent(this, seller_page::class.java)
-                startActivity(intent);
-            }
-
-//            authViewModel.login { isSuccess, Message ->
-//                if(isSuccess)
-//                {
-//                    errorMsg.text = Message
-//                }
-//                else{
-//                    errorMsg.text = Message
-//                }
+//            if (authViewModel.email == "user@gmail.com") {
+//                val intent = Intent(this, Homepage::class.java)
+//                startActivity(intent);
 //            }
+//            else if(authViewModel.email == "seller@gmail.com"){
+//                val intent = Intent(this, seller_page::class.java)
+//                startActivity(intent);
+//            }
+
+            authViewModel.login { isSuccess, Message ->
+                if(isSuccess)
+                {
+                    errorMsg.text = Message
+                }
+                else{
+                    errorMsg.text = Message
+                }
+            }
         }
     }
 
