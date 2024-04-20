@@ -19,12 +19,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/btnHorizontal"
+            android:id="@+id/item_horizontal_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
             android:background="@color/transparent"
-            android:drawableLeft="@drawable/ic_pizza"
+            android:drawableStart="@drawable/ic_pizza"
             android:text="Content"
             android:textColor="#000000"
             android:textSize="16sp" />

@@ -31,9 +31,9 @@ class OrderOngoingListAdapter(val orders: List<Order>, val res: Int): RecyclerVi
         val count: TextView = itemView.findViewById<TextView>(R.id.item_ongoing_order_count)
 
         fun bind(data: Order) {
-            title.text = data.restaurant.name
+            title.text = data.shop.name
             Glide.with(itemView.context)
-                .load(data.restaurant.imageUrl)
+                .load(data.shop.image)
                 .into(image)
             price.text = String.format("$%.2f", data.totalPrice)
             count.text = String.format("%d items", data.totalDishes)

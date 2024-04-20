@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <data>
+        <variable
+            name="info"
+            type="com.foodapp.data.model.User" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
@@ -83,11 +90,18 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="15dp"
-                app:cardBackgroundColor="#FFC6AE"
                 app:cardCornerRadius="50dp"
                 app:cardElevation="0dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <ImageView
+                    android:id="@+id/activity_user_info_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FFBF6D" />
+            </androidx.cardview.widget.CardView>
+
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -100,21 +114,19 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Visual Khadok"
+                    android:text="@{info.fullname}"
                     android:textAlignment="textStart"
                     android:textColor="#32343E"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="15dp"
-                    android:text="I love fast food"
+                    android:text="@{info.bio}"
                     android:textColor="#A0A5BA"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -152,9 +164,9 @@
                         android:padding="18dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/activity_user_info_personal_info"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:onClick="onClickedPersonalInfo">
+                            android:layout_height="match_parent">
 
                             <androidx.cardview.widget.CardView
                                 android:id="@+id/activity_user_info_cardview3"
@@ -186,7 +198,6 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <ImageView
-                                android:id="@+id/imageButton2"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="@drawable/btn_circle"
@@ -220,7 +231,6 @@
                                 app:layout_constraintTop_toTopOf="parent">
 
                                 <ImageView
-                                    android:id="@+id/imageView3"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     app:srcCompat="@android:drawable/ic_dialog_map"
@@ -658,7 +668,7 @@
                         android:padding="18dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:onClick="onLogOutClicked"
+                            android:id="@+id/activity_user_info_logout"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -714,3 +724,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

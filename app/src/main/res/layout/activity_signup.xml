@@ -117,7 +117,7 @@
                     android:paddingStart="12dp"
                     android:background="@drawable/rounded_edittext_background"
                     android:hint="john doe"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     />
 
 
@@ -127,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="6dp"
-                    android:text="EMAIL"
+                    android:text="PHONE"
                     android:textColor="#636363"
                     android:textSize="16dp"
                     />
@@ -139,9 +139,9 @@
                     android:padding="8dp"
                     android:paddingStart="12dp"
                     android:background="@drawable/rounded_edittext_background"
-                    android:hint="email@gmail.com"
-                    android:text="@={signupViewModel.email}"
-                    android:inputType="textEmailAddress"
+                    android:hint="0123456789"
+                    android:text="@={signupViewModel.phone}"
+                    android:inputType="phone"
                     />
 
 

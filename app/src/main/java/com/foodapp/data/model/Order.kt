@@ -8,7 +8,7 @@ data class Order(
     val id: String,
     var userId: String,
     var dishes: List<DishItems>,
-    var restaurant: Restaurant,
+    var shop: Shop,
     var address: String,
     var date: Date
 ) {

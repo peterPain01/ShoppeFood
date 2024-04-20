@@ -15,4 +15,7 @@ object RegexUtils {
     fun isValidEmail(email: String): Boolean {
         return EMAIL_ADDRESS.matcher(email).matches()
     }
+    fun isValidPhoneNumber(phone: String): Boolean {
+        return true
+    }
 }
