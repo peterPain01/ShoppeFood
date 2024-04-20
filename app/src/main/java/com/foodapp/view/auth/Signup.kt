@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.databinding.DataBindingUtil
 import com.foodapp.R
+import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.data.repository.UserRepository
 import com.foodapp.databinding.ActivitySignupBinding
 import com.foodapp.viewmodel.AuthViewModel
@@ -20,10 +21,9 @@ class Signup : AppCompatActivity() {
         setContentView(R.layout.activity_signup)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
         userRepository = UserRepository()
-        authViewModel = AuthViewModel(userRepository)
+        authViewModel = AuthViewModel(SessionManager(this), userRepository)
         binding.signupViewModel = authViewModel
         binding.lifecycleOwner = this
-
     }
     override fun onStart() {
         super.onStart()
