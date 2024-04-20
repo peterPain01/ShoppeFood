@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -16,8 +17,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".view.main.User_Payment"
+            android:name=".view.main.create_restaurant"
             android:exported="false" />
+         <activity
+         android:name=".view.main.Admin_Page"
+         android:exported="false" />
         <activity
             android:name=".view.main.driver_info"
             android:exported="false" />
@@ -41,10 +45,10 @@
         <!-- android:name=".view.main.driver_home" -->
         <!-- android:exported="false" -->
         <!-- android:label="@string/title_activity_driver_home" /> -->
-<!--        <activity-->
-<!--            android:name=".view.main.ManageAddress"-->
-<!--            android:exported="false"-->
-<!--            android:label="@string/title_activity_manage_address" />-->
+        <!-- <activity -->
+        <!-- android:name=".view.main.ManageAddress" -->
+        <!-- android:exported="false" -->
+        <!-- android:label="@string/title_activity_manage_address" /> -->
         <activity
             android:name=".view.main.ManageAddress"
             android:exported="false" />
