@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.databinding.DataBindingUtil
 import com.foodapp.R
+import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.data.repository.UserRepository
 import com.foodapp.databinding.ActivityLoginBinding
 import com.foodapp.view.main.Homepage
@@ -25,7 +26,8 @@ class Login : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         userRepository = UserRepository()
-        authViewModel = AuthViewModel(userRepository)
+        val sessionManager = SessionManager(this)
+        authViewModel = AuthViewModel(sessionManager, userRepository)
         binding.loginViewModel = authViewModel
         binding.lifecycleOwner = this
     }
@@ -44,7 +46,6 @@ class Login : AppCompatActivity() {
                 val intent = Intent(this, seller_page::class.java)
                 startActivity(intent);
             }
-
 //            authViewModel.login { isSuccess, Message ->
 //                if(isSuccess)
 //                {
