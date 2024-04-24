@@ -4,6 +4,7 @@ import ApiService
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.foodapp.data.model.ApiResult
 import com.foodapp.data.model.User
 import com.foodapp.data.model.auth.AuthResponse
 import com.foodapp.data.model.auth.SessionManager
@@ -37,7 +38,10 @@ class AuthViewModel(
         val call: Call<AuthResponse> = service.signUp(user)
 
         call.enqueue(object : Callback<AuthResponse> {
-            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+            override fun onResponse(
+                call: Call<AuthResponse>,
+                response: Response<AuthResponse>
+            ) {
                 try {
                     if (response.isSuccessful || response.code() == 201) {
                         val signUpResponse = response.body()
@@ -70,36 +74,40 @@ class AuthViewModel(
         })
     }
 
-    fun login(callback : (Boolean, String) -> Unit)
+    fun login(callback : (Boolean, User?, String) -> Unit)
     {
         val user = User("", phone, password)
-        val call : Call<AuthResponse> = service.logIn(user)
+        val call : Call<ApiResult<AuthResponse>> = service.logIn(user)
 
-        call.enqueue(object : Callback<AuthResponse> {
-            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+        call.enqueue(object : Callback<ApiResult<AuthResponse>> {
+            override fun onResponse(
+                call: Call<ApiResult<AuthResponse>>,
+                response: Response<ApiResult<AuthResponse>>
+            ) {
                 if(response.isSuccessful || response.code() == 201)
                 {
-                    val loginResponse = response.body()
+                    val body = response.body()
+                    val loginResponse = body?.metadata
                     if(loginResponse != null)
                     {
                         sessionManager.saveAuthToken(loginResponse.tokens, loginResponse.user.id);
                         Log.i("DEBUGGER", loginResponse.tokens.accessToken)
                     }
-                    return callback(true, "Thành công rồi ⭐")
+                    return callback(true, loginResponse?.user, "Thành công rồi ⭐")
                 }
                 else if(response.code() == 400){
-                    return  callback(false, "Missing one of password/phone number")
+                    return  callback(false, null, "Missing one of password/phone number")
                 }
                 else if(response.code() == 401){
-                    return  callback(false, "Invalid phone number or password")
+                    return  callback(false, null, "Invalid phone number or password")
                 }
                 else{
-                    return  callback(false, "Network Error ! Please try again")
+                    return  callback(false, null, "Network Error ! Please try again")
                 }
             }
 
-            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                return  callback(false, "Network Error ! Please try again")
+            override fun onFailure(call: Call<ApiResult<AuthResponse>>, t: Throwable) {
+                return  callback(false, null, "Network Error ! Please try again")
             }
         })
     }

@@ -2,6 +2,7 @@ package com.foodapp.view.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +10,12 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.databinding.DataBindingUtil
 import com.foodapp.R
 import com.foodapp.data.model.auth.SessionManager
-import com.foodapp.data.repository.UserRepository
 import com.foodapp.databinding.ActivityLoginBinding
+import com.foodapp.view.main.Admin_Page
+import com.foodapp.view.main.DashBoard
 import com.foodapp.view.main.Homepage
+import com.foodapp.view.main.driver_home
+import com.foodapp.view.main.seller_page
 import com.foodapp.viewmodel.AuthViewModel
 
 class Login : AppCompatActivity() {
@@ -33,11 +37,24 @@ class Login : AppCompatActivity() {
         val errorMsg = findViewById<TextView>(R.id.errorMsg)
         val btnLogin = findViewById<AppCompatButton>(R.id.login_btnLogin)
         btnLogin.setOnClickListener{
-            authViewModel.login { isSuccess, Message ->
+            authViewModel.login { isSuccess, user, Message ->
                 if(isSuccess)
                 {
-                    val new_intent = Intent(this, Homepage::class.java)
-                    startActivity(new_intent)
+                    var klazz: Class<*>?
+                    when (user?.role) {
+                        "user" -> klazz = Homepage::class.java
+                        "shop" -> klazz = seller_page::class.java
+                        "admin" -> klazz = Admin_Page::class.java
+                        "shipper" -> klazz = driver_home::class.java
+                        else -> {
+                            Log.e("FoodApp:main/Login", "Unknown role: " + user?.role)
+                            throw Exception("Unknown role: " + user?.role)
+                        }
+                    }
+                    klazz.let {
+                        val new_intent = Intent(this, klazz)
+                        startActivity(new_intent)
+                    }
                 }
                 else{
                     errorMsg.text = Message

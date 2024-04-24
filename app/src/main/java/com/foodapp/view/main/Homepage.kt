@@ -50,7 +50,7 @@ class Homepage : AppCompatActivity() {
                         Toast.makeText(context, "Server not working", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(context, response.message(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, response.body()!!.message, Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -72,7 +72,7 @@ class Homepage : AppCompatActivity() {
                         Toast.makeText(context, "Server not working", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(context, response.message(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, response.body()!!.message, Toast.LENGTH_LONG).show()
                 }
             }
 
