@@ -10,6 +10,7 @@ import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
+import com.foodapp.data.model.ApiResult
 import com.foodapp.data.model.Category
 import com.foodapp.data.model.Shop
 import com.foodapp.data.repository.RetrofitClient
@@ -26,57 +27,58 @@ class Homepage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
-        val dummyList = FakeData.createDummyData()
 
         val recyclerView_vertical: RecyclerView = findViewById<RecyclerView>(R.id.homepage_recyclerView_vertical)
         val recyclerView_horizontal: RecyclerView = findViewById<RecyclerView>(R.id.homepage_recyclerView_horizontal)
 
         recyclerView_vertical.layoutManager = LinearLayoutManager(this)
         recyclerView_horizontal.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val context = this
 
-        val dataList = dummyList
-        service.getAllCategories().enqueue(object: retrofit2.Callback<List<Category>> {
+        service.getAllCategories().enqueue(object: retrofit2.Callback<ApiResult<List<Category>>> {
             override fun onResponse(
-                call: Call<List<Category>>,
-                response: Response<List<Category>>
+                call: Call<ApiResult<List<Category>>>,
+                response: Response<ApiResult<List<Category>>>
             ) {
                 if (response.code() == 200) {
                     val body = response.body()
                     Log.d("Homepage:Category", body.toString())
                     if (body != null) {
-                        recyclerView_horizontal.adapter = HorizontalAdapter(body, R.layout.item_horizontal)
+                        recyclerView_horizontal.adapter = HorizontalAdapter(body.metadata, R.layout.item_horizontal)
                     } else {
                         Log.e("API", "[categories] Missing body")
-                        Toast.makeText(null, "Server not working", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Server not working", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(null, response.message(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, response.message(), Toast.LENGTH_LONG).show()
                 }
             }
 
-            override fun onFailure(call: Call<List<Category>>, t: Throwable) {
-                Toast.makeText(null, t.message, Toast.LENGTH_LONG).show()
+            override fun onFailure(call: Call<ApiResult<List<Category>>>, t: Throwable) {
+                Log.e("Homepage:Category", t.message!!)
+                Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
             }
         })
 
-        service.getTopRated(10).enqueue(object: retrofit2.Callback<List<Shop>> {
-            override fun onResponse(call: Call<List<Shop>>, response: Response<List<Shop>>) {
+        service.getTopRated(10).enqueue(object: retrofit2.Callback<ApiResult<List<Shop>>> {
+            override fun onResponse(call: Call<ApiResult<List<Shop>>>, response: Response<ApiResult<List<Shop>>>) {
                 if (response.code() == 200) {
                     val body = response.body()
                     Log.d("Homepage:Shop", body.toString())
                     if (body != null) {
-                        recyclerView_vertical.adapter = VerticalAdapter(body, R.layout.item_vertical)
+                        recyclerView_vertical.adapter = VerticalAdapter(body.metadata, R.layout.item_vertical)
                     } else {
                         Log.e("API", "[shop/top-rated] Missing body")
-                        Toast.makeText(null, "Server not working", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Server not working", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(null, response.message(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, response.message(), Toast.LENGTH_LONG).show()
                 }
             }
 
-            override fun onFailure(call: Call<List<Shop>>, t: Throwable) {
-                Toast.makeText(null, t.message, Toast.LENGTH_LONG).show()
+            override fun onFailure(call: Call<ApiResult<List<Shop>>>, t: Throwable) {
+                Log.e("Homepage:TopRated", t.message!!)
+                Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
             }
         })
     }

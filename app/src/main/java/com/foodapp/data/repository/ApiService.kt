@@ -19,11 +19,11 @@ interface ApiService {
     fun logIn(@Body user : User) : Call<AuthResponse>
 
     @GET("categories")
-    fun getAllCategories(): Call<List<Category>>
+    fun getAllCategories(): Call<ApiResult<List<Category>>>
 
     @GET("shop/top-rated")
     fun getTopRated(
-       @Query("limit") limit: Int = 10): Call<List<Shop>>
+       @Query("limit") limit: Int = 10): Call<ApiResult<List<Shop>>>
 
     @GET("user")
     fun getCurrentUserInfo(): Call<User>
