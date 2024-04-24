@@ -1,5 +1,6 @@
 package com.foodapp.utils
 
+import com.foodapp.data.model.Category
 import com.foodapp.data.model.UserAddress
 import com.foodapp.data.model.Dish
 import com.foodapp.data.model.DishItems
@@ -49,7 +50,7 @@ object FakeData {
                     closeHour = Time((i + 18) * 3600000L),
                     description = "OK",
                     phone = "0123456789",
-                    category = listOf(""),
+                    category = listOf(),
                     status = "active",
                 ),
                 address = "",
@@ -72,7 +73,7 @@ object FakeData {
                 closeHour = Time((i + 18) * 3600000L),
                 description = "OK",
                 phone = "0123456789",
-                category = listOf(""),
+                category = listOf(),
                 status = "active",
             )
             dummyData.add(shop)

@@ -29,5 +29,12 @@ interface ApiService {
     fun getCurrentUserInfo(): Call<User>
 
     @GET("shop/detail")
-    fun getShopInfo(@Query("id") id: String): Call<ApiResult<Shop>>
+    fun getShopInfo(
+        @Query("shopId") id: String
+    ): Call<ApiResult<Shop>>
+
+    @GET("product/all/shop")
+    fun getShopProducts(
+        @Query("shopId") id: String
+    ): Call<ApiResult<List<Product>>>
 }

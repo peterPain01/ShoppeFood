@@ -40,6 +40,7 @@ class VerticalAdapter(private val dataList: List<Shop>, private val res: Int) : 
             titleTextView.text = data.name
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, restaurant_view::class.java)
+                intent.putExtra("shopId", data.id)
                 itemView.context.startActivity(intent)
             }
             ratingTextView.text = data.avg_rating.toString()

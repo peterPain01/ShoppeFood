@@ -26,8 +26,8 @@ class CategoryDetail : AppCompatActivity() {
         // GRID VIEW
         val gridView = findViewById<RecyclerView>(R.id.category_detail_gridView)
         gridView.layoutManager = GridLayoutManager(this, 2)
-        val adapte_grid = GridAdapter(dummyList, R.layout.item_grid_checkout)
-        gridView.adapter = adapte_grid
+        // val adapte_grid = GridAdapter(dummyList, R.layout.item_grid_checkout)
+        // gridView.adapter = adapte_grid
 
         // RECYCLER VERTICAL VIEW
         val recyclerView_vertical: RecyclerView = findViewById<RecyclerView>(R.id.category_detail_recyclerView_vertical)
