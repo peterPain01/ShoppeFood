@@ -45,15 +45,15 @@ class UserInfo : AppCompatActivity() {
                             .into(binding.activityUserInfoImage)
                     } else {
                         Log.e("API", "[user] Missing body")
-                        Toast.makeText(null, "Server not working", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Server not working", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(null, response.message(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
-                Toast.makeText(null, t.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, t.message, Toast.LENGTH_SHORT).show()
             }
         })
         binding.activityUserInfoBackBtn.setOnClickListener {
