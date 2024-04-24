@@ -18,7 +18,8 @@ import java.util.concurrent.Executors
 class helper {
     companion object {
         @JvmStatic
-        fun ShowImageUrl(url: String, imageView: ImageView) {
+        fun ShowImageUrl(url: String?, imageView: ImageView) {
+            if (url == null || url == "") return
             val executor = Executors.newSingleThreadExecutor()
             val handler = Handler(Looper.getMainLooper())
             var image: Bitmap? = null

@@ -32,10 +32,10 @@ class Search : AppCompatActivity() {
 
         val adapter_horizontal = HorizontalAdapter(listOf(), R.layout.item_keyword)
         val adapter_vertical = VerticalAdapter(dummyList, R.layout.item_suggest_res)
-        val adapte_grid = GridAdapter(dummyList, R.layout.item_grid)
+        // val adapte_grid = GridAdapter(dummyList, R.layout.item_grid)
 
         recyclerView_horizontal.adapter = adapter_horizontal
         recyclerView_vertical.adapter = adapter_vertical
-        gridView.adapter = adapte_grid
+        // gridView.adapter = adapte_grid
     }
 }
