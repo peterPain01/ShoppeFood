@@ -17,7 +17,7 @@ data class User(
     var addresses: List<UserAddress> = listOf()
     var birth_date: Date? = null
     var gender: String?   = null
-    var roles: Int?       = null
+    var role: String? = null
     var created_at: Date? = null
     var bio: String?      = null
     val birthDateString: String?

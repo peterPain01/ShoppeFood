@@ -16,7 +16,7 @@ interface ApiService {
     @GET("/product/{id}")
     fun getProductId(@Path("id") Id: String): Call<Product>
     @POST("auth/login")
-    fun logIn(@Body user : User) : Call<AuthResponse>
+    fun logIn(@Body user : User) : Call<ApiResult<AuthResponse>>
 
     @GET("categories")
     fun getAllCategories(): Call<ApiResult<List<Category>>>
@@ -27,4 +27,7 @@ interface ApiService {
 
     @GET("user")
     fun getCurrentUserInfo(): Call<User>
+
+    @GET("shop/detail")
+    fun getShopInfo(@Query("id") id: String): Call<ApiResult<Shop>>
 }
