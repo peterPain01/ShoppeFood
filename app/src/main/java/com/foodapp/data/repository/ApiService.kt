@@ -1,17 +1,11 @@
-import com.foodapp.data.model.Category
-import com.foodapp.data.model.Shop
-import com.foodapp.data.model.User
+import com.foodapp.data.model.*
 import com.foodapp.data.model.auth.AuthResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
-import retrofit2.http.QueryMap
-import retrofit2.http.QueryName
 
 interface ApiService {
     @GET("api/user/{id}")
@@ -19,7 +13,8 @@ interface ApiService {
 
     @POST("auth/signup")
     fun signUp(@Body user: User): Call<AuthResponse>
-
+    @GET("/product/{id}")
+    fun getProductId(@Path("id") Id: String): Call<Product>
     @POST("auth/login")
     fun logIn(@Body user : User) : Call<AuthResponse>
 
