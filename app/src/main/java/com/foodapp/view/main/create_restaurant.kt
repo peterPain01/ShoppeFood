@@ -83,7 +83,7 @@ class create_restaurant : AppCompatActivity() {
                 closeHour = Time((1 + 18) * 3600000L),
                 description = findViewById<EditText>(R.id.create_restaurant_EditText11).text.toString(),
                 phone = "0123456789",
-                category = listOf(""),
+                category = listOf(),
                 status = "active",
             )
             Log.i("Vushop", a.toString());
