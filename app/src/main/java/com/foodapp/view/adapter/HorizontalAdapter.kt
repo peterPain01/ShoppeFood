@@ -3,10 +3,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.Category
-import com.foodapp.helper.helper
 
 class HorizontalAdapter(private val dataList: List<Category>, private val res : Int) : RecyclerView.Adapter<HorizontalAdapter.ViewHolder>() {
 
@@ -25,12 +26,14 @@ class HorizontalAdapter(private val dataList: List<Category>, private val res : 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val btn: Button = itemView.findViewById(R.id.item_horizontal_btn)
+        private val image: ImageView = itemView.findViewById(R.id.item_horizontal_image)
 
         // binding Hinh anh
         fun bind(data: Category) {
             btn.text = data.name
-            val image = helper.drawableFromUrl("")
-            if (image != null) btn.setCompoundDrawablesWithIntrinsicBounds(image, null, null, null)
+            Glide.with(itemView.context)
+                .load(data.image)
+                .into(image)
         }
     }
 }

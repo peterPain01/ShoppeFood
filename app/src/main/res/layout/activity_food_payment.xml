@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="viewModel"
+            type="com.foodapp.viewmodel.FoodPaymentViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/Food_payment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -67,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
-        android:text="test"
+        android:text="@{viewModel.product.product_name}"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -80,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
-        android:text="TextView"
+        android:text="@{viewModel.product.product_description}"
         android:textColor="#A0A5BA"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Food_payment_NameFood" />
@@ -102,7 +110,7 @@
         android:layout_width="26dp"
         android:layout_height="20dp"
         android:layout_marginStart="15dp"
-        android:text="4.7"
+        android:text='@{String.format("%.1d", viewModel)}'
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/Food_payment_imageView2"
@@ -266,3 +274,4 @@
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
