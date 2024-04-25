@@ -41,7 +41,7 @@ object FakeData {
                 userId = "",
                 dishes = fakeDishes().map { DishItems(it, kotlin.random.Random(10).nextInt(5, 10)) },
                 shop = Shop(
-                    id = "ID_$i",
+                    _id = "ID_$i",
                     name = "Restaurant $i",
                     image = "https://images.foody.vn/res/g119/1181120/prof/s280x175/image-686e0cf3-240130123556.jpeg",
                     avg_rating = 4.0 + (i % 3),
@@ -64,7 +64,7 @@ object FakeData {
 
         for (i in 1..8) {
             val shop = Shop(
-                id = "ID_$i",
+                _id = "ID_$i",
                 name = "Restaurant $i",
                 image = "https://images.foody.vn/res/g119/1181120/prof/s280x175/image-686e0cf3-240130123556.jpeg",
                 avg_rating = 4.0 + (i % 3),

@@ -13,13 +13,19 @@ import com.foodapp.R
 import com.foodapp.helper.helper
 import android.content.res.ColorStateList
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.foodapp.databinding.ActivityFoodPaymentBinding
 import com.foodapp.utils.FakeData
 import com.foodapp.view.adapter.GridAdapter
+import com.foodapp.viewmodel.FoodPaymentViewModel
 
 
 class food_payment : AppCompatActivity() {
+    private lateinit var binding: ActivityFoodPaymentBinding;
     var btn_size1 : Button? = null;
     var btn_size2 : Button? = null;
     var btn_size3 : Button? = null;
@@ -35,8 +41,16 @@ class food_payment : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_payment)
+        val id = intent.getStringExtra("productId")!!
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_food_payment)
+        binding.viewModel = FoodPaymentViewModel(id, {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        }, {
+            val temp = Glide.with(this)
+                .load(it)
+                .into(binding.FoodPaymentBackGroundFood)
+        })
         init();
-        LoadData();
         HandleSize();
     }
 
@@ -53,21 +67,6 @@ class food_payment : AppCompatActivity() {
         btn_size2?.let { ListBtnSize.add(it) }
         btn_size3?.let { ListBtnSize.add(it) }
         btn_back = findViewById<ImageButton>(R.id.Food_payment_btn_back)
-    }
-    private fun LoadData() {
-
-        // default active image
-        btn_size1?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FE6203"))
-        nameFood?.text = "Pizza calzone european"
-        detailFood?.text = "Prosciutto e funghi is a pizza variety that is topped with tomato sauce."
-        avatarFood?.let { imageView ->
-            helper.ShowImageUrl(
-                "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg",
-                imageView
-            )
-        }
-        ratingFood?.text = "4.7"
-        timePrepare?.text = "20 min"
     }
     private fun HandleSize() {
         btn_size1?.setOnClickListener {

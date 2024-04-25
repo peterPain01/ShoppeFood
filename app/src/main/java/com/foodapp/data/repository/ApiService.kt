@@ -14,7 +14,7 @@ interface ApiService {
     @POST("auth/signup")
     fun signUp(@Body user: User): Call<AuthResponse>
     @GET("/product/{id}")
-    fun getProductId(@Path("id") Id: String): Call<Product>
+    fun getProductId(@Path("id") Id: String): Call<ApiResult<Product>>
     @POST("auth/login")
     fun logIn(@Body user : User) : Call<ApiResult<AuthResponse>>
 

@@ -74,7 +74,7 @@ class create_restaurant : AppCompatActivity() {
         }
         btnSubmit.setOnClickListener {
             var a = Shop(
-                id = "",
+                _id = "",
                 name = findViewById<EditText>(R.id.create_restaurant_EditText10).text.toString(),
                 image = url.toString(),
                 avg_rating = 4.0,
