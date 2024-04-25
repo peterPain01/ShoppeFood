@@ -2,29 +2,27 @@ package com.foodapp.view.main
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 import com.foodapp.utils.FakeData
 import com.foodapp.view.adapter.BottomSheetDiaglogRunning
 import com.foodapp.view.adapter.GridAdapter
-import com.foodapp.view.adapter.VerticalAdapter
-import com.foodapp.view.adapter.runningOrderAdapter
+import com.foodapp.viewmodel.ShopViewModel
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,22 +53,21 @@ class DashBoard : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_dash_board, container, false)
-
         val showBottomSheetButton = view.findViewById<ImageButton>(R.id.dash_board_running)
+        var shopViewModel = ShopViewModel(requireActivity());
+        val lineChart: LineChart = view.findViewById(R.id.lineChart)
+        val gridView = view.findViewById<RecyclerView>(R.id.dash_board_recycleview)
+
+
         showBottomSheetButton.setOnClickListener {
             val bottomSheet = BottomSheetDiaglogRunning()
             bottomSheet.show(requireActivity().supportFragmentManager, "ModalBottomSheet")
         }
-
         // Get reference to LineChart view
-        val lineChart: LineChart = view.findViewById(R.id.lineChart)
         drawLineChart(lineChart) // Pass the LineChart view to the function
-        val dummyList = FakeData.createDummyData()
 
-        val gridView = view.findViewById<RecyclerView>(R.id.dash_board_recycleview)
-        gridView.layoutManager = GridLayoutManager(context, 2)
-        val adapte_grid = GridAdapter(dummyList, R.layout.item_grid_checkout)
-        gridView.adapter = adapte_grid
+        //call api
+        shopViewModel.getStatistic(view, gridView);
 
         return view
     }
