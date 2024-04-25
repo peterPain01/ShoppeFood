@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,11 +17,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.main.dashboard_admin"
+            android:exported="false" />
+        <activity
             android:name=".view.main.create_restaurant"
             android:exported="false" />
          <activity
-         android:name=".view.main.Admin_Page"
-         android:exported="false" />
+             android:name=".view.main.Admin_Page"
+             android:exported="false" />
         <activity
             android:name=".view.main.driver_info"
             android:exported="false" />
