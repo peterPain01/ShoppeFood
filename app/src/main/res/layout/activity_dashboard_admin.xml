@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.main.dashboard_admin">
+
+    <ImageButton
+        android:id="@+id/dash_board_admin_user"
+        android:layout_width="160dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_seller_quantity"
+        android:contentDescription="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dash_board_admin_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="10000"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_admin_user"
+        app:layout_constraintTop_toTopOf="@+id/dash_board_admin_user" />
+
+    <TextView
+        android:id="@+id/dash_board_admin_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="Total Users"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_admin_location"
+        app:layout_constraintTop_toBottomOf="@+id/dash_board_admin_location" />
+
+    <ImageButton
+        android:id="@+id/dash_board_admin_revenue"
+        android:layout_width="160dp"
+        android:layout_height="115dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/btn_seller_quantity"
+        android:contentDescription="Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dash_board_admin_user" />
+
+    <TextView
+        android:id="@+id/dash_board_admin_location5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="100.000"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_admin_revenue"
+        app:layout_constraintTop_toTopOf="@+id/dash_board_admin_revenue" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Total revenue"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/dash_board_admin_location5"
+        app:layout_constraintTop_toBottomOf="@+id/dash_board_admin_location5" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/dash_board_admin_lineChart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dash_board_admin_user"
+        tools:ignore="MissingClass" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dash_board_admin_list"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dash_board_admin_lineChart" />
+</androidx.constraintlayout.widget.ConstraintLayout>
