@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 import com.foodapp.utils.FakeData
 import com.foodapp.view.adapter.BottomSheetDiaglogRunning
+import com.foodapp.view.adapter.GridAdapter
 import com.foodapp.view.adapter.VerticalAdapter
 import com.foodapp.view.adapter.runningOrderAdapter
 import com.github.mikephil.charting.charts.LineChart
@@ -64,6 +65,12 @@ class DashBoard : Fragment() {
         // Get reference to LineChart view
         val lineChart: LineChart = view.findViewById(R.id.lineChart)
         drawLineChart(lineChart) // Pass the LineChart view to the function
+        val dummyList = FakeData.createDummyData()
+
+        val gridView = view.findViewById<RecyclerView>(R.id.dash_board_recycleview)
+        gridView.layoutManager = GridLayoutManager(context, 2)
+        val adapte_grid = GridAdapter(dummyList, R.layout.item_grid_checkout)
+        gridView.adapter = adapte_grid
 
         return view
     }
