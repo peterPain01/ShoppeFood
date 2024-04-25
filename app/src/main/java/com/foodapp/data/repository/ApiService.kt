@@ -30,4 +30,7 @@ interface ApiService {
 
     @GET("shop/detail")
     fun getShopInfo(@Query("id") id: String): Call<ApiResult<Shop>>
+
+    @POST("shop")
+    fun createShop(@Body shop: Shop): Call<ApiResult<Shop>>
 }
