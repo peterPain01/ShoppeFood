@@ -1,6 +1,8 @@
 package com.foodapp.view.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,8 +24,14 @@ class Admin_Page : AppCompatActivity() {
         val dummyList = FakeData.createDummyData()
         val adapter_vertical = RestaurantAdapter(dummyList, R.layout.item_grid_admin_restaurant)
         val recyclerView_vertical = findViewById<RecyclerView>(R.id.admin_page_recycleview)
+        val createNewRestaurant = findViewById<Button>(R.id.admin_page_button);
 
         recyclerView_vertical.layoutManager = GridLayoutManager(this, 1)
         recyclerView_vertical.adapter = adapter_vertical
+
+        createNewRestaurant.setOnClickListener {
+            val new_intent = Intent(this, create_restaurant::class.java);
+            startActivity(new_intent);
+        }
     }
 }
