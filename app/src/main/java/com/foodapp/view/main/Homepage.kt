@@ -64,11 +64,10 @@ class Homepage : AppCompatActivity() {
             override fun onResponse(call: Call<ApiResult<List<Shop>>>, response: Response<ApiResult<List<Shop>>>) {
                 if (response.code() == 200) {
                     val body = response.body()
-                    Log.d("Homepage:Shop", body.toString())
                     if (body != null) {
                         recyclerView_vertical.adapter = VerticalAdapter(body.metadata, R.layout.item_vertical)
                     } else {
-                        Log.e("API", "[shop/top-rated] Missing body")
+                        Log.d("FOODAPP:Homepage:TopRated", "[shop/top-rated] Missing body")
                         Toast.makeText(context, "Server not working", Toast.LENGTH_LONG).show()
                     }
                 } else {

@@ -4,7 +4,6 @@ import ApiService
 import android.content.Context
 import android.util.Log
 import android.view.View
-import android.widget.GridView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
@@ -18,6 +17,7 @@ import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.data.repository.UserRepository
 import com.foodapp.view.adapter.GridAdapter
 import com.foodapp.view.adapter.runningOrderAdapter
+import com.foodapp.view.adapter.ProductGridViewHolder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,7 +34,7 @@ class ShopViewModel  (private val context: Context){
                     view.findViewById<TextView>(R.id.dash_board_location5).text = data.numPendingOrder.toString();
                     view.findViewById<TextView>(R.id.dash_board_location6).text = data.numShippingOrder.toString();
                     view.findViewById<TextView>(R.id.dash_board_revenue).text = data.totalRevenueToday.toString();
-                    val adapte_grid = GridAdapter(data.trendingProducts, R.layout.item_grid_checkout)
+                    val adapte_grid = GridAdapter<Product>(data.trendingProducts, R.layout.item_grid_checkout, ::ProductGridViewHolder)
                     gridView.layoutManager = GridLayoutManager(context, 2)
                     gridView.adapter = adapte_grid
                 } else {

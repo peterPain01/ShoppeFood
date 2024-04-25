@@ -10,13 +10,14 @@ import com.foodapp.data.model.Shop
 import com.foodapp.data.repository.RetrofitClient
 import com.foodapp.view.adapter.GridAdapter
 import com.foodapp.view.adapter.HorizontalAdapter
+import com.foodapp.view.adapter.ProductGridViewHolder
 import retrofit2.Call
 import retrofit2.Response
 
 class RestaurantViewModel(val shopId: String, val displayError: (String?) -> Unit, displayImage: (String?) -> Unit): ViewModel() {
     var shop: MutableLiveData<Shop> = MutableLiveData(Shop(""))
     var categoryAdapter: MutableLiveData<HorizontalAdapter> = MutableLiveData()
-    var foodGridAdapter: MutableLiveData<GridAdapter> = MutableLiveData()
+    var foodGridAdapter: MutableLiveData<GridAdapter<Product>> = MutableLiveData()
 
     private val service = RetrofitClient.retrofit.create(ApiService::class.java)
     init {
@@ -33,14 +34,14 @@ class RestaurantViewModel(val shopId: String, val displayError: (String?) -> Uni
                     displayImage(shop.value!!.image)
                     // TODO: call get all foods
 
-                    service.getShopProducts(shop.value!!.id).enqueue(object: retrofit2.Callback<ApiResult<List<Product>>> {
+                    service.getShopProducts(shop.value!!._id).enqueue(object: retrofit2.Callback<ApiResult<List<Product>>> {
                         override fun onResponse(
                             call: Call<ApiResult<List<Product>>>,
                             response: Response<ApiResult<List<Product>>>
                         ) {
                             if (response.code() == 200) {
                                 val products = response.body()!!.metadata
-                                foodGridAdapter.value = GridAdapter(products, R.layout.item_grid)
+                                foodGridAdapter.value = GridAdapter(products, R.layout.item_grid_checkout, ::ProductGridViewHolder)
                             } else {
                                 displayError(response.body()!!.message)
                             }
