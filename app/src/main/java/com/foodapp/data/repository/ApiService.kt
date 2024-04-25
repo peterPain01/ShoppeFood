@@ -42,4 +42,6 @@ interface ApiService {
     fun createShop(@Body shop: Shop): Call<ApiResult<Shop>>
     @GET("shop/statistic/overall")
     fun getStatistic(): Call<ApiResult<DashBoard>>
+    @GET("shop/publish")
+    fun getProduct(): Call<ApiResult<List<Product>>>
 }

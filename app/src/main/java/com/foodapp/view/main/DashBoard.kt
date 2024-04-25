@@ -56,7 +56,6 @@ class DashBoard : Fragment() {
         val showBottomSheetButton = view.findViewById<ImageButton>(R.id.dash_board_running)
         var shopViewModel = ShopViewModel(requireActivity());
         val lineChart: LineChart = view.findViewById(R.id.lineChart)
-        val dummyList = FakeData.createDummyData()
         val gridView = view.findViewById<RecyclerView>(R.id.dash_board_recycleview)
 
 
