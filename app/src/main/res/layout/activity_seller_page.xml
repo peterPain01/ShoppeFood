@@ -11,7 +11,9 @@
     <FrameLayout
         android:id="@+id/seller_page_your_fragment_id"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="670dp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/seller_page_constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

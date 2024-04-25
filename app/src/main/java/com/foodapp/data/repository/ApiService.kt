@@ -40,4 +40,6 @@ interface ApiService {
 
     @POST("shop")
     fun createShop(@Body shop: Shop): Call<ApiResult<Shop>>
+    @GET("shop/statistic/overall")
+    fun getStatistic(): Call<ApiResult<DashBoard>>
 }
