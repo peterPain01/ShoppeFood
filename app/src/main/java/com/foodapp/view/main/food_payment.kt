@@ -12,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.foodapp.R
 import com.foodapp.helper.helper
 import android.content.res.ColorStateList
+import android.graphics.Paint
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -26,15 +28,6 @@ import com.foodapp.viewmodel.FoodPaymentViewModel
 
 class food_payment : AppCompatActivity() {
     private lateinit var binding: ActivityFoodPaymentBinding;
-    var btn_size1 : Button? = null;
-    var btn_size2 : Button? = null;
-    var btn_size3 : Button? = null;
-    var avatarFood: ImageView?= null;
-    var nameFood: TextView ?= null;
-    var detailFood: TextView ?= null;
-    var ratingFood: TextView ?= null;
-    var timePrepare: TextView?= null;
-    var btn_back: ImageButton ?= null;
     var preActiveSize: Int = 0;
     var ListBtnSize = arrayListOf<Button>()
 
@@ -42,41 +35,36 @@ class food_payment : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_payment)
         val id = intent.getStringExtra("productId")!!
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_food_payment)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_food_payment);
+        binding.lifecycleOwner = this
         binding.viewModel = FoodPaymentViewModel(id, {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         }, {
-            val temp = Glide.with(this)
+            Glide.with(this)
                 .load(it)
                 .into(binding.FoodPaymentBackGroundFood)
-        })
+        }, this)
         init();
-        HandleSize();
+        SupportHanldeSize(0, preActiveSize);
     }
-
     private fun init() {
-        avatarFood = findViewById<ImageView>(R.id.Food_payment_BackGroundFood)
-        nameFood = findViewById<TextView>(R.id.Food_payment_NameFood)
-        detailFood = findViewById<TextView>(R.id.Food_payment_DetailFood)
-        ratingFood = findViewById<TextView>(R.id.Food_payment_Rating)
-        timePrepare = findViewById<TextView>(R.id.Food_payment_TimePrepare)
-        btn_size1 = findViewById<Button>(R.id.Food_payment_Size1)
-        btn_size2 = findViewById<Button>(R.id.Food_payment_Size2)
-        btn_size3 = findViewById<Button>(R.id.Food_payment_Size3)
-        btn_size1?.let { ListBtnSize.add(it) }
-        btn_size2?.let { ListBtnSize.add(it) }
-        btn_size3?.let { ListBtnSize.add(it) }
-        btn_back = findViewById<ImageButton>(R.id.Food_payment_btn_back)
-    }
-    private fun HandleSize() {
-        btn_size1?.setOnClickListener {
-            SupportHanldeSize(0, preActiveSize);
-        }
-        btn_size2?.setOnClickListener {
-            SupportHanldeSize(1, preActiveSize);
-        }
-        btn_size3?.setOnClickListener {
-            SupportHanldeSize(2, preActiveSize);
+        val btn_size1 = binding.FoodPaymentSize1
+        val btn_size2 = binding.FoodPaymentSize2
+        val btn_size3 = binding.FoodPaymentSize3
+        btn_size1.setOnClickListener { SupportHanldeSize(0, preActiveSize); }
+        btn_size2.setOnClickListener { SupportHanldeSize(1, preActiveSize); }
+        btn_size3.setOnClickListener { SupportHanldeSize(2, preActiveSize); }
+        btn_size1.let { ListBtnSize.add(it) }
+        btn_size2.let { ListBtnSize.add(it) }
+        btn_size3.let { ListBtnSize.add(it) }
+        binding.FoodPaymentBtnBack.setOnClickListener { this.finish() }
+        binding.FoodPaymentIncreaseBtn.setOnClickListener { binding.viewModel?.incCount() }
+        binding.FoodPaymentDecreaseBtn.setOnClickListener { binding.viewModel?.decCount() }
+        binding.foodPaymentOriginalPrice.paintFlags = binding.foodPaymentOriginalPrice.paintFlags.or(Paint.STRIKE_THRU_TEXT_FLAG)
+        binding.FoodPaymentAddToCard.setOnClickListener {
+            binding.viewModel!!.addToCart() {
+                this.finish()
+            }
         }
     }
     private fun SupportHanldeSize(idShow: Int, preShow: Int){

@@ -66,7 +66,7 @@ class ShopViewModel  (private val context: Context){
                         val order = ItemMyFood(
                             imageUrl = it.product_thumb,
                             tag = "breakfast",
-                            price = it.product_price,
+                            price = it.product_discounted_price,
                             star = Random.nextInt(30, 40) / 10.0,
                             review = "(0 reviews)",
                             name = it.product_name
