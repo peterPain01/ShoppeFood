@@ -1,9 +1,13 @@
 import com.foodapp.data.model.*
 import com.foodapp.data.model.auth.AuthResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -23,7 +27,7 @@ interface ApiService {
 
     @GET("shop/top-rated")
     fun getTopRated(
-       @Query("limit") limit: Int = 10): Call<ApiResult<List<Shop>>>
+        @Query("limit") limit: Int = 10): Call<ApiResult<List<Shop>>>
 
     @GET("user")
     fun getCurrentUserInfo(): Call<User>
@@ -37,9 +41,6 @@ interface ApiService {
     fun getShopProducts(
         @Query("shopId") id: String
     ): Call<ApiResult<List<Product>>>
-
-    @POST("shop")
-    fun createShop(@Body shop: Shop): Call<ApiResult<Shop>>
     @GET("shop/statistic/overall")
     fun getStatistic(): Call<ApiResult<DashBoard>>
     @GET("shop/publish")
@@ -49,4 +50,18 @@ interface ApiService {
     fun addToCart(
         @Query("productId") productId: String
     ): Call<ApiResult<Nothing>>
+
+    @Multipart
+    @POST("shop")
+    fun createShop(
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("open_hour") openHour: RequestBody,
+        @Part("close_hour") closeHour: RequestBody,
+//        @PartMap addresses: Map<String, @JvmSuppressWildcards RequestBody>,
+        @Part categories: List<MultipartBody.Part>,
+        @Part image: MultipartBody.Part
+    ): Call<ApiResult<Shop>>
 }
+
