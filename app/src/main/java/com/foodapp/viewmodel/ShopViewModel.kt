@@ -61,7 +61,7 @@ class ShopViewModel  (private val context: Context){
                         val order = OrderRunning(
                             tag = "breakfast",
                             name = it.product_name,
-                            price = it.product_price.toDouble(),
+                            price = it.product_discounted_price,
                             imageUrl = it.product_thumb
                         )
                         dummyData.add(order);
