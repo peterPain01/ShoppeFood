@@ -9,6 +9,5 @@ data class Product(
     val product_name: String = "",
     val product_price: Double = 0.0,
     val product_thumb: String = "",
-    val product_description: String = "",
-    val product_comments: Array<String>? = null
+    val product_description: String = ""
 )
