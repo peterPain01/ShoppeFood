@@ -6,7 +6,7 @@ import java.sql.Time
 // Review
 // Voucher
 class Shop (
-    val _id: String,
+    val _id: String = "",
     var name: String = "",
     var image: String = "",
     var description: String = "",
