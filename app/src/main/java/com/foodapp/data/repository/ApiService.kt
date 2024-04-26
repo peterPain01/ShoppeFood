@@ -44,4 +44,9 @@ interface ApiService {
     fun getStatistic(): Call<ApiResult<DashBoard>>
     @GET("shop/publish")
     fun getProduct(): Call<ApiResult<List<Product>>>
+
+    @POST("cart")
+    fun addToCart(
+        @Query("productId") productId: String
+    ): Call<ApiResult<Nothing>>
 }
