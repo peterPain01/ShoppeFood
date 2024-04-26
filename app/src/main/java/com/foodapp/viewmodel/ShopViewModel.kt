@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
 import com.foodapp.data.model.ApiResult
 import com.foodapp.data.model.DashBoard
+import com.foodapp.data.model.ItemMyFood
 import com.foodapp.data.model.OrderRunning
 import com.foodapp.data.model.Product
 import com.foodapp.data.model.auth.SessionManager
@@ -18,9 +19,11 @@ import com.foodapp.data.repository.UserRepository
 import com.foodapp.view.adapter.GridAdapter
 import com.foodapp.view.adapter.runningOrderAdapter
 import com.foodapp.view.adapter.ProductGridViewHolder
+import com.foodapp.view.adapter.myFoodAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.random.Random
 
 class ShopViewModel  (private val context: Context){
     private val service = UserRepository(SessionManager(context)).create(ApiService::class.java)
@@ -55,19 +58,23 @@ class ShopViewModel  (private val context: Context){
                 if (response.isSuccessful) {
                     val request = response.body()
                     val datas= request!!.metadata;
-                    val dummyData = mutableListOf<OrderRunning>()
+
+                    Log.i("aaa", datas.toString())
+                    val dummyData = mutableListOf<ItemMyFood>()
 
                     datas.forEach {
-                        val order = OrderRunning(
+                        val order = ItemMyFood(
+                            imageUrl = it.product_thumb,
                             tag = "breakfast",
-                            name = it.product_name,
-                            price = it.product_price.toDouble(),
-                            imageUrl = it.product_thumb
+                            price = it.product_price,
+                            star = Random.nextInt(30, 40) / 10.0,
+                            review = "(0 reviews)",
+                            name = it.product_name
                         )
                         dummyData.add(order);
                     }
 
-                    val adapter_vertical = runningOrderAdapter(dummyData, R.layout.item_grid_running)
+                    val adapter_vertical = myFoodAdapter(dummyData, R.layout.item_my_food_total)
                     recyclerView_vertical.layoutManager = GridLayoutManager(context, 1)
                     recyclerView_vertical.adapter = adapter_vertical
                 } else {

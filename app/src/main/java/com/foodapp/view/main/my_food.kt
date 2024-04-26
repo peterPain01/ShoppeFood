@@ -1,5 +1,6 @@
 package com.foodapp.view.main
 
+import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.foodapp.utils.FakeData
 import com.foodapp.view.adapter.myFoodAdapter
 import com.foodapp.view.adapter.runningOrderAdapter
 import androidx.fragment.app.FragmentManager
+import com.foodapp.viewmodel.ShopViewModel
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -92,14 +94,10 @@ class my_food(val supportFragmentManager : FragmentManager) : Fragment() {
             lunch?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
             prev = lunch
         }
-
-
         val dummyList = FakeData.createItemMyFood()
-
-        val adapter_vertical = myFoodAdapter(dummyList, supportFragmentManager, R.layout.item_my_food_total)
         val recyclerView_vertical = view.findViewById<RecyclerView>(R.id.my_food_total_items)
-        recyclerView_vertical.layoutManager = GridLayoutManager(requireContext(), 1)
-        recyclerView_vertical.adapter = adapter_vertical
+
+        ShopViewModel(requireActivity()).getProduct(view, recyclerView_vertical)
 
         return view;
     }
