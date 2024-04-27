@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
+import com.foodapp.data.model.OrderRunning
 import com.foodapp.utils.FakeData
 import com.foodapp.viewmodel.ShopViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -18,11 +19,11 @@ class BottomSheetDiaglogRunning : BottomSheetDialogFragment() {
         val dummyList = FakeData.createRunningOrder()
         val recyclerView_vertical = view.findViewById<RecyclerView>(R.id.dash_board_list_item)
         // Inflate the layout for this fragment
+        val dummyData = FakeData.createRunningOrder()
 
-        ShopViewModel(requireActivity()).getProduct(view, recyclerView_vertical);
-
-
-
+        val adapter_vertical = runningOrderAdapter(dummyData, R.layout.item_grid_running)
+        recyclerView_vertical.layoutManager = GridLayoutManager(context, 1)
+        recyclerView_vertical.adapter = adapter_vertical
         return view
     }
 }
