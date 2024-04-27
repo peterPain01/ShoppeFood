@@ -9,6 +9,7 @@ import retrofit2.http.PATCH
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.PartMap
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -92,8 +93,8 @@ interface ApiService {
         @Part("phone") phone: RequestBody,
         @Part("open_hour") openHour: RequestBody,
         @Part("close_hour") closeHour: RequestBody,
-//        @PartMap addresses: Map<String, @JvmSuppressWildcards RequestBody>,
-        @Part categories: List<MultipartBody.Part>,
+        @PartMap address: Map<String, @JvmSuppressWildcards RequestBody>,
+        @Part category: List<MultipartBody.Part>,
         @Part image: MultipartBody.Part
     ): Call<ApiResult<Shop>>
 
