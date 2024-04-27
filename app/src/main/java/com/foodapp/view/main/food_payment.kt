@@ -1,28 +1,17 @@
 package com.foodapp.view.main
 
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.Paint
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.foodapp.R
-import com.foodapp.helper.helper
-import android.content.res.ColorStateList
-import android.graphics.Paint
-import android.util.Log
-import android.widget.ImageButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.foodapp.R
+import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.ActivityFoodPaymentBinding
-import com.foodapp.utils.FakeData
-import com.foodapp.view.adapter.GridAdapter
 import com.foodapp.viewmodel.FoodPaymentViewModel
 
 
@@ -38,12 +27,12 @@ class food_payment : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_food_payment);
         binding.lifecycleOwner = this
         binding.viewModel = FoodPaymentViewModel(id, {
-            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+            Toast.makeText(this, it ?: "", Toast.LENGTH_LONG).show()
         }, {
             Glide.with(this)
                 .load(it)
                 .into(binding.FoodPaymentBackGroundFood)
-        }, this)
+        }, SessionManager(this))
         init();
         SupportHanldeSize(0, preActiveSize);
     }
@@ -62,7 +51,7 @@ class food_payment : AppCompatActivity() {
         binding.FoodPaymentDecreaseBtn.setOnClickListener { binding.viewModel?.decCount() }
         binding.foodPaymentOriginalPrice.paintFlags = binding.foodPaymentOriginalPrice.paintFlags.or(Paint.STRIKE_THRU_TEXT_FLAG)
         binding.FoodPaymentAddToCard.setOnClickListener {
-            binding.viewModel!!.addToCart() {
+            binding.viewModel!!.addToCart {
                 this.finish()
             }
         }

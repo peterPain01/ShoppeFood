@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="viewModel"
+            type="com.foodapp.viewmodel.ManageAddressViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
@@ -41,15 +49,16 @@
             <EditText
                 android:id="@+id/activity_manage_address_box"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="75dp"
                 android:background="@drawable/rounded_corner_background"
                 android:backgroundTint="#F0F5FA"
                 android:textColor="#6B6E82"
+                android:singleLine="true"
                 android:paddingStart="15dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:layout_marginTop="5dp"
-                android:text="3235 Royal Ln. mesa, new jersy 34567"/>
+                android:text="@={viewModel.address.street}"/>
         </LinearLayout>
 
         <LinearLayout
@@ -69,11 +78,12 @@
                 android:background="@drawable/rounded_corner_background"
                 android:backgroundTint="#F0F5FA"
                 android:textColor="#6B6E82"
+                android:singleLine="true"
                 android:paddingStart="15dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:layout_marginTop="5dp"
-                android:text="HOME 1"/>
+                android:text="@={viewModel.address.name}"/>
         </LinearLayout>
 
         <Button
@@ -91,3 +101,4 @@
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

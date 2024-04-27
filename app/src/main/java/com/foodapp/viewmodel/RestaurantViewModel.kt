@@ -43,7 +43,7 @@ class RestaurantViewModel(val shopId: String, val displayError: (String?) -> Uni
                                 val products = response.body()!!.metadata
                                 foodGridAdapter.value = GridAdapter(products, R.layout.item_grid_checkout, ::ProductGridViewHolder)
                             } else {
-                                displayError(response.body()!!.message)
+                                displayError(response.body()?.message)
                             }
                         }
 
@@ -53,7 +53,7 @@ class RestaurantViewModel(val shopId: String, val displayError: (String?) -> Uni
                     })
 
                 } else {
-                    displayError(response.body()!!.message)
+                    displayError(response.body()?.message)
                 }
             }
 
