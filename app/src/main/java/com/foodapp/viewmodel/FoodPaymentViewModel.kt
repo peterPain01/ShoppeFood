@@ -4,6 +4,7 @@ import ApiService
 import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.foodapp.data.model.ApiResult
 import com.foodapp.data.model.Product
 import com.foodapp.data.model.auth.SessionManager
@@ -12,9 +13,11 @@ import com.foodapp.data.repository.UserRepository
 import retrofit2.Call
 import retrofit2.Response
 
-class FoodPaymentViewModel(val id: String, val displayMsg: (String?) -> Unit, showImage: (String?) -> Unit, context: Context) {
+class FoodPaymentViewModel(val id: String, val displayMsg: (String?) -> Unit,
+                           showImage: (String?) -> Unit,
+                           sessionManager: SessionManager): ViewModel() {
     private val service = RetrofitClient.retrofit.create(ApiService::class.java)
-    private val userService = UserRepository(SessionManager(context)).create(ApiService::class.java)
+    private val userService = UserRepository(sessionManager).create(ApiService::class.java)
     var product: MutableLiveData<Product>  = MutableLiveData(Product())
     var count: MutableLiveData<Int> = MutableLiveData(1)
     var totalPrice: MutableLiveData<Double> = MutableLiveData(0.0)
@@ -71,7 +74,7 @@ class FoodPaymentViewModel(val id: String, val displayMsg: (String?) -> Unit, sh
                 if (response.code() == 200) {
                     displayMsg("Successfully add product to cart!")
                 } else {
-                    displayMsg(response.body()!!.message)
+                    displayMsg(response.body()?.message)
                 }
                 done()
             }

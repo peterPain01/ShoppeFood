@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools" >
     <data>
         <variable
-            name="info"
-            type="com.foodapp.data.model.User" />
+            name="viewModel"
+            type="com.foodapp.viewmodel.UserInfoViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -116,7 +116,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{info.fullname}"
+                    android:text="@{viewModel.user.fullname}"
                     android:textAlignment="textStart"
                     android:textColor="#32343E"
                     android:textSize="20sp"
@@ -126,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="15dp"
-                    android:text="@{info.bio}"
+                    android:text="@{viewModel.user.bio}"
                     android:textColor="#A0A5BA"
                     android:textSize="14sp" />
             </LinearLayout>

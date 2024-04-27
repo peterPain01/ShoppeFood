@@ -2,10 +2,10 @@ package com.foodapp.view.main
 
 import ApiService
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,10 +14,8 @@ import com.foodapp.data.model.ApiResult
 import com.foodapp.data.model.Category
 import com.foodapp.data.model.Shop
 import com.foodapp.data.repository.RetrofitClient
-import com.foodapp.data.repository.UserRepository
 import com.foodapp.view.adapter.HorizontalAdapter
 import com.foodapp.view.adapter.VerticalAdapter
-import com.foodapp.utils.FakeData
 import retrofit2.Call
 import retrofit2.Response
 
@@ -50,7 +48,7 @@ class Homepage : AppCompatActivity() {
                         Toast.makeText(context, "Server not working", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(context, response.body()!!.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, response.body()?.message ?: "", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -71,7 +69,7 @@ class Homepage : AppCompatActivity() {
                         Toast.makeText(context, "Server not working", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(context, response.body()!!.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, response.body()?.message ?: "", Toast.LENGTH_LONG).show()
                 }
             }
 

@@ -15,15 +15,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/item_vertical_image"
-            android:layout_width="wrap_content"
-            android:layout_height="140dp"
-            android:background="@drawable/rounded_corner_background"
-            android:backgroundTint="@color/transparent"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/kfc" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/item_vertical_image"
+                android:layout_width="match_parent"
+                android:layout_height="182dp"
+                android:src="@drawable/kfc"
+                android:scaleType="fitXY"
+                tools:srcCompat="@color/black" />
+
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/item_vertical_name"
@@ -36,6 +45,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/item_vertical_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

@@ -11,7 +11,7 @@ class Shop (
     var image: String = "",
     var description: String = "",
     var phone: String = "",
-    var position: Position? = null,
+    var position: UserAddress? = null,
     var category: List<Category> = listOf(),
     var status: String = "",
     var avg_rating: Double = 0.0,

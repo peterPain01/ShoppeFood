@@ -1,43 +1,67 @@
 package com.foodapp.view.main
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.foodapp.R
+import com.foodapp.data.model.UserAddress
+import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.ActivityManageAddressBinding
+import com.foodapp.viewmodel.ManageAddressViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.gson.JsonParser
-import kotlinx.coroutines.Dispatchers
-import java.io.InputStream
-import java.io.InputStreamReader
-import java.net.URL
+
 
 class ManageAddress : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityManageAddressBinding
-
+    private var address: UserAddress? = null
+    private var edittingIndex: Int = -1
+    private var isAdding: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val GG_API_KEY = this.packageManager.getApplicationInfo(this.packageName, PackageManager.GET_META_DATA)
+            .metaData.getString("com.google.android.geo.API_KEY", "")
+
+        address = intent.getSerializableExtra("address", UserAddress::class.java)
+        edittingIndex = intent.getIntExtra("edittingIndex", -1)
+        isAdding = address == null
 
         binding = ActivityManageAddressBinding.inflate(layoutInflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = ManageAddressViewModel(address, GG_API_KEY)
         setContentView(binding.root)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.activityManageAddressSaveBtn.setOnClickListener {
+            binding.viewModel?.updateAddress {
+                val data = Intent()
+                data.putExtra("address", it)
+                if (!isAdding) data.putExtra("edittingIndex", edittingIndex)
+                setResult(
+                    if (isAdding) com.foodapp.view.main.UserAddress.ADD_CODE else com.foodapp.view.main.UserAddress.UPDATE_CODE,
+                    data
+                )
+                finish()
+            }
+        }
     }
 
     /**
@@ -56,75 +80,26 @@ class ManageAddress : AppCompatActivity(), OnMapReadyCallback {
             mMap.isMyLocationEnabled = true
         }
         // Add a marker in Sydney and move the camera
-        val hcmus = LatLng(10.762849599401113, 106.68251290899643)
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(hcmus))
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(hcmus, 12.0f))
+        var initLatLng = LatLng(10.762849599401113, 106.68251290899643)
+        address?.let {
+            initLatLng = LatLng(it.latlng.lat, it.latlng.lng)
+        }
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(initLatLng))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(initLatLng, 17.0f))
         val marker = mMap.addMarker(MarkerOptions().position(mMap.cameraPosition.target).title("Position"))
         mMap.setOnCameraMoveListener {
             marker?.position = mMap.cameraPosition.target
         }
         mMap.setOnCameraIdleListener { // call when stop moving (once)
-            updateAddress(marker?.position!!)
+            binding.viewModel?.updateAddress(marker?.position!!)
         }
-        binding.activityManageAddressBox.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                // Log.d("TUONG:77", s.toString())
-                // updateMap(s.toString())
-            }
-
-        })
-    }
-    private fun updateAddress(pos: LatLng) {
-        val thread = Thread(Runnable {
-            try {
-                val url =
-                    URL("https://maps.googleapis.com/maps/api/geocode/json?result_type=street_address&latlng=${pos.latitude},${pos.longitude}&key=AIzaSyC0DeNxN37anGzdfW7uGQiwAueSlvnb8_U")
-                val inputStream = url.content as InputStream
-                val obj = JsonParser().parse(InputStreamReader(inputStream)).asJsonObject
-                Log.i("TUONG", obj.get("status").asString)
-                val status = obj.get("status").asString == "OK"
-                if (status) {
-                    val address =
-                        obj.get("results").asJsonArray.get(0).asJsonObject.get("formatted_address").asString
-                    with(Dispatchers.Main) {
-                        Log.d("TUONG", address)
-                        binding.activityManageAddressBox.setText(address)
-                    }
+        binding.activityManageAddressBox.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                Log.d("FOODAPP:AddressChanged", binding.activityManageAddressBox.text.toString())
+                binding.viewModel?.updateMap(binding.activityManageAddressBox.text.toString()) {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(it))
                 }
-            } catch(ex: Exception) {
-                Log.d("TUONG:UpdateAddress-ERROR", ex.toString())
             }
-        })
-        thread.start()
-    }
-    private fun updateMap(addr: String) {
-        val thread = Thread(Runnable {
-            try {
-                val urlAddress = java.net.URLEncoder.encode(addr, "utf-8")
-                val url = URL("https://maps.googleapis.com/maps/api/geocode/json?address=${urlAddress}&key=AIzaSyC0DeNxN37anGzdfW7uGQiwAueSlvnb8_U")
-                val inputStream = url.content as InputStream
-                val obj = JsonParser().parse(InputStreamReader(inputStream)).asJsonObject
-                Log.i("TUONG", obj.get("status").asString)
-                val status = obj.get("status").asString == "OK"
-                if (status) {
-                    val location =
-                        obj.get("results").asJsonObject.get("geometry").asJsonObject.get("localtion").asJsonObject
-                    val lat = location.get("lat").asDouble
-                    val lng = location.get("lng").asDouble
-                    with(Dispatchers.Main) {
-                        mMap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(lat, lng)))
-                    }
-                }
-            } catch(ex: Exception) {
-                Log.d("TUONG:UpdateMap-ERROR", ex.toString())
-            }
-        })
-        thread.start()
+        }
     }
 }
