@@ -1,21 +1,18 @@
 package com.foodapp.utils
 
-import com.foodapp.data.model.Category
-import com.foodapp.data.model.UserAddress
 import com.foodapp.data.model.Dish
 import com.foodapp.data.model.DishItems
-import com.foodapp.data.model.Order
-import com.foodapp.data.model.Shop
 import com.foodapp.data.model.ItemMyFood
 import com.foodapp.data.model.MapPosition
 import com.foodapp.data.model.NotificationAdmin
+import com.foodapp.data.model.Order
 import com.foodapp.data.model.OrderRunning
-import com.foodapp.data.model.Position
 import com.foodapp.data.model.Review
+import com.foodapp.data.model.Shop
+import com.foodapp.data.model.UserAddress
 import okhttp3.internal.toImmutableList
-import java.util.Date
 import java.sql.Time
-import java.time.LocalDate
+import java.util.Date
 
 object FakeData {
     fun fakeDishes(): List<Dish> {
@@ -45,7 +42,6 @@ object FakeData {
                     name = "Restaurant $i",
                     image = "https://images.foody.vn/res/g119/1181120/prof/s280x175/image-686e0cf3-240130123556.jpeg",
                     avg_rating = 4.0 + (i % 3),
-                    position = Position("Location $i", MapPosition(0.0, 0.0)),
                     openHour = Time((i + 9) * 3600000L),
                     closeHour = Time((i + 18) * 3600000L),
                     description = "OK",
@@ -68,7 +64,6 @@ object FakeData {
                 name = "Restaurant $i",
                 image = "https://images.foody.vn/res/g119/1181120/prof/s280x175/image-686e0cf3-240130123556.jpeg",
                 avg_rating = 4.0 + (i % 3),
-                position = Position("Location $i", MapPosition(0.0, 0.0)),
                 openHour = Time((i + 9) * 3600000L),
                 closeHour = Time((i + 18) * 3600000L),
                 description = "OK",
@@ -150,8 +145,9 @@ object FakeData {
             result.add(
                 UserAddress(
                     name = "Home %d".format(i),
-                    position = Position("123 Dang Vinh Tuong, Phuong 7, Quan Phu Nhuan", MapPosition(0.0, 0.0)),
-                    type = if (i%3 == 0) "home" else if (i%3 == 1) "work" else "other"
+                    street = "123 Dang Vinh Tuong, Phuong 7, Quan Phu Nhuan",
+                    latlng = MapPosition(0.0, 0.0),
+                    type = if (i%3 == 0) "Home" else if (i%3 == 1) "Company" else "Other"
                 )
             )
         }

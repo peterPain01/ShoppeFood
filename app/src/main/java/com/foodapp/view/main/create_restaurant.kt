@@ -13,14 +13,11 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.foodapp.R
-import com.foodapp.data.model.MapPosition
-import com.foodapp.data.model.Position
 import com.foodapp.data.model.Shop
+import com.foodapp.data.model.UserAddress
 import com.foodapp.view.adapter.MultipleChoiceSpinnerAdapter
-import com.foodapp.viewmodel.AdminViewModel
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -78,7 +75,7 @@ class create_restaurant : AppCompatActivity() {
                 name = findViewById<EditText>(R.id.create_restaurant_EditText10).text.toString(),
                 image = url.toString(),
                 avg_rating = 4.0,
-                position = Position(findViewById<EditText>(R.id.create_restaurant_EditText12).text.toString(), MapPosition(0.0, 0.0)),
+                position = UserAddress(street = findViewById<EditText>(R.id.create_restaurant_EditText12).text.toString()),
                 openHour = Time((1 + 9) * 3600000L),
                 closeHour = Time((1 + 18) * 3600000L),
                 description = findViewById<EditText>(R.id.create_restaurant_EditText11).text.toString(),
