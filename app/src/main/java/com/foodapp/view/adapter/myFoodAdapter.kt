@@ -14,7 +14,7 @@ import com.foodapp.helper.helper
 import com.foodapp.view.main.seller_review
 
 
-class myFoodAdapter(private val dataList: List<ItemMyFood>, val supportFragmentManager : FragmentManager, private val res : Int) : RecyclerView.Adapter<myFoodAdapter.ViewHolder>() {
+class myFoodAdapter(private val dataList: List<ItemMyFood>, private val res : Int) : RecyclerView.Adapter<myFoodAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myFoodAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(res, parent, false)

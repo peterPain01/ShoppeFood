@@ -14,7 +14,7 @@ class GridAdapter<T>(private val items: List<T>,
     }
     override fun onBindViewHolder(holder: ViewHolder<T>, position: Int) {
         val data = items[position]
-       holder.bind(data)
+        holder.bind(data)
     }
     override fun getItemCount(): Int {
         return items.size
