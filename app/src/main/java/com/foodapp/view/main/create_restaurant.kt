@@ -52,17 +52,6 @@ class create_restaurant : AppCompatActivity() {
         val adminViewModel = AdminViewModel(this, spinner);
         binding.viewModel = adminViewModel;
 
-
-
-
-
-
-//        btnShowSelection.setOnClickListener {
-//            val selectedItems = adapter.getSelectedItems()
-//            val selectedItemsText = selectedItems.map { items[it] }.joinToString(", ")
-//            Toast.makeText(this, "Selected Items: $selectedItemsText", Toast.LENGTH_SHORT).show()
-//        }
-
         btn.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.type = "image/*"
@@ -73,7 +62,7 @@ class create_restaurant : AppCompatActivity() {
         }
         btnSubmit.setOnClickListener {
                 file?.let { it1 ->
-                    adminViewModel.CreateShop("1231231231", "07:00", "10:00", "",
+                    adminViewModel.CreateShop("012345678", "07:00", "10:00", "",
                         it1)
                 };
         }

@@ -60,7 +60,7 @@ interface ApiService {
         @Part("open_hour") openHour: RequestBody,
         @Part("close_hour") closeHour: RequestBody,
 //        @PartMap addresses: Map<String, @JvmSuppressWildcards RequestBody>,
-        @Part categories: List<MultipartBody.Part>,
+        @Part category: List<MultipartBody.Part>,
         @Part image: MultipartBody.Part
     ): Call<ApiResult<Shop>>
 }

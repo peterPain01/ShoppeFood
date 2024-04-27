@@ -46,21 +46,7 @@ class AdminViewModel (private val context: Context, private val spinner: Spinner
                     shopInfo.category = datas
                     adapter = MultipleChoiceSpinnerAdapter(context, datas.map { it.name })
                     categoriesAdapter.value = adapter
-
                     spinner.adapter = adapter
-                    spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: AdapterView<*>?,
-                            view: View?,
-                            position: Int,
-                            id: Long
-                        ) {
-                            adapter?.toggleSelection(position)
-                        }
-
-                        override fun onNothingSelected(parent: AdapterView<*>?) {}
-                    }
-                    //Toast.makeText(this, "Selected Items: $selectedItemsText", Toast.LENGTH_SHORT).show()
                 } else {
                     val errorMessage = response.errorBody()?.string() ?: "Unknown error"
                     Toast.makeText(context, "Failed to get statistic: $errorMessage", Toast.LENGTH_LONG).show()
@@ -75,23 +61,24 @@ class AdminViewModel (private val context: Context, private val spinner: Spinner
     fun CreateShop(phone: String, open_hour: String, close_hour: String, addresses: String, image: File) {
         val Name = shopInfo.name.toRequestBody("text/plain".toMediaTypeOrNull());
         val Description = shopInfo.description.toRequestBody("text/plain".toMediaTypeOrNull());
-        val Phone = phone.toRequestBody("text/plain".toMediaTypeOrNull());
+        val Phone = shopInfo.phone.toRequestBody("text/plain".toMediaTypeOrNull());
         val Open_hour = open_hour.toRequestBody("text/plain".toMediaTypeOrNull());
         val Close_hour = close_hour.toRequestBody("text/plain".toMediaTypeOrNull());
-
         val requestFile = image.asRequestBody("image/jpeg".toMediaTypeOrNull())
         val imagePart = MultipartBody.Part.createFormData("image", image.name, requestFile)
-
-        val Categories = listOf(
-            MultipartBody.Part.createFormData("category[]", "66235e91c99db74074241b5b"),
-            MultipartBody.Part.createFormData("category[]", "66235e79c99db74074241b59")
-        )
-
+        var Category: List<MultipartBody.Part> = listOf()
         val selectedItems = adapter?.getSelectedItems()
-        val selectedItemsText = selectedItems?.map {  shopInfo.category [it] }?.joinToString(", ")
+        val index = 0;
+        selectedItems?.forEach { item ->
+            shopInfo.category?.forEach() { categories ->
+                if(categories.name == item) {
+                   val temp = MultipartBody.Part.createFormData("category[]", categories._id);
+                    Category += temp;
+                }
+            }
+        }
 
-        // dang xu ly
-        service.createShop(Name, Description, Phone, Open_hour, Close_hour, Categories, imagePart).enqueue(object : Callback<ApiResult<Shop>> {
+        service.createShop(Name, Description, Phone, Open_hour, Close_hour, Category, imagePart).enqueue(object : Callback<ApiResult<Shop>> {
             override fun onResponse(
                 call: Call<ApiResult<Shop>>,
                 response: Response<ApiResult<Shop>>

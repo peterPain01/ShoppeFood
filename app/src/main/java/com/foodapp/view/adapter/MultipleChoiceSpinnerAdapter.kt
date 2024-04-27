@@ -18,8 +18,8 @@ import com.foodapp.helper.helper
 class MultipleChoiceSpinnerAdapter (context: Context, private val items: List<String>) :
     ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, items) {
 
-    private var selectedItems = HashSet<Int>()
-
+    private var selectedItems = HashSet<String>()
+    private var selectedCheckBox = HashSet<CheckBox>()
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         return createView(position, convertView, parent)
     }
@@ -32,21 +32,24 @@ class MultipleChoiceSpinnerAdapter (context: Context, private val items: List<St
         val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.item_spinner_multiple_choice, parent, false)
 
         val checkbox = view.findViewById<CheckBox>(R.id.checkBox)
+        checkbox.setOnClickListener {
+            if(checkbox.isSelected) {
+                checkbox.isSelected = false
+                selectedCheckBox.remove(checkbox);
+            }else{
+                checkbox.isSelected = true
+                selectedCheckBox.add(checkbox);
+            }
+        }
         checkbox.text = items[position];
+
         return view
     }
 
-    fun toggleSelection(position: Int) {
-        if (selectedItems.contains(position)) {
-            selectedItems.remove(position)
-        } else {
-            selectedItems.add(position)
+    fun getSelectedItems(): Set<String> {
+        selectedCheckBox.forEach {
+            selectedItems.add(it.text.toString());
         }
-        notifyDataSetChanged()
-    }
-
-    fun getSelectedItems(): Set<Int> {
-        Log.i("selecteditemsVu", selectedItems.toString());
         return selectedItems
     }
 }

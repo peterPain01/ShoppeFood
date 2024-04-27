@@ -33,7 +33,6 @@ class ShopViewModel  (private val context: Context){
                 if (response.isSuccessful) {
                     val request = response.body()
                     val data= request!!.metadata;
-                    Log.i("daaa", data.toString());
                     view.findViewById<TextView>(R.id.dash_board_location5).text = data.numPendingOrder.toString();
                     view.findViewById<TextView>(R.id.dash_board_location6).text = data.numShippingOrder.toString();
                     view.findViewById<TextView>(R.id.dash_board_revenue).text = data.totalRevenueToday.toString();
