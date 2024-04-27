@@ -9,10 +9,17 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.foodapp.R
+import com.foodapp.data.model.CartProduct
 import com.foodapp.data.model.DishItems
 import kotlin.math.max
 
-class CartListAdapter(private val dataList: MutableList<DishItems>, private val res : Int, private val updateTotal: () -> Unit) : RecyclerView.Adapter<CartListAdapter.ViewHolder>() {
+class CartListAdapter(private val dataList: MutableList<CartProduct>,
+                      private val res : Int,
+                      val updateTotal: () -> Unit,
+                      val reduce: (String) -> Unit,
+                      val add: (String) -> Unit,
+                      val remove: (String) -> Unit)
+    : RecyclerView.Adapter<CartListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -37,32 +44,33 @@ class CartListAdapter(private val dataList: MutableList<DishItems>, private val 
         private val addButton = itemView.findViewById<ImageButton>(R.id.cart_item_add_button)
         private val minusButton = itemView.findViewById<ImageButton>(R.id.cart_item_minus_button)
         private val closeButton = itemView.findViewById<CardView>(R.id.cart_item_close_button)
-        fun bind(data: DishItems, position: Int) {
+        fun bind(data: CartProduct, position: Int) {
             Glide.with(itemView.context)
-                .load(data.dish.imageUrl)
+                .load(data.image)
                 .into(image)
-            name.text = data.dish.name
-            price.text = String.format(null, "$%.2f", data.dish.price * data.count)
-            count.text = data.count.toString()
+            name.text = data.name
+            price.text = String.format(null, "%.2f", data.unit_price * data.quantity)
+            count.text = data.quantity.toString()
             addButton.setOnClickListener {
-                data.count = data.count + 1
+                data.quantity = data.quantity + 1
                 notifyItemChanged(position)
-//                price.text = String.format(null, "$%.2f", data.dish.price * data.count)
-//                count.text = data.count.toString()
                 updateTotal()
+                add(data.productId)
             }
             minusButton.setOnClickListener {
-                data.count = max(data.count - 1, 0)
-                notifyItemChanged(position)
-//                price.text = String.format(null, "$%.2f", data.dish.price * data.count)
-//                count.text = data.count.toString()
-                updateTotal()
+                if (data.quantity > 1) {
+                    data.quantity = data.quantity-1
+                    notifyItemChanged(position)
+                    updateTotal()
+                    reduce(data.productId)
+                }
             }
             closeButton.setOnClickListener {
                 dataList.removeAt(position)
                 notifyItemRemoved(position)
                 notifyItemRangeChanged(position, dataList.count())
                 updateTotal()
+                remove(data.productId)
             }
         }
     }

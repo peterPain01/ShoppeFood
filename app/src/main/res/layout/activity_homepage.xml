@@ -79,7 +79,8 @@
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:background="@drawable/circle_button_background"
-                            android:backgroundTint="#181C2E"
+                            android:backgroundTint="#ECF0F4"
+                            app:tint="#000000"
                             android:src="@drawable/ic_shopping_bag" />
 
                         <androidx.appcompat.widget.AppCompatTextView

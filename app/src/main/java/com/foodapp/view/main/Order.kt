@@ -1,36 +1,24 @@
 package com.foodapp.view.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.foodapp.R
-import com.foodapp.data.model.DishItems
-import com.foodapp.utils.FakeData
-import com.foodapp.view.adapter.CartListAdapter
-import kotlin.system.exitProcess
+import com.foodapp.databinding.ActivityOrderBinding
+import com.foodapp.viewmodel.CartViewModel
 
 class Order : AppCompatActivity() {
-    private lateinit var total_tv: TextView
-    private lateinit var list: RecyclerView
-    private lateinit var dishes: MutableList<DishItems>
+    private lateinit var binding: ActivityOrderBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
-
-        total_tv = findViewById<TextView>(R.id.activity_order_total)
-        dishes = FakeData.fakeDishes().map { DishItems(it, 10) }.toMutableList()
-        list = findViewById<RecyclerView>(R.id.activity_order_list)
-        val updateTotal = {
-            val total = dishes.sumOf { it.count * it.dish.price }
-            total_tv.text = String.format(null, "$%.2f", total)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_order)
+        binding.lifecycleOwner = this
+        binding.viewModel = CartViewModel(this) {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         }
-        list.layoutManager = LinearLayoutManager(this)
-        list.adapter = CartListAdapter(dishes, R.layout.cart_item, updateTotal)
-        updateTotal()
     }
     fun onBackClicked(view: View) {
         this.finish()

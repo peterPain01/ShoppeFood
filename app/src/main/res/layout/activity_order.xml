@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="viewModel"
+            type="com.foodapp.viewmodel.CartViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121223"
     tools:context=".view.main.Order">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +29,7 @@
             android:layout_height="55dp"
             android:layout_marginStart="10dp"
             android:background="@drawable/circle_button_background"
-            android:backgroundTint="#2A2A39"
+            android:backgroundTint="#ECF0F4"
             android:onClick="onBackClicked"
             android:scaleX="0.8"
             android:scaleY="0.8"
@@ -30,7 +37,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow_left"
-            app:tint="#FFFFFF" />
+            app:tint="#181C2E" />
 
         <TextView
             android:id="@+id/activity_order_textView2"
@@ -40,7 +47,7 @@
             android:background="#00FFFFFF"
             android:gravity="center|start"
             android:text="Cart"
-            android:textColor="#ffffff"
+            android:textColor="#181C2E"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -52,6 +59,8 @@
         android:id="@+id/activity_order_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:adapter="@{viewModel.adapter}"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/activity_order_cardview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="-50dp"
         android:background="@color/transparent"
-        app:cardBackgroundColor="@color/white"
+        android:backgroundTint="#ECF0F4"
         app:cardCornerRadius="50dp"
         app:contentPadding="10dp"
         app:contentPaddingBottom="50dp"
@@ -94,31 +103,23 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Delivery Address"
-                        android:textColor="#A0A5BA"
+                        android:textColor="#32343E"
                         android:textSize="14sp" />
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:cardBackgroundColor="#F0F5FA"
-                    app:cardCornerRadius="10dp"
-                    app:contentPaddingBottom="15dp"
-                    app:contentPaddingLeft="10dp"
-                    app:contentPaddingRight="10dp"
-                    app:contentPaddingTop="15dp">
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="10dp">
 
-                    <EditText
-                        android:id="@+id/activity_order_editTextText"
+                    <Spinner
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#6B6E82"
                         android:alpha="0.5"
-                        android:background="@color/transparent"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:text="eqwjeoi qwe"
-                        android:textColor="#32343E"
+                        android:adapter="@{viewModel.spinnerAdapter}"
                         android:textSize="20sp" />
 
                 </androidx.cardview.widget.CardView>
@@ -139,7 +140,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="0"
                     android:text="TOTAL: "
-                    android:textColor="#A0A5BA"
+                    android:textColor="#32343E"
                     android:textSize="14sp" />
 
                 <TextView
@@ -147,8 +148,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:text="$96"
-                    android:textColor="#000000"
+                    android:text='@{String.format("%2f", viewModel.totalPrice)}'
+                    android:textColor="#6B6E82"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -174,3 +175,4 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

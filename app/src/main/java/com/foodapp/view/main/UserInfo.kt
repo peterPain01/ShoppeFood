@@ -45,6 +45,7 @@ class UserInfo : AppCompatActivity() {
         }
         binding.activityUserInfoLogout.setOnClickListener {
             binding.viewModel!!.logout {
+                SessionManager(this).removeAuthToken()
                 val new_intent = Intent(this, Login::class.java)
                 startActivity(new_intent)
             }
