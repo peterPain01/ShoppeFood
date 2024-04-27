@@ -31,12 +31,12 @@ class OrderOngoingListAdapter(val orders: List<Order>, val res: Int): RecyclerVi
         val count: TextView = itemView.findViewById<TextView>(R.id.item_ongoing_order_count)
 
         fun bind(data: Order) {
-            title.text = data.shop.name
+            title.text = ""
             Glide.with(itemView.context)
-                .load(data.shop.image)
+                .load("")
                 .into(image)
-            price.text = String.format("$%.2f", data.totalPrice)
-            count.text = String.format("%d items", data.totalDishes)
+            price.text = String.format("$%.2f", data.order_totalPrice)
+            count.text = String.format("%d items", data.order_listProducts.sumOf { it.quantity })
         }
     }
 }

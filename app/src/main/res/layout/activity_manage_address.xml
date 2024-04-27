@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingVertical="5dp">
+            android:layout_marginTop="20dp">
             <Button
                 android:id="@+id/activity_manage_address_home_btn"
                 android:layout_width="wrap_content"
@@ -99,6 +99,7 @@
                 android:backgroundTint="#F0F5FA"
                 android:textColor="#32343E"
                 android:textSize="14sp"
+                android:stateListAnimator="@null"
                 android:elevation="0dp"
                 android:onClick="onClickTypeChoose"
                 android:text="Home"
@@ -114,6 +115,7 @@
                 android:textColor="#32343E"
                 android:textSize="14sp"
                 android:elevation="0dp"
+                android:stateListAnimator="@null"
                 android:text="Company"
                 android:onClick="onClickTypeChoose"
                 app:layout_constraintStart_toEndOf="@id/activity_manage_address_home_btn"
@@ -127,6 +129,7 @@
                 android:background="@drawable/rounded_corner_background"
                 android:backgroundTint="#F0F5FA"
                 android:textColor="#32343E"
+                android:stateListAnimator="@null"
                 android:layout_weight="1"
                 android:elevation="0dp"
                 android:textSize="14sp"

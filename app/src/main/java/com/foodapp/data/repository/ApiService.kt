@@ -71,6 +71,11 @@ interface ApiService {
         @Path("id") productId: String
     ): Call<ApiResult<Nothing>>
 
+    @POST("cart/note")
+    fun updateNote(
+        @Query("note") note: String
+    ): Call<ApiResult<Nothing>>
+
     @POST("auth/logout")
     fun logout(): Call<ApiResult<Nothing>>
 
@@ -93,6 +98,12 @@ interface ApiService {
     ): Call<ApiResult<Shop>>
 
     @GET("cart")
-    fun getCart(): Call<ApiResult<Cart>>
+    fun getCart(): Call<ApiResult<Cart?>>
+
+    @POST("order/checkout/cash")
+    fun placeOrder(
+        @Body address: UserAddress
+    ): Call<ApiResult<Nothing>>
+
 }
 

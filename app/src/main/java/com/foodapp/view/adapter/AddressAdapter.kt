@@ -54,7 +54,7 @@ class AddressAdapter(private val userAddresses: MutableList<UserAddress>,
             } else if (data?.type?.lowercase() == "company") {
                 image.setImageResource(R.drawable.ic_work)
             } else {
-                image.setBackgroundColor(0x101010)
+                image.setImageResource(R.drawable.ic_address)
             }
             itemView.setOnClickListener {
                 onClickItem(data, index)

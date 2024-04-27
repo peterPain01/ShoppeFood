@@ -1,7 +1,6 @@
 package com.foodapp.utils
 
 import com.foodapp.data.model.Dish
-import com.foodapp.data.model.DishItems
 import com.foodapp.data.model.ItemMyFood
 import com.foodapp.data.model.MapPosition
 import com.foodapp.data.model.NotificationAdmin
@@ -33,25 +32,7 @@ object FakeData {
     fun createFakeOrder(): List<Order> {
         val orders = mutableListOf<Order>()
         for (i in 1..10) {
-            orders.add(Order(
-                id = "",
-                userId = "",
-                dishes = fakeDishes().map { DishItems(it, kotlin.random.Random(10).nextInt(5, 10)) },
-                shop = Shop(
-                    _id = "ID_$i",
-                    name = "Restaurant $i",
-                    image = "https://images.foody.vn/res/g119/1181120/prof/s280x175/image-686e0cf3-240130123556.jpeg",
-                    avg_rating = 4.0 + (i % 3),
-                    openHour = Time((i + 9) * 3600000L),
-                    closeHour = Time((i + 18) * 3600000L),
-                    description = "OK",
-                    phone = "0123456789",
-                    category = listOf(),
-                    status = "active",
-                ),
-                address = "",
-                date = Date()
-            ))
+            orders.add(Order())
         }
         return orders
     }

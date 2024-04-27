@@ -18,7 +18,7 @@ data class Cart(
     val cart_userId: String = "",
     val createdOn: Date = Date(),
     val modifiedOn: Date = Date(),
-    val cart_note: String = "",
+    var cart_note: String = "",
 ) {
     val totalPrice: Double
         get() = cart_products.sumOf { it.unit_price * it.quantity }

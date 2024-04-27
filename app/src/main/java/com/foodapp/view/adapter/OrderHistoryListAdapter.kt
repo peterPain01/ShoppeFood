@@ -33,14 +33,14 @@ class OrderHistoryListAdapter(val orders: List<Order>, val res: Int): RecyclerVi
         val date: TextView = itemView.findViewById<TextView>(R.id.item_completed_order_date)
 
         fun bind(data: Order) {
-            title.text = data.shop.name
+            title.text = ""
             Glide.with(itemView.context)
-                .load(data.shop.image)
+                .load("")
                 .into(image)
-            price.text = String.format("$%.2f", data.totalPrice)
-            count.text = String.format("%d items", data.totalDishes)
+            price.text = String.format("$%.2f", data.order_totalPrice)
+            count.text = String.format("%d items", data.order_listProducts.sumOf { it.quantity })
             val formatter = SimpleDateFormat("dd MMM, HH:mm")
-            date.text = formatter.format(data.date)
+            date.text = formatter.format(data.createdAt)
         }
     }
 }
