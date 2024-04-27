@@ -33,6 +33,9 @@ interface ApiService {
     @GET("user")
     fun getCurrentUserInfo(): Call<ApiResult<User>>
 
+    @GET("user/addresses")
+    fun getUserAddresses(): Call<ApiResult<List<UserAddress>>>
+
     @GET("shop/detail")
     fun getShopInfo(
         @Query("shopId") id: String
@@ -49,7 +52,23 @@ interface ApiService {
 
     @POST("cart")
     fun addToCart(
-        @Query("productId") productId: String
+        @Query("productId") productId: String,
+        @Query("quantity") quantity: Int
+    ): Call<ApiResult<Nothing>>
+
+    @POST("cart")
+    fun increaseProductInCart(
+        @Query("productId") productId: String,
+    ): Call<ApiResult<Nothing>>
+
+    @PATCH("cart/reduce/product/{id}")
+    fun reduceProductInCart(
+        @Path("id") productId: String
+    ): Call<ApiResult<Nothing>>
+
+    @PATCH("cart/remove/product/{id}")
+    fun removeProductFromCart(
+        @Path("id") productId: String
     ): Call<ApiResult<Nothing>>
 
     @POST("auth/logout")
@@ -72,5 +91,8 @@ interface ApiService {
         @Part categories: List<MultipartBody.Part>,
         @Part image: MultipartBody.Part
     ): Call<ApiResult<Shop>>
+
+    @GET("cart")
+    fun getCart(): Call<ApiResult<Cart>>
 }
 

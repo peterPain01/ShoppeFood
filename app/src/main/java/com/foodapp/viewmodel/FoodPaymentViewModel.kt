@@ -66,7 +66,7 @@ class FoodPaymentViewModel(val id: String, val displayMsg: (String?) -> Unit,
         }
     }
     fun addToCart(done: () -> Unit) {
-        userService.addToCart(id).enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
+        userService.addToCart(id, count.value!!).enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
             override fun onResponse(
                 call: Call<ApiResult<Nothing>>,
                 response: Response<ApiResult<Nothing>>
@@ -74,7 +74,7 @@ class FoodPaymentViewModel(val id: String, val displayMsg: (String?) -> Unit,
                 if (response.code() == 200) {
                     displayMsg("Successfully add product to cart!")
                 } else {
-                    displayMsg(response.body()?.message)
+                    displayMsg(response.errorBody().toString())
                 }
                 done()
             }
