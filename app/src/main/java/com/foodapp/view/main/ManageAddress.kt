@@ -3,13 +3,16 @@ package com.foodapp.view.main
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.foodapp.R
 import com.foodapp.data.model.UserAddress
-import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.ActivityManageAddressBinding
 import com.foodapp.viewmodel.ManageAddressViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -27,6 +30,11 @@ class ManageAddress : AppCompatActivity(), OnMapReadyCallback {
     private var address: UserAddress? = null
     private var edittingIndex: Int = -1
     private var isAdding: Boolean = false
+    private lateinit var currentActiveType: Button
+    private val activeBgType = ColorStateList.valueOf(Color.parseColor("#F58D1D"))
+    private val activeFgType = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+    private val inactiveBgType = ColorStateList.valueOf(Color.parseColor("#F0F5FA"))
+    private val inactiveFgType = ColorStateList.valueOf(Color.parseColor("#32343E"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +48,9 @@ class ManageAddress : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityManageAddressBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
         binding.viewModel = ManageAddressViewModel(address, GG_API_KEY)
+        val type = (address?.type ?: "home").lowercase()
+        currentActiveType = if (type == "home") binding.activityManageAddressHomeBtn else if (type == "company") binding.activityManageAddressCompanyBtn else binding.activityManageAddressOtherBtn
+        setActive(currentActiveType)
         setContentView(binding.root)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -101,5 +112,21 @@ class ManageAddress : AppCompatActivity(), OnMapReadyCallback {
                 }
             }
         }
+    }
+
+    fun onClickTypeChoose(view: View) {
+        val btn = view as Button
+        binding.viewModel?.setType(btn.text.toString())
+        setInactive(currentActiveType)
+        setActive(btn)
+        currentActiveType = btn
+    }
+    fun setActive(view: Button) {
+        view.backgroundTintList = activeBgType
+        view.setTextColor(activeFgType)
+    }
+    fun setInactive(view: Button) {
+        view.backgroundTintList = inactiveBgType
+        view.setTextColor(inactiveFgType)
     }
 }

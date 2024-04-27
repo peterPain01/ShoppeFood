@@ -1,14 +1,11 @@
 package com.foodapp.viewmodel
 
-import ApiService
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.foodapp.data.model.MapPosition
 import com.foodapp.data.model.UserAddress
-import com.foodapp.data.model.auth.SessionManager
-import com.foodapp.data.repository.UserRepository
 import com.google.android.gms.maps.model.LatLng
 import com.google.gson.JsonParser
 import kotlinx.coroutines.Dispatchers
@@ -26,6 +23,10 @@ class ManageAddressViewModel(data: UserAddress?, val GG_API_KEY: String): ViewMo
     var address: MutableLiveData<UserAddress> = MutableLiveData(data ?: UserAddress())
     private val TIMEOUT: Long = 2000
     private var updateAddrTask: TimerTask? = null // handle rate limit TIMEOUT after stop moving camera
+    val activeBgType = "#F58D1D"
+    val inactiveBgType = "#F0F5FA"
+    val activeFgType = "#FFFFFF"
+    val inactiveFgType = "#32343E"
 
     fun updateAddress(pos: LatLng) {
         updateAddrTask?.cancel()
@@ -96,5 +97,8 @@ class ManageAddressViewModel(data: UserAddress?, val GG_API_KEY: String): ViewMo
     }
     fun updateAddress(done: (UserAddress) -> Unit) {
         address.value?.let(done)
+    }
+    fun setType(type: String) {
+        address.value?.type = type
     }
 }
