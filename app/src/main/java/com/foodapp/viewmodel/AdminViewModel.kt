@@ -22,8 +22,11 @@ import com.foodapp.data.repository.RetrofitClient
 import com.foodapp.data.repository.UserRepository
 import com.foodapp.view.adapter.MultipleChoiceSpinnerAdapter
 import com.foodapp.view.adapter.myFoodAdapter
+import com.google.gson.Gson
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
@@ -58,7 +61,7 @@ class AdminViewModel (private val context: Context, private val spinner: Spinner
             }
         })
     }
-    fun CreateShop(phone: String, open_hour: String, close_hour: String, addresses: String, image: File) {
+    fun CreateShop(phone: String, open_hour: String, close_hour: String, addresses: com.foodapp.data.model.UserAddress, image: File) {
         val Name = shopInfo.name.toRequestBody("text/plain".toMediaTypeOrNull());
         val Description = shopInfo.description.toRequestBody("text/plain".toMediaTypeOrNull());
         val Phone = shopInfo.phone.toRequestBody("text/plain".toMediaTypeOrNull());
@@ -67,6 +70,10 @@ class AdminViewModel (private val context: Context, private val spinner: Spinner
         val requestFile = image.asRequestBody("image/jpeg".toMediaTypeOrNull())
         val imagePart = MultipartBody.Part.createFormData("image", image.name, requestFile)
         var Category: List<MultipartBody.Part> = listOf()
+
+        val userRequestBody = createUserRequestBody(addresses)
+        val userPartMap = hashMapOf("address" to userRequestBody)
+
         val selectedItems = adapter?.getSelectedItems()
         val index = 0;
         selectedItems?.forEach { item ->
@@ -78,7 +85,7 @@ class AdminViewModel (private val context: Context, private val spinner: Spinner
             }
         }
 
-        service.createShop(Name, Description, Phone, Open_hour, Close_hour, Category, imagePart).enqueue(object : Callback<ApiResult<Shop>> {
+        service.createShop(Name, Description, Phone, Open_hour, Close_hour, userPartMap, Category, imagePart).enqueue(object : Callback<ApiResult<Shop>> {
             override fun onResponse(
                 call: Call<ApiResult<Shop>>,
                 response: Response<ApiResult<Shop>>
@@ -105,5 +112,11 @@ class AdminViewModel (private val context: Context, private val spinner: Spinner
                 Toast.makeText(context, t.message ?: "Unknown error", Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    fun createUserRequestBody(addresses: com.foodapp.data.model.UserAddress): RequestBody {
+        val gson = Gson()
+        val jsonString = gson.toJson(addresses)
+        return jsonString.toRequestBody("application/json; charset=utf-8".toMediaType())
     }
 }

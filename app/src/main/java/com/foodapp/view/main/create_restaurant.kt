@@ -3,6 +3,7 @@ package com.foodapp.view.main
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -13,14 +14,21 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.foodapp.R
 import com.foodapp.data.model.Shop
-import com.foodapp.data.model.UserAddress
+import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.ActivityCreateRestaurantBinding
+import com.foodapp.view.adapter.AddressAdapter
 import com.foodapp.view.adapter.MultipleChoiceSpinnerAdapter
 import com.foodapp.viewmodel.AdminViewModel
+import com.foodapp.viewmodel.UserAddressViewModel
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -34,19 +42,33 @@ class create_restaurant : AppCompatActivity() {
     private lateinit var binding: ActivityCreateRestaurantBinding
     private val PICK_IMAGE_REQUEST_CODE = 100
     private var file: File ?= null;
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
+    private lateinit var adapter: AddressAdapter
+    var address : com.foodapp.data.model.UserAddress ?= null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_restaurant)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_restaurant)
         binding.lifecycleOwner = this
-
         val btn = findViewById<Button>(R.id.create_restaurant_LoadImage)
 
-        val choices = listOf("Choice 1", "Choice 2", "Choice 3", "Choice 4", "Choice 5")
         val spinner = findViewById<Spinner>(R.id.create_restaurant_spinner)
-        val adapter = MultipleChoiceSpinnerAdapter(this, choices)
         val back = findViewById<ImageButton>(R.id.create_restaurant_imageButton2)
         val btnSubmit = findViewById<Button>(R.id.create_restaurant_track_btn);
+        val btnAddress = findViewById<TextView>(R.id.create_restaurant_EditText12)
+
+        resultLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == UserAddress.ADD_CODE) {
+                val data: Intent? = result.data
+                address = data?.getSerializableExtra("address", com.foodapp.data.model.UserAddress::class.java)
+                address?.let {
+                    btnAddress.text = address!!.street
+                }
+            }
+        }
+
         val adminViewModel = AdminViewModel(this, spinner);
         binding.viewModel = adminViewModel;
 
@@ -60,9 +82,15 @@ class create_restaurant : AppCompatActivity() {
         }
         btnSubmit.setOnClickListener {
                 file?.let { it1 ->
-                    adminViewModel.CreateShop("012345678", "07:00", "10:00", "",
-                        it1)
+                    address?.let { it2 ->
+                        adminViewModel.CreateShop("012345678", "07:00", "10:00", it2,
+                            it1)
+                    }
                 };
+        }
+        btnAddress.setOnClickListener {
+            val new_intent = Intent(this, ManageAddress::class.java);
+            resultLauncher.launch(new_intent);
         }
     }
 
