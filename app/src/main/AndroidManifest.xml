@@ -17,14 +17,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.main.Product_Running"
+            android:exported="false" />
+        <activity
             android:name=".view.main.dashboard_admin"
             android:exported="false" />
         <activity
             android:name=".view.main.create_restaurant"
             android:exported="false" />
-         <activity
-             android:name=".view.main.Admin_Page"
-             android:exported="false" />
+        <activity
+            android:name=".view.main.Admin_Page"
+            android:exported="false" />
         <activity
             android:name=".view.main.driver_info"
             android:exported="false" />
