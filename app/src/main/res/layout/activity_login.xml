@@ -103,6 +103,7 @@
                   android:paddingStart="12dp"
                   android:background="@drawable/rounded_edittext_background"
                   android:hint="0123456789"
+                  android:textColorHint="#776B6E82"
                   android:inputType="phone"
                   android:text="@={loginViewModel.phone}"
                     />
@@ -122,6 +123,7 @@
                           app:passwordToggleEnabled="true"
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"
+                          android:textColorHint="#776B6E82"
                   android:hint="******"
                   >
                     <com.google.android.material.textfield.TextInputEditText

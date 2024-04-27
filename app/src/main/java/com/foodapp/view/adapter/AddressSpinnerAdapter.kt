@@ -12,6 +12,8 @@ import com.foodapp.data.model.UserAddress
 
 class AddressSpinnerAdapter(context: Context, val items: List<UserAddress>)
     :ArrayAdapter<UserAddress>(context, android.R.layout.simple_spinner_dropdown_item, items) {
+
+    var selectedItem: UserAddress? = items.getOrNull(0)
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         return createView(position, convertView, parent)
     }
@@ -33,6 +35,9 @@ class AddressSpinnerAdapter(context: Context, val items: List<UserAddress>)
             image.setImageResource(R.drawable.ic_work)
         } else {
             image.setBackgroundColor(0x101010)
+        }
+        view.setOnClickListener {
+            selectedItem = items[position]
         }
         return view
     }

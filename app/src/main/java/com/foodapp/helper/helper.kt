@@ -6,7 +6,16 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Handler
 import android.os.Looper
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.PopupWindow
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.foodapp.R
 import java.io.IOException
 import java.io.InputStream
 import java.net.URL
@@ -40,6 +49,24 @@ class helper {
             if (url == null || url.trim() == "") return null
             val x = BitmapFactory.decodeStream(URL(url).content as InputStream)
             return BitmapDrawable(Resources.getSystem(), x)
+        }
+
+        fun displayErrorPopup(context: AppCompatActivity, error: String, onDismiss: () -> Unit) {
+            val inflater: LayoutInflater = LayoutInflater.from(context)!!
+            val view: View = inflater.inflate(R.layout.error_popup, context.window.decorView.findViewById<ViewGroup>(android.R.id.content), false)
+            view.findViewById<TextView>(R.id.error_text).text = error
+            val width = LinearLayout.LayoutParams.MATCH_PARENT
+            val height = LinearLayout.LayoutParams.MATCH_PARENT
+            val focusable = true // lets taps outside the popup also dismiss it
+
+            val popupWindow = PopupWindow(view, width, height, focusable)
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+            view.setOnClickListener {
+                popupWindow.dismiss()
+            }
+            popupWindow.setOnDismissListener {
+                onDismiss()
+            }
         }
     }
 }

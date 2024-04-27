@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.CartProduct
-import com.foodapp.data.model.DishItems
-import kotlin.math.max
 
 class CartListAdapter(private val dataList: MutableList<CartProduct>,
                       private val res : Int,

@@ -2,6 +2,7 @@ package com.foodapp.viewmodel
 
 import ApiService
 import android.content.Context
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.foodapp.R
@@ -15,7 +16,8 @@ import com.foodapp.view.adapter.CartListAdapter
 import retrofit2.Call
 import retrofit2.Response
 
-class CartViewModel(context: Context, val displayMsg: (String) -> Unit): ViewModel() {
+
+class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val showError: (String) -> Unit): ViewModel() {
     private var userService = UserRepository(SessionManager(context)).create(ApiService::class.java)
     var adapter: MutableLiveData<CartListAdapter> = MutableLiveData()
     var spinnerAdapter: MutableLiveData<AddressSpinnerAdapter> = MutableLiveData()
@@ -23,40 +25,43 @@ class CartViewModel(context: Context, val displayMsg: (String) -> Unit): ViewMod
     var totalPrice: MutableLiveData<Double> = MutableLiveData()
 
     init {
-        userService.getUserAddresses().enqueue(object: retrofit2.Callback<ApiResult<List<UserAddress>>> {
+        userService.getCart().enqueue(object: retrofit2.Callback<ApiResult<Cart?>> {
             override fun onResponse(
-                call: Call<ApiResult<List<UserAddress>>>,
-                response: Response<ApiResult<List<UserAddress>>>
-            ) {
-                if (response.code() == 200) {
-                    val addresses = response.body()?.metadata ?: listOf()
-                    spinnerAdapter.value = AddressSpinnerAdapter(context, addresses)
-                } else {
-                    displayMsg(response.errorBody().toString())
-                }
-            }
-
-            override fun onFailure(call: Call<ApiResult<List<UserAddress>>>, t: Throwable) {
-                displayMsg(t.message ?: t.toString())
-            }
-        })
-        userService.getCart().enqueue(object: retrofit2.Callback<ApiResult<Cart>> {
-            override fun onResponse(
-                call: Call<ApiResult<Cart>>,
-                response: Response<ApiResult<Cart>>
+                call: Call<ApiResult<Cart?>>,
+                response: Response<ApiResult<Cart?>>
             ) {
                 if (response.code() == 200) {
                     cart.value = response.body()?.metadata!!
                     totalPrice.value = cart.value?.totalPrice
-                    adapter.value = CartListAdapter(cart.value?.cart_products!!, R.layout.cart_item, {
-                        totalPrice.value = cart.value?.totalPrice
-                    }, add = addProduct, reduce = reduceProduct, remove = removeProduct )
+                    adapter.value =
+                        CartListAdapter(cart.value?.cart_products!!, R.layout.cart_item, {
+                            totalPrice.value = cart.value?.totalPrice
+                        }, add = addProduct, reduce = reduceProduct, remove = removeProduct)
+                        userService.getUserAddresses().enqueue(object: retrofit2.Callback<ApiResult<List<UserAddress>>> {
+                            override fun onResponse(
+                                call: Call<ApiResult<List<UserAddress>>>,
+                                response: Response<ApiResult<List<UserAddress>>>
+                            ) {
+                                if (response.code() == 200) {
+                                    val addresses = response.body()?.metadata ?: listOf()
+                                    spinnerAdapter.value = AddressSpinnerAdapter(context, addresses)
+                                } else {
+                                    displayMsg(response.errorBody().toString())
+                                }
+                            }
+
+                            override fun onFailure(call: Call<ApiResult<List<UserAddress>>>, t: Throwable) {
+                                displayMsg(t.message ?: t.toString())
+                            }
+                        })
+                } else if (response.code() == 404) {
+                    showError("Please add products to cart first!")
                 } else {
                     displayMsg(response.errorBody().toString())
                 }
             }
 
-            override fun onFailure(call: Call<ApiResult<Cart>>, t: Throwable) {
+            override fun onFailure(call: Call<ApiResult<Cart?>>, t: Throwable) {
                 displayMsg(t.message ?: t.toString())
             }
         })
@@ -110,5 +115,39 @@ class CartViewModel(context: Context, val displayMsg: (String) -> Unit): ViewMod
             }
         })
     }
+    fun updateNote() {
+        userService.updateNote(cart.value?.cart_note?:"").enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
+            override fun onResponse(
+                call: Call<ApiResult<Nothing>>,
+                response: Response<ApiResult<Nothing>>
+            ) {
+                if (response.code() != 200) {
+                    displayMsg(response.errorBody().toString())
+                }
+            }
 
+            override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
+                displayMsg(t.message ?: t.toString())
+            }
+        })
+    }
+
+    fun placeOrder(_view: View) {
+        spinnerAdapter.value?.selectedItem?.let {
+            userService.placeOrder(it).enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
+                override fun onResponse(
+                    call: Call<ApiResult<Nothing>>,
+                    response: Response<ApiResult<Nothing>>
+                ) {
+                    if (response.code() != 201) {
+                        displayMsg(response.errorBody().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
+                    displayMsg(t.message ?: t.toString())
+                }
+            })
+        }
+    }
 }
