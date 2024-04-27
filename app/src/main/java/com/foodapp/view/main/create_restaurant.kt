@@ -13,13 +13,11 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.foodapp.R
-import com.foodapp.data.model.MapPosition
-import com.foodapp.data.model.Position
 import com.foodapp.data.model.Shop
+import com.foodapp.data.model.UserAddress
 import com.foodapp.databinding.ActivityCreateRestaurantBinding
 import com.foodapp.view.adapter.MultipleChoiceSpinnerAdapter
 import com.foodapp.viewmodel.AdminViewModel

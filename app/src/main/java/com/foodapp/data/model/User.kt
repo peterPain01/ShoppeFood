@@ -14,7 +14,7 @@ data class User(
     var fullname: String? = null
     var avatar: String?   = null
     var email: String?    = null
-    var addresses: List<UserAddress> = listOf()
+    var addresses: MutableList<UserAddress> = mutableListOf()
     var birth_date: Date? = null
     var gender: String?   = null
     var role: String? = null

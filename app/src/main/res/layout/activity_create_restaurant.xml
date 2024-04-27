@@ -176,7 +176,7 @@
             android:background="@drawable/rounded_edittext_background"
             android:ems="10"
             android:hint="Address of restaurant"
-            android:text="@={viewModel.shopInfo.position.address}"
+            android:text="@={viewModel.shopInfo.position.street}"
             android:inputType="textEmailAddress"
             android:padding="8dp"
             android:paddingStart="12dp"

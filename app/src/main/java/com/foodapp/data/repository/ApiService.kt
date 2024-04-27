@@ -5,6 +5,7 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
@@ -30,7 +31,7 @@ interface ApiService {
         @Query("limit") limit: Int = 10): Call<ApiResult<List<Shop>>>
 
     @GET("user")
-    fun getCurrentUserInfo(): Call<User>
+    fun getCurrentUserInfo(): Call<ApiResult<User>>
 
     @GET("shop/detail")
     fun getShopInfo(
@@ -49,6 +50,14 @@ interface ApiService {
     @POST("cart")
     fun addToCart(
         @Query("productId") productId: String
+    ): Call<ApiResult<Nothing>>
+
+    @POST("auth/logout")
+    fun logout(): Call<ApiResult<Nothing>>
+
+    @PATCH("user")
+    fun upadteUser(
+        @Body userinfo: User
     ): Call<ApiResult<Nothing>>
 
     @Multipart

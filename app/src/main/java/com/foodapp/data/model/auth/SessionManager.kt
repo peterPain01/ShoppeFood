@@ -17,13 +17,11 @@ class SessionManager(private val context: Context) {
     }
 
     fun saveAuthToken(tokens: Tokens, user_id: String) {
-        Log.i("TUONG", "saving")
         val editor = prefs.edit()
         editor.putString(ACCESS_TOKEN, tokens.accessToken)
         editor.putString(REFRESH_TOKEN, tokens.refreshToken)
         editor.putString(USER_ID, user_id)
         editor.apply()
-        Log.i("TUONG", "saving done")
     }
 
     data class UserAuthInfo(val userId: String?, val accessToken: String?)
@@ -32,6 +30,14 @@ class SessionManager(private val context: Context) {
         val accessToken = prefs.getString(ACCESS_TOKEN, null)
         val userId = prefs.getString(USER_ID, null)
         return UserAuthInfo(userId, accessToken)
+    }
+
+    fun removeAuthToken() {
+        val editor = prefs.edit()
+        editor.remove(ACCESS_TOKEN)
+        editor.remove(REFRESH_TOKEN)
+        editor.remove(USER_ID)
+        editor.apply()
     }
 
     fun isLogin(): Boolean {
