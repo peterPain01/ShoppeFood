@@ -65,6 +65,10 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
+    // slider
+    implementation ("me.relex:circleindicator:2.1.6")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
 }
 secrets {
     // Optionally specify a different file name containing your secrets.
