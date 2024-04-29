@@ -12,6 +12,7 @@ import retrofit2.http.Part
 import retrofit2.http.PartMap
 import retrofit2.http.Path
 import retrofit2.http.Query
+import java.util.ArrayList
 
 interface ApiService {
     @GET("api/user/{id}")
@@ -105,6 +106,14 @@ interface ApiService {
     fun placeOrder(
         @Body address: UserAddress
     ): Call<ApiResult<Nothing>>
+
+
+    // SEARCH - API
+    @GET("product/suggest")
+    fun getRelatedSearchString(
+        @Query("keySearch") keySearch: String,
+    ): Call<ApiResult<List<String>>>
+    
 
 }
 

@@ -12,7 +12,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingTop="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
+                    android:layout_marginTop="3dp"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageButton
@@ -106,73 +106,66 @@
 
             </com.google.android.material.appbar.AppBarLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:orientation="horizontal"
-                >
+            <!--   Search bar-->
 
-                <TextView
-                    android:id="@+id/txtUserName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#1E1D1D"
-                    android:textSize="16dp" />
+            <!--   Slider -->
 
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/sen_bold"
-                    android:text="Good Afternoon!"
-                    android:textColor="#1E1D1D"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-            <!--    Search bar-->
             <EditText
                 android:id="@+id/homepage_searchBar"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
                 android:background="@drawable/rounded_edittext_background"
                 android:backgroundTint="#F6F6F6"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="Search dishes, restaurants"
-                android:inputType="textEmailAddress"
+                android:inputType="none"
+                android:allowClickWhenDisabled="true"
+                android:enabled="false"
                 android:padding="8dp"
-                android:paddingStart="12dp" />
+                android:paddingStart="12dp"
+                android:textSize="14dp" />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/homepage_viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    />
+
+                <me.relex.circleindicator.CircleIndicator3
+                    android:id="@+id/homepage_circle_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    app:ci_drawable="@drawable/bg_indicator" />
+            </RelativeLayout>
+
+            
             <!--   Categories-->
             <LinearLayout
+                android:id="@+id/categoryLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="vertical">
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:background="@color/white"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/Heading_1"
-                        android:text="All Categories" />
-
-                    <TextView
-                        android:id="@+id/homepage_txtSeeAllCateGory"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="See All &gt;"
-                        android:textColor="#333333"
-                        android:textSize="16dp" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -181,10 +174,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:scrollbars="horizontal"
+                    android:scrollbarThumbHorizontal="@color/orange"
+                    android:scrollbarAlwaysDrawHorizontalTrack="true"
+                    android:scrollbarSize="1dp"
+                    />
             </LinearLayout>
-
             <!--      Restaurant-->
             <LinearLayout
                 android:layout_width="match_parent"
