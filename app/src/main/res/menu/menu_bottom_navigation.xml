@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_bottom_home" android:title="Home" android:icon="@drawable/ic_home_home"
+        />
+    <item android:id="@+id/menu_bottom_orders" android:title="My Orders" android:icon="@drawable/ic_home_orders"  />
+    <item android:id="@+id/menu_bottom_likes" android:title="Likes" android:icon="@drawable/ic_home_likes"/>
+    <item android:id="@+id/menu_bottom_notification" android:title="Notifications" android:icon="@drawable/ic_home_notification"/>
+    <item android:id="@+id/menu_bottom_me" android:title="Me" android:icon="@drawable/ic_home_user"/>
+
+
+</menu>
