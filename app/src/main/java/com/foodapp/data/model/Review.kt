@@ -1,8 +1,13 @@
 package com.foodapp.data.model
 
 data class Review(
-    var img: String,
-    var time: String,
-    var rating: String,
-    var content: String
+    var comment_userAvatar: String = "",
+    var _id: String = "",
+    var comment_userId: String = "",
+    var comment_shopId: String = "",
+    var comment_content_text: String = "",
+    var comment_content_image: String = "",
+    var comment_star: String = "",
+    var comment_title: String = "",
+    var comment_date: String = ""
 )

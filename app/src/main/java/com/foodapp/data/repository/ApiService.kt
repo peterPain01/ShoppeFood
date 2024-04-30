@@ -1,5 +1,6 @@
 import com.foodapp.data.model.*
 import com.foodapp.data.model.auth.AuthResponse
+import com.foodapp.viewmodel.CommentViewModel
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -106,5 +107,7 @@ interface ApiService {
         @Body address: UserAddress
     ): Call<ApiResult<Nothing>>
 
+    @GET("comment/all/shop")
+    fun getComment(): Call<ApiResult<List<Review>>>
 }
 

@@ -105,20 +105,20 @@ object FakeData {
         return dummyData
     }
 
-    fun createReview(): List<Review> {
-        val dummyData = mutableListOf<Review>()
-
-        for (i in 1..8) {
-            val order =  Review(
-                content = "Tanbir Ahmed Placed a new order",
-                img = "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg",
-                time = "20/12/2020",
-                rating = "4"
-            )
-            dummyData.add(order)
-        }
-        return dummyData
-    }
+//    fun createReview(): List<Review> {
+//        val dummyData = mutableListOf<Review>()
+//
+//        for (i in 1..8) {
+//            val order =  Review(
+//                content = "Tanbir Ahmed Placed a new order",
+//                img = "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg",
+//                time = "20/12/2020",
+//                rating = "4"
+//            )
+//            dummyData.add(order)
+//        }
+//        return dummyData
+//    }
 
     fun createAddresses(): List<UserAddress> {
         val result = mutableListOf<UserAddress>()
