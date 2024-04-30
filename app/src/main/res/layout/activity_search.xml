@@ -45,13 +45,10 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/search_fragment_container"
-                android:name="com.foodapp.view.Dialog_fragment.Fragment_Search"
                 android:layout_marginTop="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
-
         </LinearLayout>
-
 
 </layout>

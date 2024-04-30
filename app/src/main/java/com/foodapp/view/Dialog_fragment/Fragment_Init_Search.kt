@@ -2,6 +2,7 @@ package com.foodapp.view.Dialog_fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,15 +36,18 @@ class Fragment_Init_Search :Fragment(R.layout.fragment_init_search) {
         super.onStart()
 
         recyclerView_recent_keywords.layoutManager = LinearLayoutManager(context, VERTICAL, false)
-        recyclerView_recent_keywords.adapter = KeyWordRecentAdapter(listOf("Com tam", "Tra sua", "Banh mi"))
+
+//        val recentKeywords : List<String> = getStringList(context, "recentSearchList")
+//        Log.i("HUY", recentKeywords.toString())
+        val recentKeywords = listOf<String>("com tam", "bun bo", "cha lua")
+        recyclerView_recent_keywords.adapter = KeyWordRecentAdapter(requireContext(), recentKeywords)
 
         val itemDecoration : RecyclerView.ItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         recyclerView_recent_keywords.addItemDecoration(itemDecoration)
-
     }
 }
 
-// nhan vao item => get item value va truyen sang fragment 2 de tim kiem, ghi vao shared preference
+
 fun getStringList(context: Context?, key: String): List<String> {
     val sharedPreferences = context?.getSharedPreferences("recentSearch", Context.MODE_PRIVATE)
     val gson = Gson()
@@ -52,11 +56,4 @@ fun getStringList(context: Context?, key: String): List<String> {
     return gson.fromJson(json, type) ?: listOf()
 }
 
-fun saveStringList(context: Context?, key: String, stringList: List<String>) {
-    val sharedPreferences = context?.getSharedPreferences("recentSearch", Context.MODE_PRIVATE)
-    val editor = sharedPreferences?.edit()
-    val gson = Gson()
-    val json = gson.toJson(stringList)
-    editor?.putString(key, json)
-    editor?.apply()
-}
+

@@ -109,11 +109,20 @@ interface ApiService {
 
 
     // SEARCH - API
-    @GET("product/suggest")
+    @GET("shop/suggest")
     fun getRelatedSearchString(
         @Query("keySearch") keySearch: String,
     ): Call<ApiResult<List<String>>>
-    
 
+    @GET("shop/related")
+    fun getShopBySearchString(
+        @Query("keySearch") keySearch: String,
+    ): Call<ApiResult<List<Shop>>>
+
+    // LIKE - API
+    @GET("user/liked/shop")
+    fun getShopUserLiked(
+        @Query("sortBy") sortBy: String,
+    ): Call<ApiResult<List<Shop>>>
 }
 

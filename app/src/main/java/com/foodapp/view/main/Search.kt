@@ -34,37 +34,24 @@ import java.util.ArrayList
 class Search : AppCompatActivity() {
     lateinit var cancel_btn : TextView
     lateinit var search_bar : EditText
+
     val service = RetrofitClient.retrofit.create(ApiService::class.java)
-    lateinit var recyclerView_recent_keyw_hz : RecyclerView
+
     lateinit var binding :ActivitySearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        setContentView(R.layout.activity_search)
 
     }
-
     override fun onStart() {
         super.onStart()
         replaceFragment(Fragment_Init_Search())
         cancel_btn= findViewById(R.id.search_cancel)
         search_bar = findViewById(R.id.search_searchBar)
-//        recyclerView_recent_keyw_hz = findViewById(R.id.search_recent_keyword_recyclerView_vertical)
-//        recyclerView_recent_keyw_hz.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-//
-//        val keyWordApdapter = KeyWordRecentAdapter(listOf("Cơm tấm", "Chả iu em", "Tà tưa"))
-//        recyclerView_recent_keyw_hz.adapter = keyWordApdapter
-
         initEvent();
     }
-
-    // Flow
-    // Bat su kien go nut o search bat
-    // Gui thong tin search len API va nhan ve ket qua
-    // Hien thi ket qua
-    // khi user chon thi luu ket qua vao shared preferences
 
     private fun initEvent()
     {
@@ -87,29 +74,8 @@ class Search : AppCompatActivity() {
                 replaceFragment(Fragment_Init_Search())
             }
             else
-                replaceFragment(Fragment_Search())
-            // call API
-//            service.getRelatedSearchString(userInput).enqueue(object : retrofit2.Callback<ApiResult<List<String>>> {
-//                override fun onResponse(call: Call<ApiResult<List<String>>>, response: Response<ApiResult<List<String>>>) {
-//                    if (response.code() == 200) {
-//                        val body = response.body()
-//                        if (body != null) {
-//                            Log.i("METAAAAAA", body.metadata.toString())
-//                            recyclerView_recent_keyw_hz.adapter = KeyWordRecentAdapter(body.metadata)
-//                        } else {
-//                            Log.d("getRelatedSearchString", "[shop/get related string] Missing body")
-//                        }
-//                    } else {
-////                        Toast.makeText(context, response.body()?.message ?: "", Toast.LENGTH_LONG).show()
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<ApiResult<List<String>>>, t: Throwable) {
-//                    TODO("Not yet implemented")
-//                }
-//            })
+                replaceFragment(Fragment_Search(userInput))
         }
-
         override fun afterTextChanged(s: Editable?) {
             val userInput = s.toString()
         }
