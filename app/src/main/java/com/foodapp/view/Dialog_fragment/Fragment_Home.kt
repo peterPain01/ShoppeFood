@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -31,7 +30,6 @@ import com.foodapp.view.main.Search
 import me.relex.circleindicator.CircleIndicator3
 import retrofit2.Call
 import retrofit2.Response
-
 
 class Fragment_Home : Fragment(R.layout.fragment_home) {
     val service = RetrofitClient.retrofit.create(ApiService::class.java)
@@ -74,8 +72,6 @@ class Fragment_Home : Fragment(R.layout.fragment_home) {
 
         searchBar = view.findViewById(R.id.homepage_searchBar)
         orderBtn = view.findViewById(R.id.homepage_notify)
-
-
 
         intentActivity()
     }
@@ -151,7 +147,7 @@ class Fragment_Home : Fragment(R.layout.fragment_home) {
 
     fun intentActivity() {
         searchBar.setOnClickListener {
-            val intent = Intent(context, Search::class.java)
+            val intent = Intent(context,Search::class.java)
             startActivity(intent);
         }
         orderBtn.setOnClickListener {
