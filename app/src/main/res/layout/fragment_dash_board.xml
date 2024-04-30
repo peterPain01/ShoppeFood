@@ -219,6 +219,7 @@
                     app:layout_constraintTop_toTopOf="@+id/dash_board_icon_star" />
 
                 <TextView
+                    android:id="@+id/dash_board_view_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="32dp"

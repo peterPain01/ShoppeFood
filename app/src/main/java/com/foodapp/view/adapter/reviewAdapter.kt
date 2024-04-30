@@ -28,14 +28,35 @@ class reviewAdapter(private val dataList: List<Review>, private val res : Int) :
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val img = itemView.findViewById<ImageView>(R.id.item_review_img)
+        val date = itemView.findViewById<TextView>(R.id.item_review_textView6)
+        val title = itemView.findViewById<TextView>(R.id.item_review_textView7)
+        val content = itemView.findViewById<TextView>(R.id.item_view_content)
+
+        val star1 = itemView.findViewById<ImageView>(R.id.item_review_star1)
+        val star2 = itemView.findViewById<ImageView>(R.id.item_review_star2)
+        val star3 = itemView.findViewById<ImageView>(R.id.item_review_star3)
+        val star4 = itemView.findViewById<ImageView>(R.id.item_review_star4)
+        val star5 = itemView.findViewById<ImageView>(R.id.item_review_star5)
+        fun handelStar(star: Int) {
+            val starsList = listOf(star1, star2, star3, star4, star5)
+            for(i in 1..star){
+                starsList[i - 1].setImageResource(R.drawable.ic_star_primary)
+            }
+            for(i in star + 1 .. 5){
+                starsList[i - 1].setImageResource(R.drawable.ic_star)
+            }
+        }
         fun bind(data: Review) {
             img?.let { imageView ->
                 helper.ShowImageUrl(
-                    data.img,
+                    data.comment_content_image,
                     imageView
                 )
             }
+            date.text = data.comment_date
+            title.text = data.comment_title
+            content.text = data.comment_content_text
+            handelStar(data.comment_star.toInt())
         }
-        // binding data
     }
 }

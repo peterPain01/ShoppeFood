@@ -109,6 +109,7 @@
                 app:layout_constraintTop_toTopOf="@+id/item_review_star4" />
 
             <TextView
+                android:id="@+id/item_view_content"
                 android:layout_width="247dp"
                 android:layout_height="59dp"
                 android:layout_marginTop="20dp"
