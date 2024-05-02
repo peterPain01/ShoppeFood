@@ -19,13 +19,14 @@ class UserInfo : AppCompatActivity() {
         setContentView(R.layout.activity_user_info)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_user_info)
         binding.lifecycleOwner = this
-        binding.viewModel = UserInfoViewModel({
+        binding.viewModel = UserInfoViewModel(SessionManager(this)){
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-        }, {
+        }
+        binding.viewModel?.user?.observe(this) {
             Glide.with(this)
                 .load(it)
                 .into(binding.activityUserInfoImage)
-        }, SessionManager(this))
+        }
     }
 
     override fun onStart() {

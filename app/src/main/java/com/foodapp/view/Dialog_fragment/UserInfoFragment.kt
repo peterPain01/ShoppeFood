@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.auth.SessionManager
-import com.foodapp.databinding.ActivityUserInfoBinding
 import com.foodapp.databinding.FragmentUserInfoBinding
 import com.foodapp.view.auth.Login
 import com.foodapp.view.main.PersonalInfo
@@ -23,7 +21,7 @@ class UserInfoFragment : Fragment(R.layout.fragment_user_info) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentUserInfoBinding.inflate(inflater, container, false)
 //         = DataBindingUtil.setContentView(view, R.layout.activity_user_info)
         init()
@@ -32,13 +30,14 @@ class UserInfoFragment : Fragment(R.layout.fragment_user_info) {
 
     private fun init() {
         binding.lifecycleOwner = this
-        binding.viewModel = UserInfoViewModel({
+        binding.viewModel = UserInfoViewModel(SessionManager(requireContext())){
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-        }, {
+        }
+        binding.viewModel?.user?.observe(viewLifecycleOwner) {
             Glide.with(this)
                 .load(it)
                 .into(binding.activityUserInfoImage)
-        }, SessionManager(requireContext()))
+        }
     }
     override fun onStart() {
         super.onStart()

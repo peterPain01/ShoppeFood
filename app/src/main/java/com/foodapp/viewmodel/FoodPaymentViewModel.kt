@@ -13,9 +13,7 @@ import com.foodapp.data.repository.UserRepository
 import retrofit2.Call
 import retrofit2.Response
 
-class FoodPaymentViewModel(val id: String, val displayMsg: (String?) -> Unit,
-                           showImage: (String?) -> Unit,
-                           sessionManager: SessionManager): ViewModel() {
+class FoodPaymentViewModel(val id: String,sessionManager: SessionManager, val displayMsg: (String?) -> Unit): ViewModel() {
     private val service = RetrofitClient.retrofit.create(ApiService::class.java)
     private val userService = UserRepository(sessionManager).create(ApiService::class.java)
     var product: MutableLiveData<Product>  = MutableLiveData(Product())
@@ -34,7 +32,6 @@ class FoodPaymentViewModel(val id: String, val displayMsg: (String?) -> Unit,
                 if (response.code() == 200) {
                     product.value = productInfo
                     updatePrice()
-                    showImage(product.value?.product_thumb)
                 } else {
                     displayMsg(body.message)
                 }

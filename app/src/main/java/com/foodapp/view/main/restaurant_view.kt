@@ -1,8 +1,7 @@
 package com.foodapp.view.main
 
-import ApiService
-import android.content.Context
 import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -11,36 +10,42 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.foodapp.R
-import com.foodapp.data.model.ApiResult
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.data.repository.LikeAPI
-import com.foodapp.data.repository.RetrofitClient
 import com.foodapp.databinding.ActivityRestaurantViewBinding
-import com.foodapp.helper.helper
-import com.foodapp.utils.FakeData
 import com.foodapp.view.Dialog_fragment.filter_restaurant_view
 import com.foodapp.viewmodel.RestaurantViewModel
-import retrofit2.Call
-import retrofit2.Response
 
 class restaurant_view : AppCompatActivity() {
     lateinit var binding: ActivityRestaurantViewBinding
-    val service = RetrofitClient.retrofit.create(ApiService::class.java)
     lateinit var likeAPI : LikeAPI
+    private var iconDrawable: Drawable? = null
+    private var count : Int = 1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_view)
         val shopId = intent.getStringExtra("shopId")!!
+        iconDrawable = ContextCompat.getDrawable(this, R.drawable.ic_heart_solid)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_restaurant_view)
         binding.lifecycleOwner = this
-        binding.viewModel = RestaurantViewModel(shopId, {
+        binding.viewModel = RestaurantViewModel(shopId, SessionManager(this)) {
             Toast.makeText(this, it ?: "", Toast.LENGTH_LONG).show()
-        }, {
-            helper.ShowImageUrl(it, binding.RestaurantViewBackGroundFood)
-        })
+        }
+        binding.viewModel?.shop?.observe(this) {
+            if (it.isUserLiked) {
+                iconDrawable?.setColorFilter(ContextCompat.getColor(this, R.color.orange), PorterDuff.Mode.SRC_IN)
+                count = 2
+            } else {
+                iconDrawable?.setColorFilter(ContextCompat.getColor(this, R.color.grey_500), PorterDuff.Mode.SRC_IN)
+            }
+            Glide.with(this)
+                .load(it.image)
+                .into(binding.RestaurantViewBackGroundFood)
+        }
         HandleShowMoreDialogFragment()
     }
     override fun onStart() {
@@ -64,20 +69,6 @@ class restaurant_view : AppCompatActivity() {
 
     private fun initLikeButton()
     {
-        var count : Int = 1
-        val isUserLikedShop = binding.viewModel?.shop?.value?.isUserLiked
-        val iconDrawable = ContextCompat.getDrawable(this, R.drawable.ic_heart_solid)
-        Log.i("LIKE", isUserLikedShop.toString())
-
-        if(isUserLikedShop == true)
-        {
-            iconDrawable?.setColorFilter(ContextCompat.getColor(this, R.color.orange), PorterDuff.Mode.SRC_IN)
-            count = 2
-        }
-        else{
-            iconDrawable?.setColorFilter(ContextCompat.getColor(this, R.color.grey_500), PorterDuff.Mode.SRC_IN)
-        }
-
         binding.RestaurantViewShopLikeButton.setImageDrawable(iconDrawable)
         binding.RestaurantViewShopLikeButton.setOnClickListener {
             Log.i("COUNT", count.toString())
@@ -94,5 +85,4 @@ class restaurant_view : AppCompatActivity() {
             count++
         }
     }
-
 }

@@ -3,13 +3,9 @@ package com.foodapp.view.main
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.foodapp.R
 import com.foodapp.view.auth.Login
-import com.foodapp.view.authw.Signup
 
 class Splash_Page_01 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
