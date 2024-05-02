@@ -13,4 +13,9 @@
         <item name="android:textSize">8sp</item>
         <item name="fontFamily">@font/sen_regular</item>
     </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:padding">6dp</item>
+    </style>
+
 </resources>
