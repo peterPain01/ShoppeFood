@@ -15,6 +15,6 @@ class Shop (
     var category: List<Category> = listOf(),
     var status: String = "",
     var avg_rating: Double = 0.0,
-    var openHour: Time? = null,
-    var closeHour: Time? = null
+    var openHour: String? = null,
+    var closeHour: String? = null
 )

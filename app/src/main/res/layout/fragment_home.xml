@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:context=".view.main.Homepage"
+    >
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".view.main.Homepage">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    app:elevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:layout_marginTop="3dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:background="@color/transparent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:fontFamily="@font/sen_bold"
+                                android:text="Deliver to"
+                                android:textAllCaps="true"
+                                android:textColor="@color/orange"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Halal Lab office"
+                                android:textColor="#676767"
+                                android:textSize="14dp" />
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <androidx.appcompat.widget.AppCompatImageButton
+                                android:id="@+id/homepage_notify"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:background="@drawable/circle_button_background"
+                                android:backgroundTint="#ECF0F4"
+                                app:tint="#000000"
+                                android:src="@drawable/ic_shopping_bag" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/counter"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:layout_alignTop="@id/homepage_notify"
+                                android:layout_alignEnd="@id/homepage_notify"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:layout_marginBottom="30dp"
+                                android:background="@drawable/circle_button_background"
+                                android:backgroundTint="@color/orange"
+                                android:fontFamily="@font/sen_bold"
+                                android:gravity="center"
+                                android:text="10"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <!--   Search bar-->
+
+
+                <EditText
+                    android:id="@+id/homepage_searchBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:backgroundTint="#F6F6F6"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="Search dishes, restaurants"
+                    android:inputType="none"
+                    android:allowClickWhenDisabled="true"
+                    android:enabled="false"
+                    android:padding="8dp"
+                    android:paddingStart="12dp"
+                    android:textSize="14dp" />
+                <!--   Slider -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/homepage_viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        />
+
+                    <me.relex.circleindicator.CircleIndicator3
+                        android:id="@+id/homepage_circle_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
+                        app:ci_drawable="@drawable/bg_indicator" />
+                </RelativeLayout>
+
+
+                <!--   Categories-->
+                <LinearLayout
+                    android:id="@+id/categoryLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    >
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/homepage_recyclerView_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:scrollbars="horizontal"
+                        android:scrollbarThumbHorizontal="@color/orange"
+                        android:scrollbarAlwaysDrawHorizontalTrack="true"
+                        android:scrollbarSize="1dp"
+                        />
+                </LinearLayout>
+                <!--      Restaurant-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:overScrollMode="never"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Heading_1"
+                            android:text="Open Restaurants" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="See All &gt;"
+                            android:textColor="#333333"
+                            android:textSize="16dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/homepage_recyclerView_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
