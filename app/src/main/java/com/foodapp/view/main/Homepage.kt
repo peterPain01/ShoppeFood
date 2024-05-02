@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.foodapp.R
 import com.foodapp.data.repository.RetrofitClient
 import com.foodapp.databinding.ActivityHomepageBinding
+import com.foodapp.view.Dialog_fragment.FragmentNotification
 import com.foodapp.view.Dialog_fragment.Fragment_Home
 import com.foodapp.view.Dialog_fragment.Fragment_Likes
 import com.foodapp.view.Dialog_fragment.UserInfoFragment
@@ -41,6 +42,11 @@ class Homepage : AppCompatActivity() {
                 R.id.menu_bottom_me -> {
                     replaceFragment(UserInfoFragment())
                     return@setOnItemSelectedListener true
+                }
+                R.id.menu_bottom_notification -> {
+                    replaceFragment(FragmentNotification())
+                    return@setOnItemSelectedListener true
+
                 }
             }
             false

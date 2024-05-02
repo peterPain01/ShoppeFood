@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="6dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".NotificationFragment"
+    android:paddingHorizontal="8dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/f_notify_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@color/white"
+            android:fontFamily="@font/sen_medium"
+            android:gravity="center_horizontal"
+            android:text="Notifications"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/f_notify_setting"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="fitXY"
+            app:tint="#636363"
+            android:layout_alignParentEnd="true"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_driver_setting" />
+    </RelativeLayout>
+
+    <!--   Promotions -->
+    <LinearLayout
+        android:id="@+id/f_notify_firstBtn"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/f_notify_layout">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_vertical"
+        android:outlineSpotShadowColor="@color/black"
+        app:cardCornerRadius="54dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_discount"
+            android:padding="23dp"
+            app:tint="#D8A819"
+            android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingVertical="20dp"
+        android:paddingStart="14dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Promotions"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="Tiệc hè GIẢM TỚI 155.000Đ 🍂 "
+            android:textSize="18dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="6dp"
+            android:textSize="26sp"
+            android:text=">"
+            android:textColor="@color/black"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    </LinearLayout>
+    <!--News for User -->
+    <LinearLayout
+        android:id="@+id/f_notify_secondBtn"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/f_notify_firstBtn">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/item_notifications_cardView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:outlineSpotShadowColor="@color/black"
+            app:cardCornerRadius="54dp">
+
+            <ImageView
+                android:id="@+id/item_notifications_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_announcement"
+                android:padding="23dp"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingVertical="20dp"
+            android:paddingStart="14dp"
+            >
+            <TextView
+                android:id="@+id/item_notifications_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="News"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                />
+
+            <TextView
+                android:id="@+id/item_notifications_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="News for you 📰"
+                android:textSize="18dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="6dp"
+                android:textSize="26sp"
+                android:text=">"
+                android:textColor="@color/black"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
