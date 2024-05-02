@@ -48,6 +48,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:text="Ga Ran KFC"
+            android:textSize="20sp"
             android:textColor="@color/black" />
 
         <TextView
@@ -58,6 +59,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="11dp"
+            android:textSize="18sp"
             android:text="59.000 d"
             android:textColor="#e85c45"
             android:textStyle="bold" />

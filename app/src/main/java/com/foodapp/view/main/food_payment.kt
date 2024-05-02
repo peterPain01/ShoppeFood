@@ -8,10 +8,12 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.ActivityFoodPaymentBinding
+import com.foodapp.view.adapter.UserComment.UserCommentAdapter
 import com.foodapp.viewmodel.FoodPaymentViewModel
 
 
@@ -26,6 +28,7 @@ class food_payment : AppCompatActivity() {
         val id = intent.getStringExtra("productId")!!
         binding = DataBindingUtil.setContentView(this, R.layout.activity_food_payment);
         binding.lifecycleOwner = this
+        binding.FoodPaymentCommentRcv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.viewModel = FoodPaymentViewModel(id, SessionManager(this)) {
             Toast.makeText(this, it ?: "", Toast.LENGTH_LONG).show()
         }
@@ -34,19 +37,12 @@ class food_payment : AppCompatActivity() {
                 .load(it.product_thumb)
                 .into(binding.FoodPaymentBackGroundFood)
         }
+
+        // set adapter
         init();
-        SupportHanldeSize(0, preActiveSize);
     }
+
     private fun init() {
-        val btn_size1 = binding.FoodPaymentSize1
-        val btn_size2 = binding.FoodPaymentSize2
-        val btn_size3 = binding.FoodPaymentSize3
-        btn_size1.setOnClickListener { SupportHanldeSize(0, preActiveSize); }
-        btn_size2.setOnClickListener { SupportHanldeSize(1, preActiveSize); }
-        btn_size3.setOnClickListener { SupportHanldeSize(2, preActiveSize); }
-        btn_size1.let { ListBtnSize.add(it) }
-        btn_size2.let { ListBtnSize.add(it) }
-        btn_size3.let { ListBtnSize.add(it) }
         binding.FoodPaymentBtnBack.setOnClickListener { this.finish() }
         binding.FoodPaymentIncreaseBtn.setOnClickListener { binding.viewModel?.incCount() }
         binding.FoodPaymentDecreaseBtn.setOnClickListener { binding.viewModel?.decCount() }
@@ -57,9 +53,5 @@ class food_payment : AppCompatActivity() {
             }
         }
     }
-    private fun SupportHanldeSize(idShow: Int, preShow: Int){
-        ListBtnSize.get(preShow)?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#F0F5FA"))
-        preActiveSize = idShow;
-        ListBtnSize.get(idShow)?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FE6203"))
-    }
+
 }
