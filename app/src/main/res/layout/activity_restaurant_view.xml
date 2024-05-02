@@ -1,220 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
             name="viewModel"
             type="com.foodapp.viewmodel.RestaurantViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/Restaurant_view_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.main.restaurant_view">
-    <androidx.core.widget.NestedScrollView
+        android:id="@+id/Restaurant_view_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.main.Homepage">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        tools:context=".view.main.restaurant_view">
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:context=".view.main.Homepage"
+            android:background="#efefef"
+            >
 
-    <TextView
-        android:id="@+id/Restaurant_view_NameFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@={viewModel.shop.name}"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/Restaurant_view_cardView"
-        app:layout_constraintTop_toBottomOf="@+id/Restaurant_view_cardView" />
-
-            <ImageView
-                android:id="@+id/Restaurant_view_imageView2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="40dp"
-                android:src="@drawable/ic_detail_page_star"
-                app:layout_constraintStart_toStartOf="@+id/Restaurant_view_DetailFood"
-                app:layout_constraintTop_toBottomOf="@+id/Restaurant_view_DetailFood" />
-
-    <TextView
-        android:id="@+id/Restaurant_view_Rating"
-        android:layout_width="26dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="16dp"
-        android:text='@{String.format("%.1f", viewModel.shop.avg_rating)}'
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/Restaurant_view_imageView2"
-        app:layout_constraintTop_toTopOf="@+id/Restaurant_view_imageView2" />
-
-            <ImageView
-                android:id="@+id/Restaurant_view_imageView"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="48dp"
-                android:src="@drawable/ic_detail_page_time"
-                app:layout_constraintStart_toEndOf="@+id/Restaurant_view_Status"
-                app:layout_constraintTop_toTopOf="@+id/Restaurant_view_Status" />
-
-    <TextView
-        android:id="@+id/Restaurant_view_DetailFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@{viewModel.shop.description}"
-        android:textColor="#A0A5BA"
-        app:layout_constraintStart_toStartOf="@+id/Restaurant_view_NameFood"
-        app:layout_constraintTop_toBottomOf="@+id/Restaurant_view_NameFood" />
-
-            <ImageView
-                android:id="@+id/Restaurant_view_imageView3"
-                android:layout_width="25dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="36dp"
-                android:src="@drawable/ic_detail_page_delivery"
-                app:layout_constraintStart_toEndOf="@+id/Restaurant_view_Rating"
-                app:layout_constraintTop_toTopOf="@+id/Restaurant_view_Rating" />
-
-            <TextView
-                android:id="@+id/Restaurant_view_TimePrepare"
-                android:layout_width="49dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="16dp"
-                android:text="20 min"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@+id/Restaurant_view_imageView"
-                app:layout_constraintTop_toTopOf="@+id/Restaurant_view_imageView" />
-
-            <TextView
-                android:id="@+id/Restaurant_view_Status"
-                android:layout_width="30dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="16dp"
-                android:text="Free"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@+id/Restaurant_view_imageView3"
-                app:layout_constraintTop_toTopOf="@+id/Restaurant_view_imageView3" />
-
-            <ImageButton
-                android:id="@+id/Restaurant_view_btn_back"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="36dp"
-                android:background="@drawable/btn_circle"
-                android:contentDescription="Back"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-            </ImageButton>
-
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="16dp"
-                android:src="@drawable/ic_back"
-                app:layout_constraintBottom_toBottomOf="@+id/Restaurant_view_btn_back"
-                app:layout_constraintEnd_toEndOf="@+id/Restaurant_view_btn_back"
-                app:layout_constraintStart_toStartOf="@+id/Restaurant_view_btn_back"
-                app:layout_constraintTop_toTopOf="@+id/Restaurant_view_btn_back" />
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/Restaurant_view_cardView"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="119dp"
-                android:layout_marginEnd="24dp"
-                app:cardCornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/Restaurant_view_BackGroundFood"
+                <RelativeLayout
+                    android:id="@+id/restaurant_view_image_restaurant"
                     android:layout_width="match_parent"
-                    android:layout_height="182dp"
-                    android:scaleType="fitXY"
-                    tools:srcCompat="@color/black" />
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/Restaurant_view_BackGroundFood"
+                        android:layout_width="match_parent"
+                        android:layout_height="186dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/kfc" />
 
-            <TextView
-                android:id="@+id/Restaurant_view_textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="47dp"
-                android:text="Restaurant View"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                app:layout_constraintStart_toEndOf="@+id/Restaurant_view_btn_back"
-                app:layout_constraintTop_toTopOf="parent" />
+                    <ImageButton
+                        android:id="@+id/Restaurant_view_btn_back"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="14dp"
+                        android:background="@drawable/btn_circle"
+                        android:backgroundTint="#60000000"
+                        android:contentDescription="Back"
+                        android:src="@drawable/ic_back"
+                        app:tint="@color/white" />
 
-            <ImageButton
-                android:id="@+id/Restaurant_view_btn_option"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:contentDescription="Back"
-                android:background="@drawable/btn_circle"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/Restaurant_view_cardView"
-                app:layout_constraintTop_toTopOf="@+id/Restaurant_view_btn_back" />
+                    <ImageButton
+                        android:id="@+id/Restaurant_view_btn_option"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="14dp"
+                        android:background="@drawable/btn_circle"
+                        android:backgroundTint="#60000000"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_more"
+                        app:tint="@color/white" />
+                </RelativeLayout>
 
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="11dp"
-                android:src="@drawable/ic_more"
-                app:layout_constraintBottom_toBottomOf="@+id/Restaurant_view_btn_option"
-                app:layout_constraintEnd_toEndOf="@+id/Restaurant_view_btn_option"
-                app:layout_constraintStart_toStartOf="@+id/Restaurant_view_btn_option"
-                app:layout_constraintTop_toTopOf="@+id/Restaurant_view_btn_option" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/restaurant_view_image_restaurant">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/restaurant_view_category_list"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:layout_marginEnd="20dp"
-        android:adapter="@{viewModel.categoryAdapter}"
-        app:layout_constraintStart_toStartOf="@+id/Restaurant_view_imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/Restaurant_view_imageView2"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent" />
+                    <LinearLayout
+                        android:id="@+id/restaurant_view_shop_mainInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@color/white"
+                        android:paddingHorizontal="12dp"
+                        >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/restaurant_view_gridView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        android:adapter="@{viewModel.foodGridAdapter}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurant_view_name" />
+                        <TextView
+                            android:id="@+id/Restaurant_view_NameFood"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="@={viewModel.shop.name}"
+                            android:textColor="@color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/restaurant_view_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:text="Popular Foods"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurant_view_category_list" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/Restaurant_view_DetailFood"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@{viewModel.shop.description}"
+                            android:textColor="#A0A5BA" />
+                    </LinearLayout>
+
+                    <!--                Categories -->
+                    <LinearLayout
+                        android:id="@+id/restaurant_view_shop_subInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="9dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="12dp"
+                        android:background="@color/white"
+                        >
+
+                        <ImageView
+                            android:id="@+id/Restaurant_view_imageView2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_detail_page_star" />
+
+                        <TextView
+                            android:id="@+id/Restaurant_view_Rating"
+                            android:layout_width="26dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:text='@{String.format("%.1f", viewModel.shop.avg_rating)}'
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/Restaurant_view_imageView"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:src="@drawable/ic_detail_page_time" />
+
+                        <TextView
+                            android:id="@+id/Restaurant_view_TimePrepare"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:text="20 min"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:id="@+id/Restaurant_view_imageView3"
+                            android:layout_width="25dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="36dp"
+                            android:src="@drawable/ic_detail_page_delivery" />
+
+                        <TextView
+                            android:id="@+id/Restaurant_view_Status"
+                            android:layout_width="30dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:text="Free"
+                            android:textColor="@color/black" />
+
+                        <ImageButton
+                            android:id="@+id/Restaurant_view_shop_like_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:contentDescription="Like Shop"
+                            android:src="@drawable/ic_heart_solid" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/restaurant_view_category_list"
+                        android:layout_width="0dp"
+                        android:layout_height="47dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:adapter="@{viewModel.categoryAdapter}"
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="12dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Popular Items"
+                            android:textColor="#e85c45"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp"
+                            android:textStyle="bold"
+                            />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/Restaurant_view_popularRCV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adapter="@{viewModel.popularProductAdapter}"
+                            />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/restaurant_view_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="Popular Foods"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/restaurant_view_gridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="6dp"
+                        android:layout_marginTop="10dp"
+                        android:adapter="@{viewModel.foodGridAdapter}" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

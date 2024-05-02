@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "198790569375",
+    "project_id": "shopeefood-3b454",
+    "storage_bucket": "shopeefood-3b454.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198790569375:android:531592e56f7e709210f1aa",
+        "android_client_info": {
+          "package_name": "com.foodapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRH8Zv-LRwPHsLDZc2ouB5sGkvxL5ORJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

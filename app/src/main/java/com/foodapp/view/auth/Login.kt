@@ -11,9 +11,7 @@ import androidx.databinding.DataBindingUtil
 import com.foodapp.R
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.ActivityLoginBinding
-import com.foodapp.view.authw.Signup
 import com.foodapp.view.main.Admin_Page
-import com.foodapp.view.main.DashBoard
 import com.foodapp.view.main.Homepage
 import com.foodapp.view.main.driver_home
 import com.foodapp.view.main.seller_page

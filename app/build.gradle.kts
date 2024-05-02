@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -68,6 +69,11 @@ dependencies {
     // slider
     implementation ("me.relex:circleindicator:2.1.6")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    // Firebase Cloud Messaging
+    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
+    implementation("com.google.firebase:firebase-messaging:23.4.1")
+
 
 }
 secrets {
