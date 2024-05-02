@@ -22,8 +22,8 @@ class Order : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = CartViewModel(this, {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
-        }, {
-            helper.displayErrorPopup(this, it) {
+        }, { str, type ->
+            helper.displayPopup(this, str, type) {
                 this.finish()
             }
         })

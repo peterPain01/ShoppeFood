@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <data>
+        <variable
+            name="viewModel"
+            type="com.foodapp.viewmodel.HomepageViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     tools:context=".view.main.Homepage"
@@ -54,15 +60,26 @@
                                 android:textAllCaps="true"
                                 android:textColor="@color/orange"
                                 android:textSize="12dp" />
-
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginTop="8dp"
-                                android:text="Halal Lab office"
-                                android:textColor="#676767"
-                                android:textSize="14dp" />
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/ic_address"
+                                    android:scaleType="fitCenter" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="5dp"
+                                    android:text='@{String.format("%s ...", viewModel.overview.address.street.substring(0, Math.min(viewModel.overview.address.street.length(), 30)))}'
+                                    android:textColor="#676767"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -93,7 +110,7 @@
                                 android:backgroundTint="@color/orange"
                                 android:fontFamily="@font/sen_bold"
                                 android:gravity="center"
-                                android:text="10"
+                                android:text='@{String.format("%d", viewModel.overview.totalItem)}'
                                 android:textColor="@color/white"
                                 android:textSize="18sp" />
 
@@ -166,6 +183,7 @@
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         app:spanCount="2"
                         app:layout_constraintEnd_toEndOf="parent"
+                        android:adapter="@{viewModel.categoryAdapter}"
                         android:scrollbars="horizontal"
                         android:scrollbarThumbHorizontal="@color/orange"
                         android:scrollbarAlwaysDrawHorizontalTrack="true"
@@ -202,9 +220,13 @@
                     android:layout_marginTop="20dp"
                     android:id="@+id/homepage_recyclerView_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:adapter="@{viewModel.topRatedShopAdapter}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    />
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
