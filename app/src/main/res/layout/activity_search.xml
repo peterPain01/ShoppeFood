@@ -1,184 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.main.Homepage">
+    <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            tools:context=".view.main.Homepage"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingTop="40dp"
+            android:paddingTop="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                       android:id="@+id/search_btnBack"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@drawable/circle_button_background"
-                        android:backgroundTint="#ECF0F4"
-                        android:src="@drawable/ic_arrow_left" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:text="Search"
-                            android:textAllCaps="true"
-                            android:textColor="#181C2E"
-                            android:textSize="17dp" />
-                    </LinearLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent">
-
-                        <androidx.appcompat.widget.AppCompatImageButton
-                            android:id="@+id/search_btnNotify"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:background="@drawable/circle_button_background"
-                            android:backgroundTint="#181C2E"
-                            android:src="@drawable/ic_shopping_bag" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/counter"
-                            android:layout_width="26dp"
-                            android:layout_height="26dp"
-                            android:layout_alignTop="@id/search_btnNotify"
-                            android:layout_alignEnd="@id/search_btnNotify"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_marginBottom="30dp"
-                            android:background="@drawable/circle_button_background"
-                            android:backgroundTint="@color/orange"
-                            android:fontFamily="@font/sen_bold"
-                            android:gravity="center"
-                            android:text="2"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
-
-                    </RelativeLayout>
-                </LinearLayout>
-
-            </com.google.android.material.appbar.AppBarLayout>
-
-            <!--    Search bar-->
-            <EditText
-                android:id="@+id/search_searchBar"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/rounded_edittext_background"
-                android:backgroundTint="#F6F6F6"
-                android:drawableStart="@drawable/ic_search"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="Search dishes, restaurants"
-                android:inputType="textEmailAddress"
-                android:padding="8dp"
-                android:paddingStart="12dp" />
-
-            <!--   Categories-->
+        <!--  Search bar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/search_searchBar"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_edittext_background"
+                    android:backgroundTint="#F6F6F6"
+                    android:hint="Search dishes, restaurants"
+                    android:inputType="textEmailAddress"
+                    android:padding="8dp" />
 
                 <TextView
-                    style="@style/Heading_1"
-                    android:layout_width="match_parent"
+                    android:id="@+id/search_cancel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Recent Keywords" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/search_recyclerView_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    android:text="Cancel"
+                    android:textColor="@color/orange"
+                    />
             </LinearLayout>
 
-            <!--      Restaurant-->
-            <LinearLayout
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/search_fragment_container"
+                android:layout_marginTop="4dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="vertical"
-                android:overScrollMode="never">
-
-                <TextView
-                    style="@style/Heading_1"
-                    android:text="Suggested Restaurants" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="280dp">
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/search_recyclerView_vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
-
-            <!-- Popular Fast food-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:orientation="vertical"
-                android:overScrollMode="never">
-
-                <TextView
-                    style="@style/Heading_1"
-                    android:text="Popular Fast food" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/search_gridView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp" />
-
-
-            </LinearLayout>
+                android:layout_height="0dp"
+                android:layout_weight="1" />
         </LinearLayout>
-
-
-    </androidx.core.widget.NestedScrollView>
 
 </layout>

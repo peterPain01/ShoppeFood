@@ -13,6 +13,7 @@ import retrofit2.http.Part
 import retrofit2.http.PartMap
 import retrofit2.http.Path
 import retrofit2.http.Query
+import java.util.ArrayList
 
 interface ApiService {
     @GET("api/user/{id}")
@@ -109,5 +110,22 @@ interface ApiService {
 
     @GET("comment/all/shop")
     fun getComment(): Call<ApiResult<List<Review>>>
+
+    // SEARCH - API
+    @GET("shop/suggest")
+    fun getRelatedSearchString(
+        @Query("keySearch") keySearch: String,
+    ): Call<ApiResult<List<String>>>
+
+    @GET("shop/related")
+    fun getShopBySearchString(
+        @Query("keySearch") keySearch: String,
+    ): Call<ApiResult<List<Shop>>>
+
+    // LIKE - API
+    @GET("user/liked/shop")
+    fun getShopUserLiked(
+        @Query("sortBy") sortBy: String,
+    ): Call<ApiResult<List<Shop>>>
 }
 
