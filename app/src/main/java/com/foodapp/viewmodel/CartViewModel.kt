@@ -11,13 +11,14 @@ import com.foodapp.data.model.Cart
 import com.foodapp.data.model.UserAddress
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.data.repository.UserRepository
+import com.foodapp.helper.helper
 import com.foodapp.view.adapter.AddressSpinnerAdapter
 import com.foodapp.view.adapter.CartListAdapter
 import retrofit2.Call
 import retrofit2.Response
 
 
-class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val showError: (String) -> Unit): ViewModel() {
+class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val showError: (String, type: helper.PopupType) -> Unit): ViewModel() {
     private var userService = UserRepository(SessionManager(context)).create(ApiService::class.java)
     var adapter: MutableLiveData<CartListAdapter> = MutableLiveData()
     var spinnerAdapter: MutableLiveData<AddressSpinnerAdapter> = MutableLiveData()
@@ -55,7 +56,7 @@ class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val show
                             }
                         })
                 } else if (response.code() == 404) {
-                    showError("Please add products to cart first!")
+                    showError("Please add products to cart first!", helper.PopupType.Error)
                 } else {
                     displayMsg(response.errorBody().toString())
                 }
@@ -133,14 +134,18 @@ class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val show
     }
 
     fun placeOrder(_view: View) {
-        spinnerAdapter.value?.selectedItem?.let {
-            userService.placeOrder(it).enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
+        if (spinnerAdapter.value?.selectedItem == null) {
+            showError("Please update address in user info page first!", helper.PopupType.Error)
+        } else {
+            userService.placeOrder(spinnerAdapter.value?.selectedItem!!).enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
                 override fun onResponse(
                     call: Call<ApiResult<Nothing>>,
                     response: Response<ApiResult<Nothing>>
                 ) {
                     if (response.code() != 201) {
                         displayMsg(response.errorBody().toString())
+                    } else {
+                        showError("Successfully", helper.PopupType.Info)
                     }
                 }
 

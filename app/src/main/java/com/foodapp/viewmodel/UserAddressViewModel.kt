@@ -1,20 +1,11 @@
 package com.foodapp.viewmodel
 
 import ApiService
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModel
-import com.foodapp.R
 import com.foodapp.data.model.ApiResult
 import com.foodapp.data.model.User
-import com.foodapp.data.model.UserAddress
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.data.repository.UserRepository
-import com.foodapp.view.adapter.AddressAdapter
-import com.foodapp.view.main.ManageAddress
 import retrofit2.Call
 import retrofit2.Response
 
