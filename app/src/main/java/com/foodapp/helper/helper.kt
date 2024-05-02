@@ -1,8 +1,10 @@
 package com.foodapp.helper
 
+import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.os.Handler
 import android.os.Looper
@@ -22,7 +24,8 @@ import java.net.URL
 import java.util.concurrent.Executors
 
 
-class helper {
+open class helper {
+    enum class PopupType { Info, Error }
     companion object {
         @JvmStatic
         fun ShowImageUrl(url: String?, imageView: ImageView) {
@@ -51,10 +54,19 @@ class helper {
             return BitmapDrawable(Resources.getSystem(), x)
         }
 
-        fun displayErrorPopup(context: AppCompatActivity, error: String, onDismiss: () -> Unit) {
+        fun displayPopup(context: AppCompatActivity, str: String, type: PopupType, onDismiss: () -> Unit) {
             val inflater: LayoutInflater = LayoutInflater.from(context)!!
             val view: View = inflater.inflate(R.layout.error_popup, context.window.decorView.findViewById<ViewGroup>(android.R.id.content), false)
-            view.findViewById<TextView>(R.id.error_text).text = error
+            view.findViewById<TextView>(R.id.error_text).text = str
+            val image = view.findViewById<ImageView>(R.id.error_popup_image)
+            image.imageTintList = ColorStateList.valueOf(Color.parseColor(when (type) {
+                PopupType.Error -> "#ff0000"
+                PopupType.Info -> "#0000ff"
+            }))
+            image.setImageResource(when (type) {
+                PopupType.Error -> android.R.drawable.stat_notify_error
+                PopupType.Info -> android.R.drawable.ic_dialog_info
+            })
             val width = LinearLayout.LayoutParams.MATCH_PARENT
             val height = LinearLayout.LayoutParams.MATCH_PARENT
             val focusable = true // lets taps outside the popup also dismiss it

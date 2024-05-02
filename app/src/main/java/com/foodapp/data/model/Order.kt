@@ -23,5 +23,6 @@ data class Order(
     val order_subPrice: Double = 0.0,
     val order_listProducts: List<CartProduct> = listOf(),
     val order_paymentMethod: String = "cash",
-    val createdAt: Date = Date()
+    val createdAt: Date = Date(),
+    val updatedAt: Date = Date()
 )

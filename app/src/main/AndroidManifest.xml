@@ -112,13 +112,7 @@
             android:name=".view.main.seller_page"
             android:exported="false" />
         <activity
-            android:name=".view.main.UserInfo"
-            android:exported="false" />
-        <activity
             android:name=".view.main.EditUserInfo"
-            android:exported="false" />
-        <activity
-            android:name=".view.main.MyOrder"
             android:exported="false" />
         <activity
             android:name=".view.main.UserAddress"

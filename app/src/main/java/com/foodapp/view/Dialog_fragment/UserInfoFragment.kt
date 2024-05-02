@@ -35,12 +35,11 @@ class UserInfoFragment : Fragment(R.layout.fragment_user_info) {
         }
         binding.viewModel?.user?.observe(viewLifecycleOwner) {
             Glide.with(this)
-                .load(it)
+                .load(it?.avatar)
                 .into(binding.activityUserInfoImage)
         }
     }
     override fun onStart() {
-        super.onStart()
         super.onStart()
         binding.activityUserInfoAddressContainer.setOnClickListener {
             val new_intent = Intent(context, UserAddress::class.java);

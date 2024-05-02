@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.foodapp.R
 import com.foodapp.data.repository.RetrofitClient
 import com.foodapp.databinding.ActivityHomepageBinding
+import com.foodapp.view.Dialog_fragment.FragmentMyOrder
 import com.foodapp.view.Dialog_fragment.FragmentNotification
 import com.foodapp.view.Dialog_fragment.Fragment_Home
 import com.foodapp.view.Dialog_fragment.Fragment_Likes
@@ -31,6 +32,10 @@ class Homepage : AppCompatActivity() {
         replaceFragment(Fragment_Home())
         binding.homepageBottomNavigation.setOnItemSelectedListener{
             when (it.itemId) {
+                R.id.menu_bottom_orders -> {
+                    replaceFragment(FragmentMyOrder())
+                    return@setOnItemSelectedListener true
+                }
                 R.id.menu_bottom_home -> {
                     replaceFragment(Fragment_Home())
                     return@setOnItemSelectedListener true
