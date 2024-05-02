@@ -19,11 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
         <ImageView
+            android:id="@+id/error_popup_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@android:drawable/stat_notify_error"
-            app:tint="#ff0000" />
+            android:src="@android:drawable/ic_dialog_info"
+            app:tint="#0000ff" />
         <TextView
             android:id="@+id/error_text"
             android:layout_width="wrap_content"
