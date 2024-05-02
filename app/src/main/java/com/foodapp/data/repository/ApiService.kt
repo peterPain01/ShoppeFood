@@ -143,5 +143,15 @@ interface ApiService {
 
     @GET("order/success")
     fun getSuccessOrder(): Call<ApiResult<List<Order>>>
+
+    @POST("shipper/location/update")
+    fun updateAddress(
+        @Body address: MapPosition
+    ): Call<ApiResult<Nothing>>
+
+    @POST("shipper/token/save")
+    fun updateToken(
+        @Query("token") token: String
+    ): Call<ApiResult<Nothing>>
 }
 
