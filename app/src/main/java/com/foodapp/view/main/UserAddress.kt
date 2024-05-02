@@ -40,22 +40,26 @@ class UserAddress : AppCompatActivity() {
         }
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             val data: Intent? = result.data
-            val address = data?.getSerializableExtra("address", UserAddress::class.java)!!
-            when (result.resultCode) {
-                ADD_CODE -> {
-                    adapter.add(address)
-                }
-                UPDATE_CODE -> {
-                    val index = data.getIntExtra("edittingIndex", -1) ?: -1
-                    if (index != -1) {
-                        adapter.updateAt(index, address)
+            val address = data?.getSerializableExtra("address", UserAddress::class.java)
+            address?.let {
+                when (result.resultCode) {
+                    ADD_CODE -> {
+                        adapter.add(it)
+                    }
+
+                    UPDATE_CODE -> {
+                        val index = data.getIntExtra("edittingIndex", -1) ?: -1
+                        if (index != -1) {
+                            adapter.updateAt(index, it)
+                        }
+                    }
+
+                    else -> {
+                        Log.d("FOODAPP:UserAddress", result.resultCode.toString())
                     }
                 }
-                else -> {
-                    Log.d("FOODAPP:UserAddress", result.resultCode.toString())
-                }
+                binding.viewModel?.updateUser(user)
             }
-            binding.viewModel?.updateUser(user)
         }
     }
 
