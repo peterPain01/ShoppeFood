@@ -1,4 +1,4 @@
-package com.foodapp.view.authw
+package com.foodapp.view.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

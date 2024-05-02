@@ -124,5 +124,15 @@ interface ApiService {
     fun getShopUserLiked(
         @Query("sortBy") sortBy: String,
     ): Call<ApiResult<List<Shop>>>
+
+    @POST("user/like/shop")
+    fun userShopLike(
+        @Query("shopId") shopId : String,
+    ): Call<ApiResult<Nothing>>
+    @POST("user/unlike/shop")
+    fun userShopUnlike(
+        @Query("shopId") shopId : String,
+    ): Call<ApiResult<Nothing>>
+
 }
 
