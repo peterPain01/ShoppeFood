@@ -10,6 +10,7 @@ import com.foodapp.data.model.Product
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.data.repository.RetrofitClient
 import com.foodapp.data.repository.UserRepository
+import com.foodapp.view.adapter.UserComment.UserCommentAdapter
 import retrofit2.Call
 import retrofit2.Response
 
@@ -20,6 +21,7 @@ class FoodPaymentViewModel(val id: String,sessionManager: SessionManager, val di
     var count: MutableLiveData<Int> = MutableLiveData(1)
     var totalPrice: MutableLiveData<Double> = MutableLiveData(0.0)
     var totalOriginalPrice: MutableLiveData<String> = MutableLiveData("")
+    val commentAdapter: MutableLiveData<UserCommentAdapter> = MutableLiveData()
 
     init {
         service.getProductId(id).enqueue(object: retrofit2.Callback<ApiResult<Product>> {
@@ -31,6 +33,7 @@ class FoodPaymentViewModel(val id: String,sessionManager: SessionManager, val di
                 val productInfo = body!!.metadata
                 if (response.code() == 200) {
                     product.value = productInfo
+                    commentAdapter.value = UserCommentAdapter(productInfo.product_reviews)
                     updatePrice()
                 } else {
                     displayMsg(body.message)
