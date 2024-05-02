@@ -9,7 +9,7 @@ import com.foodapp.data.repository.UserRepository
 import retrofit2.Call
 import retrofit2.Response
 
-class UserInfoViewModel(val displayMsg: (String?) -> Unit, showImage: (String?) -> Unit, val sessionManager: SessionManager) {
+class UserInfoViewModel(val sessionManager: SessionManager, val displayMsg: (String?) -> Unit) {
     private val userService = UserRepository(sessionManager).create(ApiService::class.java)
     var user: MutableLiveData<User?> = MutableLiveData()
     init {
@@ -21,7 +21,6 @@ class UserInfoViewModel(val displayMsg: (String?) -> Unit, showImage: (String?) 
                 val body = response.body()
                 if (response.code() == 200) {
                     user.value = body?.metadata
-                    showImage(user.value?.avatar)
                 } else {
                     displayMsg(body?.message)
                 }

@@ -26,13 +26,14 @@ class food_payment : AppCompatActivity() {
         val id = intent.getStringExtra("productId")!!
         binding = DataBindingUtil.setContentView(this, R.layout.activity_food_payment);
         binding.lifecycleOwner = this
-        binding.viewModel = FoodPaymentViewModel(id, {
+        binding.viewModel = FoodPaymentViewModel(id, SessionManager(this)) {
             Toast.makeText(this, it ?: "", Toast.LENGTH_LONG).show()
-        }, {
+        }
+        binding.viewModel?.product?.observe(this) {
             Glide.with(this)
-                .load(it)
+                .load(it.product_thumb)
                 .into(binding.FoodPaymentBackGroundFood)
-        }, SessionManager(this))
+        }
         init();
         SupportHanldeSize(0, preActiveSize);
     }
