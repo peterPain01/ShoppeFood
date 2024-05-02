@@ -10,5 +10,6 @@ data class Product(
     val product_discounted_price: Double = 0.0,
     val product_original_price: Double = 0.0,
     val product_thumb: String = "",
-    val product_description: String = ""
+    val product_description: String = "",
+    val product_reviews : List<Review> = emptyList()
 )
