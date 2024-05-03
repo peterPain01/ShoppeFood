@@ -847,7 +847,6 @@
                         android:textSize="12sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/sffe8e9ecsw1cr8bfffcfcfc"
                         android:paddingTop="5dp"
                         android:paddingBottom="63dp"
                         android:paddingHorizontal="18dp"
