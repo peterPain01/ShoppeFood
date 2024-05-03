@@ -123,6 +123,21 @@
         <activity
             android:name=".view.main.UserAddress"
             android:exported="false" />
+
+        <activity android:name=".view.main.AddPayment"
+            android:exported="false"/>
+
+        <activity android:name=".view.main.AddNewItem"
+            android:exported="false"/>
+
+        <activity android:name=".view.main.ChefFoodDetail"
+            android:exported="false"/>
+
+        <activity android:name=".view.main.Menu"
+            android:exported="false"/>
+
+        <activity android:name=".view.main.PaymentMethod"
+            android:exported="false"/>
         <activity
             android:name=".view.main.Splash_Page_01"
             android:exported="true">
