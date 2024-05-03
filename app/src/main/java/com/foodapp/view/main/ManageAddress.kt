@@ -93,18 +93,18 @@ class ManageAddress : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.isMyLocationEnabled = locationHelper.isLocationAllowed
-        if (locationHelper.isLocationAllowed) {
-            mMap.setOnMyLocationButtonClickListener {
-                locationHelper.getCurrentLocation {
-                    it?.let {
-                        Log.d("FOODAPP:ManageAddress", "CurLat: ${it.latitude}")
-                        Log.d("FOODAPP:ManageAddress", "CurLng: ${it.longitude}")
-                        binding.viewModel?.updateAddress(LatLng(it.latitude, it.longitude))
-                    }
-                }
-                false
-            }
-        };
+        // if (locationHelper.isLocationAllowed) {
+        //     mMap.setOnMyLocationButtonClickListener {
+        //         locationHelper.getCurrentLocation {
+        //             it?.let {
+        //                 Log.d("FOODAPP:ManageAddress", "CurLat: ${it.latitude}")
+        //                 Log.d("FOODAPP:ManageAddress", "CurLng: ${it.longitude}")
+        //                 binding.viewModel?.updateAddress(LatLng(it.latitude, it.longitude))
+        //             }
+        //         }
+        //         false
+        //     }
+        // };
         var initLatLng: LatLng? = null
         var marker: Marker? = null
         initLatLng = if (address == null && locationHelper.isLocationAllowed) {

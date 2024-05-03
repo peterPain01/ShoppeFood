@@ -153,5 +153,15 @@ interface ApiService {
     fun updateToken(
         @Query("token") token: String
     ): Call<ApiResult<Nothing>>
+
+    @GET("order/detail")
+    fun getOrderById(
+        @Query("orderId") id: String
+    ): Call<ApiResult<Order>>
+
+    @POST("shipper/order/confirm")
+    fun confirmOrder(
+        @Query("orderId") id: String
+    ): Call<ApiResult<Nothing>>
 }
 
