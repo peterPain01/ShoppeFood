@@ -12,40 +12,19 @@ import com.foodapp.R
 import com.foodapp.data.model.Shop
 import com.foodapp.view.main.restaurant_view
 
-class VerticalAdapter(private val dataList: List<Shop>, private val res: Int) : RecyclerView.Adapter<VerticalAdapter.ViewHolder>() {
+class VerticalAdapter<T, K : DataViewHolder<T>>(private val dataList: List<T>, private val res: Int, private val klass: Class<K>) : RecyclerView.Adapter<DataViewHolder<T>>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder<T> {
         val view = LayoutInflater.from(parent.context).inflate(res, parent, false)
-        return ViewHolder(view)
+        return klass.getDeclaredConstructor(View::class.java).newInstance(view) as DataViewHolder<T>
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DataViewHolder<T>, position: Int) {
         val data = dataList[position]
         holder.bind(data)
     }
 
     override fun getItemCount(): Int {
         return dataList.size
-    }
-
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val imageView: ImageView = itemView.findViewById(R.id.item_vertical_image)
-        private val titleTextView: TextView = itemView.findViewById(R.id.item_vertical_name)
-        private val ratingTextView: TextView = itemView.findViewById(R.id.item_vertical_rating)
-        private val category: TextView = itemView.findViewById(R.id.item_vertical_category)
-
-        fun bind(data: Shop) {
-            Glide.with(itemView.context)
-                .load(data.image)
-                .into(imageView)
-            titleTextView.text = data.name
-            category.text = data.category.joinToString(separator = " - ") { it.name }
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, restaurant_view::class.java)
-                intent.putExtra("shopId", data._id)
-                itemView.context.startActivity(intent)
-            }
-            ratingTextView.text = data.avg_rating.toString()
-        }
     }
 }

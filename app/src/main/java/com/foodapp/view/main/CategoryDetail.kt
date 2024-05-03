@@ -11,6 +11,7 @@ import com.foodapp.R
 import com.foodapp.view.adapter.GridAdapter
 import com.foodapp.view.adapter.VerticalAdapter
 import com.foodapp.utils.FakeData
+import com.foodapp.view.adapter.VerticalShopViewHolder
 import com.google.android.material.button.MaterialButton
 
 class CategoryDetail : AppCompatActivity() {
@@ -31,7 +32,7 @@ class CategoryDetail : AppCompatActivity() {
 
         // RECYCLER VERTICAL VIEW
         val recyclerView_vertical: RecyclerView = findViewById<RecyclerView>(R.id.category_detail_recyclerView_vertical)
-        val adapter_vertical = VerticalAdapter(dummyList, R.layout.item_vertical)
+        val adapter_vertical = VerticalAdapter(dummyList, R.layout.item_vertical, VerticalShopViewHolder::class.java)
         recyclerView_vertical.layoutManager = LinearLayoutManager(this)
         recyclerView_vertical.adapter = adapter_vertical
 
