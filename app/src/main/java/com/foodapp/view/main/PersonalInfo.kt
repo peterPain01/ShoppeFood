@@ -33,6 +33,7 @@ class PersonalInfo() : AppCompatActivity() {
         editBtn.paintFlags = editBtn.paintFlags.or(Paint.UNDERLINE_TEXT_FLAG)
         editBtn.setOnClickListener {
             val new_intent = Intent(this, EditUserInfo::class.java)
+            new_intent.putExtra("info", binding.info)
             startActivity(new_intent)
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

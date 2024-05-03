@@ -153,5 +153,15 @@ interface ApiService {
     fun updateToken(
         @Query("token") token: String
     ): Call<ApiResult<Nothing>>
+
+    @Multipart
+    @PATCH("info")
+    fun updateUser(
+        @Part("fullname") name: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("bio") bio: RequestBody,
+        @Part avatar: MultipartBody.Part
+    ): Call<ApiResult<User>>
 }
 
