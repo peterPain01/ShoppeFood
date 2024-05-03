@@ -163,5 +163,16 @@ interface ApiService {
         @Part("bio") bio: RequestBody,
         @Part avatar: MultipartBody.Part
     ): Call<ApiResult<User>>
+
+    @Multipart
+    @POST("shop/product")
+    fun createProduct(
+        @Part("product_name") name: RequestBody,
+        @Part("product_description") description: RequestBody,
+        @Part("product_discounted_price") discounted: RequestBody,
+        @Part("product_category") category: RequestBody,
+        @Part("product_original_price") price: RequestBody,
+        @Part product_thumb: MultipartBody.Part
+    ): Call<ApiResult<Product>>
 }
 
