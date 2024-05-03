@@ -14,6 +14,7 @@ class CustomFirebaseMessagingService : FirebaseMessagingService() {
         remoteMessage.notification?.let {
             if (it.title?.lowercase() == "new order") {
                 val intent = Intent("new-order")
+                intent.putExtra("orderId", it.body)
                 broadcaster.sendBroadcast(intent)
             }
         }
