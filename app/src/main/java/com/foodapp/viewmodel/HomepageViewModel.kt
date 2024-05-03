@@ -15,6 +15,7 @@ import com.foodapp.data.repository.RetrofitClient
 import com.foodapp.data.repository.UserRepository
 import com.foodapp.view.adapter.HorizontalAdapter
 import com.foodapp.view.adapter.VerticalAdapter
+import com.foodapp.view.adapter.VerticalShopViewHolder
 import retrofit2.Call
 import retrofit2.Response
 
@@ -23,7 +24,7 @@ class HomepageViewModel(val sessionManager: SessionManager, val displayMsg: (Str
     val overview: MutableLiveData<UserOverview> = MutableLiveData(UserOverview())
     val service = RetrofitClient.retrofit.create(ApiService::class.java)
     val categoryAdapter: MutableLiveData<HorizontalAdapter> = MutableLiveData()
-    val topRatedShopAdapter: MutableLiveData<VerticalAdapter> = MutableLiveData()
+    val topRatedShopAdapter: MutableLiveData<VerticalAdapter<Shop, VerticalShopViewHolder>> = MutableLiveData()
     init {
         loadOverview()
         service.getTopRated(10).enqueue(object : retrofit2.Callback<ApiResult<List<Shop>>> {
@@ -34,7 +35,7 @@ class HomepageViewModel(val sessionManager: SessionManager, val displayMsg: (Str
                 if (response.code() == 200) {
                     val body = response.body()
                     if (body != null) {
-                        topRatedShopAdapter.value = VerticalAdapter(body.metadata, R.layout.item_vertical)
+                        topRatedShopAdapter.value = VerticalAdapter(body.metadata, R.layout.item_vertical, VerticalShopViewHolder::class.java)
                     } else {
                         displayMsg("Server not working")
                     }

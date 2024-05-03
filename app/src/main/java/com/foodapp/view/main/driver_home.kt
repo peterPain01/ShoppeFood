@@ -71,9 +71,14 @@ class driver_home : AppCompatActivity(), OnMapReadyCallback {
         val thisContext: AppCompatActivity = this
         mNewOrderReceiver = object: BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
-                helper.displayPopup(thisContext, "You have a new order", helper.PopupType.Info) {
-                    Log.d("FOODAPP:driver_home", "OK")
-                }
+                helper.displayConfirmCancelPopup(thisContext, "You have a new order", {
+                    val id = intent?.getStringExtra("orderId")
+                    val new_intent = Intent(thisContext, driver_confirm::class.java)
+                    new_intent.putExtra("orderId", id)
+                    thisContext.startActivity(new_intent)
+                }, {
+                    Log.d("FOODAPP:driver_home", "cancel")
+                })
             }
         }
         LocalBroadcastManager.getInstance(this).registerReceiver(mNewOrderReceiver, IntentFilter("new-order"))

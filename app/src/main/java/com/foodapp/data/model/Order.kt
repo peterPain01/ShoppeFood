@@ -5,14 +5,19 @@ import java.util.Date
 data class OrderUser(
     val _id: String = "",
     val fullname: String = "",
-    val phone: String = ""
+    val phone: String = "",
+    val address: UserAddress = UserAddress()
 )
 
 data class OrderShop(
     val _id: String = "",
     val name: String = "",
-    val image: String = ""
-)
+    val image: String = "",
+    val addresses: List<UserAddress> = listOf()
+) {
+    val firstAddressStreet: String?
+        get() = addresses.firstOrNull()?.street
+}
 
 data class Order(
     val _id: String = "",
