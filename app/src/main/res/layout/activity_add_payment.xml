@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFFFF"
+    android:orientation="vertical"
+    android:paddingHorizontal="8dp"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ruzjsg212mcg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="26dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/add_payment_backBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@mipmap/ic_launcher"
+                tools:srcCompat="@drawable/back" />
+
+            <TextView
+                android:id="@+id/rme6mbyvf7c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Payment"
+                android:paddingStart="8dp"
+                android:textColor="#181C2E"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/risvj5aar7o"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/rh378ijowo7"
+                android:layout_width="91dp"
+                android:layout_height="60dp"
+                android:background="@drawable/cr9_624489784240723bfff0f5fa"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical"
+               >
+                <ImageView
+                    android:id="@+id/r9eyzfm5q6e"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerInside"
+                    android:layout_centerInParent="true"
+                    tools:src="@drawable/cashing" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:id="@+id/r3ymf1uu5ee"
+                android:layout_width="91dp"
+                android:layout_height="60dp"
+                android:background="@drawable/cr9_624489784240723bfff0f5fa"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/rppxw940woyf"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerInside"
+                    android:layout_centerInParent="true"
+                    tools:src="@drawable/visa" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/rnw9tnh4uiif"
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rhvp1i639s9u"
+                    android:layout_width="91dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/sffff7621sw2cr9_619999885559082"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/rqdrrsuc0zua"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:scaleType="centerInside"
+                        tools:src="@drawable/mastercard"
+                        android:layout_centerInParent="true"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <RelativeLayout
+                android:id="@+id/rv03cp3nn0b"
+                android:layout_width="91dp"
+                android:layout_height="60dp"
+                android:background="@drawable/cr9_624489784240723bfff0f5fa"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/r7skgncxfozh"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="centerInside"
+                    tools:srcCompat="@drawable/paypal"
+                    android:layout_centerInParent="true"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rjt79ghre7a8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="26dp"
+            android:layout_marginBottom="57dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/rw0bzkfa4d4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:text="Cash"
+                android:textColor="#464E57"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/risj6jldyzms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="52dp"
+                android:text="Visa"
+                android:textColor="#464E57"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/raahvmc9ke4q"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="46dp"
+                android:text="Mastercard"
+                android:textColor="#464E57"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/rpaidse1kh9d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PayPal"
+                android:textColor="#464E57"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rfz2jiduyud7"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="17dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="21dp">
+
+            <TextView
+                android:id="@+id/rdtiv952i7qp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="11dp"
+                android:text="Master Card"
+                android:textColor="#31343D"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/rh1bimzoe3if"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/rvjs6zvt9shi"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="9dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="5dp">
+
+                    <RelativeLayout
+                        android:id="@+id/rwr7hrjf85ti"
+                        android:layout_width="10dp"
+                        android:layout_height="12dp"
+                        android:layout_marginTop="3dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
+
+                        <ImageView
+                            android:id="@+id/rhecja3k6316"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="-10dp"
+                            android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/ic_launcher"
+                            tools:srcCompat="@drawable/card_2" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/r8jsddui4crr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:text="*************"
+                    android:textColor="#31343D"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/r6j7hhsuqd2q"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="436"
+                    android:textColor="#31343D"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/r8xy00mmkti5"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@drawable/sfff0f5fasw2cr10bffffffff"
+            android:clickable="true"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingVertical="26dp">
+
+            <ImageView
+                android:id="@+id/ryvjnl901am7"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="6dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher"
+                tools:srcCompat="@drawable/plus_copy" />
+
+            <TextView
+                android:id="@+id/r3hxr275sa8o"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New"
+                android:textColor="#FF7621"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rghp2x9x1hmn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:paddingVertical="28dp">
+
+        <LinearLayout
+            android:id="@+id/rqyir54quisl"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="32dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/rco6vkbm5iqe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="26dp"
+                android:text="Total:"
+                android:textColor="#A0A5BA"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/rh4n5v64q4v4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="$96"
+                android:textColor="#181C2E"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/cr12bffff7621"
+            >
+
+            <TextView
+                android:id="@+id/rjqm3eiidwno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay &amp; Confirm"
+                android:textColor="#FFFFFF"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
