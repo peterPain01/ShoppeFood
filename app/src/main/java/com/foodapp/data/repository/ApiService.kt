@@ -184,5 +184,8 @@ interface ApiService {
         @Part("product_original_price") price: RequestBody,
         @Part product_thumb: MultipartBody.Part
     ): Call<ApiResult<Product>>
+
+    @GET("/shop/statistic/order/pending")
+    fun getAllPending(): Call<ApiResult<List<Running>>>
 }
 
