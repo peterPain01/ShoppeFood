@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.Product
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.Locale
 
 class PopularProductAdapter (private val dataList: List<Product>) :
     RecyclerView.Adapter<PopularProductAdapter.ViewHolder>() {
@@ -27,8 +30,9 @@ class PopularProductAdapter (private val dataList: List<Product>) :
                 .load(data.product_thumb)
                 .into(productImage)
             productName.text = data.product_name
-            productPrice.text = data.product_discounted_price.toString() + "₫"
+            productPrice.text =  NumberFormat.getNumberInstance(Locale.GERMANY).format(data.product_discounted_price.toInt()) + "VND"
             productSold.text = data.product_sold.toString() + " Sold"
+
 
             addToCartButton.setOnClickListener{
                 // TODO: Add to Cart Logic
