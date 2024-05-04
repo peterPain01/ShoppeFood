@@ -23,7 +23,7 @@ class FragmentDetailOrder(val orderId: String) : Fragment(R.layout.fragment_deta
         binding = FragmentDetailOrderBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = OrderDetailViewModel(SessionManager(this.requireContext()), orderId) {
-            Toast.makeText(this.context, it, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
             Log.d("FOODAPP:FragmentDetailOrder", it)
         }
         binding.viewModel?.order?.observe(viewLifecycleOwner) {

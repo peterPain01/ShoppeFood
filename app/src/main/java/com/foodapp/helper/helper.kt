@@ -22,6 +22,7 @@ import com.foodapp.R
 import java.io.IOException
 import java.io.InputStream
 import java.net.URL
+import java.text.DecimalFormat
 import java.util.concurrent.Executors
 
 
@@ -91,5 +92,9 @@ open class helper {
                 cancelBtn.setOnClickListener { onCancel(); popupWindow.dismiss() }
             })
         }
+        fun formatter(n: Int) =
+            DecimalFormat("#,###")
+                .format(n)
+                .replace(",", ".")
     }
 }
