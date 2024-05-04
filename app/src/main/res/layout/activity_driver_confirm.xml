@@ -3,11 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <variable
-            name="viewModel"
-            type="com.foodapp.viewmodel.DriverConfirmViewModel" />
-    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -64,12 +59,12 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
+            android:id="@+id/activity_driver_confirm_cancel_btn"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@color/white"
             android:contentDescription="back"
             android:src="@drawable/ic_cancle"
-            android:onClick="@{viewModel.cancelOrder}"
             android:textColor="@color/white" />
 
         <androidx.cardview.widget.CardView
@@ -81,7 +76,7 @@
             app:cardElevation="0dp">
 
             <Button
-                android:onClick="@{viewModel.confirmOrder}"
+                android:id="@+id/activity_driver_confirm_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
