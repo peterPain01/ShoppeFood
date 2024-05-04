@@ -221,7 +221,6 @@
                         android:textSize="14sp" />
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/edit_user_info_save"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:layout_marginTop="10dp"
@@ -254,6 +253,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <Button
+                android:id="@+id/edit_user_info_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FF7622"

@@ -43,7 +43,6 @@ class create_restaurant : AppCompatActivity() {
     private val PICK_IMAGE_REQUEST_CODE = 100
     private var file: File ?= null;
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-    private lateinit var adapter: AddressAdapter
     var address : com.foodapp.data.model.UserAddress ?= null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
