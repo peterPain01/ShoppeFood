@@ -79,6 +79,9 @@ class DashBoard : Fragment() {
         return view
     }
 
+
+    // gui mang 1 mang cac diem cua thang trong ngay
+    // select theo thang
     fun drawLineChart(lineChart: LineChart) {
         val entries = arrayListOf<Entry>().apply {
             add(Entry(0f, 4f))
@@ -88,7 +91,7 @@ class DashBoard : Fragment() {
             add(Entry(4f, 7f))
         }
 
-        val dataSet = LineDataSet(entries, "Sample Data")
+        val dataSet = LineDataSet(entries, "Total Revenue this month")
 
         dataSet.color = Color.BLUE
         dataSet.valueTextColor = Color.RED

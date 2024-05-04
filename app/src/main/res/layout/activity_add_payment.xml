@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFFFF"
-    android:orientation="vertical"
     android:paddingHorizontal="8dp"
     android:paddingTop="10dp">
 
@@ -25,16 +25,15 @@
                 android:id="@+id/add_payment_backBtn"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@mipmap/ic_launcher"
-                tools:srcCompat="@drawable/back" />
+                android:src="@drawable/back" />
 
             <TextView
                 android:id="@+id/rme6mbyvf7c"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Payment"
                 android:paddingStart="8dp"
+                android:text="Payment method"
                 android:textColor="#181C2E"
                 android:textSize="17sp" />
         </LinearLayout>
@@ -43,83 +42,31 @@
             android:id="@+id/risvj5aar7o"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:id="@+id/rh378ijowo7"
-                android:layout_width="91dp"
-                android:layout_height="60dp"
-                android:background="@drawable/cr9_624489784240723bfff0f5fa"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="vertical"
-               >
-                <ImageView
-                    android:id="@+id/r9eyzfm5q6e"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:scaleType="centerInside"
-                    android:layout_centerInParent="true"
-                    tools:src="@drawable/cashing" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <RelativeLayout
-                android:id="@+id/r3ymf1uu5ee"
-                android:layout_width="91dp"
-                android:layout_height="60dp"
-                android:background="@drawable/cr9_624489784240723bfff0f5fa"
-                android:clickable="true"
-                android:focusable="true"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/rppxw940woyf"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:scaleType="centerInside"
-                    android:layout_centerInParent="true"
-                    tools:src="@drawable/visa" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+            >
 
             <LinearLayout
-                android:id="@+id/rnw9tnh4uiif"
-                android:layout_width="91dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <RelativeLayout
-                    android:id="@+id/rhvp1i639s9u"
+                <ImageView
+                    android:id="@+id/add_payment_zalopay"
                     android:layout_width="91dp"
                     android:layout_height="60dp"
+                    android:paddingHorizontal="12dp"
                     android:background="@drawable/sffff7621sw2cr9_619999885559082"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:orientation="vertical">
+                    android:scaleType="centerInside"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/ic_zalopay" />
 
-                    <ImageView
-                        android:id="@+id/rqdrrsuc0zua"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:scaleType="centerInside"
-                        tools:src="@drawable/mastercard"
-                        android:layout_centerInParent="true"
-                        />
-                </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zalo Pay"
+                    android:textColor="#464E57"
+                    android:textSize="14sp"
+                    android:layout_gravity="center_horizontal"
+                    />
             </LinearLayout>
 
             <View
@@ -127,73 +74,93 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <RelativeLayout
-                android:id="@+id/rv03cp3nn0b"
-                android:layout_width="91dp"
-                android:layout_height="60dp"
-                android:background="@drawable/cr9_624489784240723bfff0f5fa"
-                android:clickable="true"
-                android:focusable="true"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/r7skgncxfozh"
-                    android:layout_width="60dp"
+                    android:id="@+id/add_payment_vnpay"
+                    android:layout_width="91dp"
                     android:layout_height="60dp"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:background="#FFF0F5FA"
+                    android:paddingHorizontal="12dp"
                     android:scaleType="centerInside"
-                    tools:srcCompat="@drawable/paypal"
-                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/ic_vnpay" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vn Pay"
+                    android:textColor="#464E57"
+                    android:textSize="14sp"
+                    android:layout_gravity="center_horizontal"
                     />
-            </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="91dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/add_payment_visa"
+                    android:background="#FFF0F5FA"
+                    android:paddingHorizontal="12dp"
+                    android:scaleType="centerInside"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/visa" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Visa"
+                    android:textColor="#464E57"
+                    android:textSize="14sp"
+                    android:layout_gravity="center_horizontal"
+                    />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/add_payment_mastercard"
+                    android:layout_width="91dp"
+                    android:layout_height="60dp"
+                    android:paddingHorizontal="12dp"
+                    android:scaleType="centerInside"
+                    android:layout_marginBottom="4dp"
+                    android:background="#FFF0F5FA"
+                    android:src="@drawable/mastercard" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mastercard"
+                    android:textColor="#464E57"
+                    android:textSize="14sp"
+                    android:layout_gravity="center_horizontal"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/rjt79ghre7a8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="26dp"
-            android:layout_marginBottom="57dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/rw0bzkfa4d4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                android:text="Cash"
-                android:textColor="#464E57"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/risj6jldyzms"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:text="Visa"
-                android:textColor="#464E57"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/raahvmc9ke4q"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="46dp"
-                android:text="Mastercard"
-                android:textColor="#464E57"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/rpaidse1kh9d"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PayPal"
-                android:textColor="#464E57"
-                android:textSize="14sp" />
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/rfz2jiduyud7"
@@ -201,6 +168,7 @@
             android:layout_height="100dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="17dp"
+            android:layout_marginTop="40dp"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="vertical"
@@ -251,8 +219,7 @@
                             android:layout_marginStart="-10dp"
                             android:layout_marginBottom="0dp"
                             android:scaleType="fitXY"
-                            android:src="@mipmap/ic_launcher"
-                            tools:srcCompat="@drawable/card_2" />
+                            android:src="@drawable/card_2" />
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -298,8 +265,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:scaleType="fitXY"
-                android:src="@mipmap/ic_launcher"
-                tools:srcCompat="@drawable/plus_copy" />
+                android:src="@drawable/plus_copy" />
 
             <TextView
                 android:id="@+id/r3hxr275sa8o"
@@ -315,59 +281,30 @@
         android:id="@+id/rghp2x9x1hmn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="8dp"
         android:focusable="true"
         android:orientation="vertical"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
         android:paddingVertical="28dp">
 
-        <LinearLayout
-            android:id="@+id/rqyir54quisl"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginBottom="32dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#FF7622"
+            app:cardCornerRadius="12dp">
 
-            <TextView
-                android:id="@+id/rco6vkbm5iqe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="26dp"
-                android:text="Total:"
-                android:textColor="#A0A5BA"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/rh4n5v64q4v4"
+            <Button
+                android:id="@+id/add_payment_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="$96"
-                android:textColor="#181C2E"
-                android:textSize="30sp" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/cr12bffff7621"
-            >
-
-            <TextView
-                android:id="@+id/rjqm3eiidwno"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pay &amp; Confirm"
-                android:textColor="#FFFFFF"
-                android:layout_centerInParent="true"
-                android:layout_centerHorizontal="true"
-                android:textSize="24sp" />
-
-        </RelativeLayout>
+                android:background="@color/transparent"
+                android:onClick="@{viewModel.placeOrder}"
+                android:text="Confirm"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </RelativeLayout>
