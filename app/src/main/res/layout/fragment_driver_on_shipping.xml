@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="street" type="String" />
+        <variable name="price" type="Double" />
+    </data>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    app:cardBackgroundColor="#F58D1D"
+    app:cardCornerRadius="20dp"
+    app:contentPaddingLeft="15dp"
+    app:contentPaddingRight="15dp"
+    app:contentPaddingTop="15dp"
+    app:contentPaddingBottom="50dp"
+    android:layout_marginBottom="-25dp"
+    tools:context=".view.Dialog_fragment.FragmentDriverOnShipping">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{street}"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_address"
+                    android:layout_gravity="center"
+                    app:tint="#ffffff"/>
+                <TextView
+                    android:id="@+id/fragment_driver_on_shipping_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text='25 Km'
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_clock"
+                    android:layout_gravity="center"
+                    app:tint="#ffffff"/>
+                <TextView
+                    android:id="@+id/fragment_driver_on_shipping_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="1h30m"
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/cashing"
+                    android:layout_gravity="center"
+                    app:tint="#ffffff"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text='@{String.format("%.2f VND", price)}'
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/fragment_driver_on_shipping_finish_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="FINISH RIDE"
+            android:textColor="#343B71"
+            android:background="#ffffff"
+            android:elevation="0dp"
+            android:layout_marginTop="15dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+</layout>

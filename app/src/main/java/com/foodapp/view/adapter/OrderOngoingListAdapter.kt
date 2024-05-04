@@ -1,5 +1,6 @@
 package com.foodapp.view.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.Order
 import com.foodapp.helper.helper
+import com.foodapp.view.main.DetailOrder
 
 class OrderOngoingListAdapter(val orders: List<Order>, val res: Int): RecyclerView.Adapter<DataViewHolder<Order>>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,6 +34,11 @@ class OrderOngoingListAdapter(val orders: List<Order>, val res: Int): RecyclerVi
         val count: TextView = itemView.findViewById<TextView>(R.id.item_ongoing_order_count)
 
         override fun bind(data: Order) {
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailOrder::class.java)
+                intent.putExtra("orderId", data._id)
+                itemView.context.startActivity(intent)
+            }
             title.text = data.order_shop.name
             Glide.with(itemView.context)
                 .load(data.order_shop.image)

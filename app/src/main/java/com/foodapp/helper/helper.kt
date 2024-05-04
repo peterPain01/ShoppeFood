@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.os.Handler
 import android.os.Looper
+import android.text.format.DateUtils
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -96,5 +97,10 @@ open class helper {
             DecimalFormat("#,###")
                 .format(n)
                 .replace(",", ".")
+        fun formatDuration(seconds: Long): String = if (seconds < 60) {
+            seconds.toString()
+        } else {
+            DateUtils.formatElapsedTime(seconds)
+        }
     }
 }

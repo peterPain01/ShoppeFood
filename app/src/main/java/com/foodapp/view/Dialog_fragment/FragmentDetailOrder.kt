@@ -9,11 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.foodapp.R
+import com.foodapp.data.model.Order
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.FragmentDetailOrderBinding
 import com.foodapp.viewmodel.OrderDetailViewModel
 
-class FragmentDetailOrder(val orderId: String) : Fragment(R.layout.fragment_detail_order) {
+class FragmentDetailOrder(val orderId: String, val onHasDetailOrder: (Order) -> Unit) : Fragment(R.layout.fragment_detail_order) {
     private lateinit var binding: FragmentDetailOrderBinding
 
     override fun onCreateView(
@@ -32,6 +33,9 @@ class FragmentDetailOrder(val orderId: String) : Fragment(R.layout.fragment_deta
                     .load(it.order_shop.image)
                     .into(binding.fragmentDetailOrderImage)
             }
+        }
+        binding.viewModel?.order?.observe(viewLifecycleOwner) {
+            it?.let(onHasDetailOrder)
         }
         return binding.root
     }

@@ -13,10 +13,8 @@ data class OrderShop(
     val _id: String = "",
     val name: String = "",
     val image: String = "",
-    val addresses: List<UserAddress> = listOf()
+    val address: UserAddress = UserAddress()
 ) {
-    val firstAddressStreet: String?
-        get() = addresses.firstOrNull()?.street
 }
 
 data class Order(

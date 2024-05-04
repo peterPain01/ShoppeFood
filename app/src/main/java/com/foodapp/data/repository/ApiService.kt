@@ -173,5 +173,10 @@ interface ApiService {
         @Part("bio") bio: RequestBody,
         @Part avatar: MultipartBody.Part
     ): Call<ApiResult<User>>
+
+    @POST("shipper/order/finish")
+    fun finishOrder(
+        @Query("orderId") orderId: String
+    ): Call<ApiResult<Nothing>>
 }
 
