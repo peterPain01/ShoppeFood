@@ -13,6 +13,7 @@ import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.ActivityLoginBinding
 import com.foodapp.view.main.Admin_Page
 import com.foodapp.view.main.Homepage
+import com.foodapp.view.main.dashboard_admin
 import com.foodapp.view.main.driver_home
 import com.foodapp.view.main.seller_page
 import com.foodapp.viewmodel.AuthViewModel
@@ -43,7 +44,7 @@ class Login : AppCompatActivity() {
                     when (user?.role) {
                         "user" -> klazz = Homepage::class.java
                         "shop" -> klazz = seller_page::class.java
-                        "admin" -> klazz = Admin_Page::class.java
+                        "admin" -> klazz = dashboard_admin::class.java
                         "shipper" -> klazz = driver_home::class.java
                         else -> {
                             Log.e("FoodApp:main/Login", "Unknown role: " + user?.role)

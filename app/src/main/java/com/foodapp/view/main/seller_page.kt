@@ -1,7 +1,9 @@
 package com.foodapp.view.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +17,7 @@ class seller_page : AppCompatActivity() {
     var btnMyFood : ImageView ?= null;
     var btnNotify : ImageView ?= null;
     var btnSetting : ImageView ?= null;
+    private var btnCreate: ImageButton ?= null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seller_page)
@@ -26,6 +29,7 @@ class seller_page : AppCompatActivity() {
         btnMyFood = findViewById(R.id.seller_page_my_food)
         btnNotify = findViewById(R.id.seller_page_notify)
         btnSetting = findViewById(R.id.seller_page_setting)
+        btnCreate = findViewById(R.id.seller_page_imageButton)
         var temp : ImageView ?= null;
         var value_temp: Int ?= null;
 
@@ -78,6 +82,9 @@ class seller_page : AppCompatActivity() {
             value_temp = R.drawable.ic_human;
             btnSetting?.setImageResource(R.drawable.ic_human_primary);
         }
-
+        btnCreate?.setOnClickListener {
+            val new_intent = Intent(this, AddNewItem::class.java);
+            startActivity(new_intent);
+        }
     }
 }
