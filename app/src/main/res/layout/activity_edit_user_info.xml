@@ -139,6 +139,7 @@
                             android:background="@color/transparent"
                             android:text="@={infoViewModel.user.fullname}"
                             android:hint="Visual Khadok"
+                            android:textColorHint="#336B6E82"
                             android:textColor="#6B6E82" />
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
@@ -171,6 +172,7 @@
                             android:background="@color/transparent"
                             android:text="@={infoViewModel.user.email}"
                             android:hint="hello@hallab.com"
+                            android:textColorHint="#336B6E82"
                             android:textColor="#6B6E82" />
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
@@ -202,6 +204,7 @@
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
                             android:text="@={infoViewModel.user.phone}"
+                            android:textColorHint="#336B6E82"
                             android:hint="0304124004"
                             android:textColor="#6B6E82" />
                     </androidx.cardview.widget.CardView>
@@ -234,6 +237,7 @@
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
                             android:text="@={infoViewModel.user.bio}"
+                            android:textColorHint="#336B6E82"
                             android:hint="I love fast food!"
                             android:textColor="#6B6E82" />
                     </androidx.cardview.widget.CardView>

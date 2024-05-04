@@ -17,6 +17,7 @@ import com.foodapp.R
 import com.foodapp.data.model.UserAddress
 import com.foodapp.databinding.ActivityManageAddressBinding
 import com.foodapp.helper.LocationHelper
+import com.foodapp.helper.helper
 import com.foodapp.viewmodel.ManageAddressViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -68,14 +69,18 @@ class ManageAddress : AppCompatActivity(), OnMapReadyCallback {
         super.onStart()
         binding.activityManageAddressSaveBtn.setOnClickListener {
             binding.viewModel?.updateAddress {
-                val data = Intent()
-                data.putExtra("address", it)
-                if (!isAdding) data.putExtra("edittingIndex", edittingIndex)
-                setResult(
-                    if (isAdding) com.foodapp.view.main.UserAddress.ADD_CODE else com.foodapp.view.main.UserAddress.UPDATE_CODE,
-                    data
-                )
-                finish()
+                if (it.name.trim().isEmpty() || it.street.trim().isEmpty()) {
+                    helper.displayPopup(this, "Please fill all missing fields!", helper.PopupType.Error) { }
+                } else {
+                    val data = Intent()
+                    data.putExtra("address", it)
+                    if (!isAdding) data.putExtra("edittingIndex", edittingIndex)
+                    setResult(
+                        if (isAdding) com.foodapp.view.main.UserAddress.ADD_CODE else com.foodapp.view.main.UserAddress.UPDATE_CODE,
+                        data
+                    )
+                    finish()
+                }
             }
         }
     }
