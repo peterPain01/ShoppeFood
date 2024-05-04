@@ -23,7 +23,7 @@ class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val show
     var adapter: MutableLiveData<CartListAdapter> = MutableLiveData()
     var spinnerAdapter: MutableLiveData<AddressSpinnerAdapter> = MutableLiveData()
     var cart: MutableLiveData<Cart> = MutableLiveData()
-    var totalPrice: MutableLiveData<Double> = MutableLiveData()
+    var totalPrice: MutableLiveData<String> = MutableLiveData()
 
     init {
         userService.getCart().enqueue(object: retrofit2.Callback<ApiResult<Cart?>> {
@@ -33,10 +33,10 @@ class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val show
             ) {
                 if (response.code() == 200) {
                     cart.value = response.body()?.metadata!!
-                    totalPrice.value = cart.value?.totalPrice
+                    totalPrice.value = helper.formatter(cart.value?.totalPrice!!.toInt())
                     adapter.value =
                         CartListAdapter(cart.value?.cart_products!!, R.layout.cart_item, {
-                            totalPrice.value = cart.value?.totalPrice
+                            totalPrice.value = helper.formatter(cart.value?.totalPrice!!.toInt())
                         }, add = addProduct, reduce = reduceProduct, remove = removeProduct)
                         userService.getUserAddresses().enqueue(object: retrofit2.Callback<ApiResult<List<UserAddress>>> {
                             override fun onResponse(

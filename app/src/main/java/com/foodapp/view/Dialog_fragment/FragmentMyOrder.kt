@@ -53,7 +53,7 @@ class FragmentMyOrder :Fragment(R.layout.fragment_my_order) {
         binding = FragmentMyOrderBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = MyOrderViewModel(SessionManager(requireContext())) {
-            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
             Log.d("FOODAPP:FragmentMyOrder", it)
         }
         return binding.root;

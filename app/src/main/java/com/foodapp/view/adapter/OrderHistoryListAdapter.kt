@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.Order
+import com.foodapp.helper.helper
 import java.text.SimpleDateFormat
 
 class OrderHistoryListAdapter(val orders: List<Order>, val res: Int): RecyclerView.Adapter<DataViewHolder<Order>>() {
@@ -37,7 +38,7 @@ class OrderHistoryListAdapter(val orders: List<Order>, val res: Int): RecyclerVi
             Glide.with(itemView.context)
                 .load(data.order_shop.image)
                 .into(image)
-            price.text = String.format("$%.2f", data.order_totalPrice)
+            price.text = String.format("%s VND", helper.formatter(data.order_totalPrice.toInt()))
             count.text = String.format("%d items", data.order_listProducts.sumOf { it.quantity })
             val formatter = SimpleDateFormat("dd MMM, HH:mm")
             date.text = formatter.format(data.updatedAt)

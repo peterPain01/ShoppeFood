@@ -18,8 +18,6 @@ import com.foodapp.view.adapter.AddressAdapter
 import com.foodapp.viewmodel.UserAddressViewModel
 
 class UserAddress : AppCompatActivity() {
-    private lateinit var backBtn: View
-    private lateinit var addBtn: View
     private lateinit var binding: ActivityUserAddressBinding
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private lateinit var user: User

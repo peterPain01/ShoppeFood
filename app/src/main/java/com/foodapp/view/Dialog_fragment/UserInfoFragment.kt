@@ -31,7 +31,7 @@ class UserInfoFragment : Fragment(R.layout.fragment_user_info) {
     private fun init() {
         binding.lifecycleOwner = this
         binding.viewModel = UserInfoViewModel(SessionManager(requireContext())){
-            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
         binding.viewModel?.user?.observe(viewLifecycleOwner) {
             Glide.with(this)
@@ -42,19 +42,19 @@ class UserInfoFragment : Fragment(R.layout.fragment_user_info) {
     override fun onStart() {
         super.onStart()
         binding.activityUserInfoAddressContainer.setOnClickListener {
-            val new_intent = Intent(context, UserAddress::class.java);
+            val new_intent = Intent(requireContext(), UserAddress::class.java);
             new_intent.putExtra("info", binding.viewModel?.user?.value)
             startActivity(new_intent);
         }
         binding.activityUserInfoPersonalInfo.setOnClickListener {
-            val new_intent = Intent(context, PersonalInfo::class.java);
+            val new_intent = Intent(requireContext(), PersonalInfo::class.java);
             new_intent.putExtra("info", binding.viewModel?.user?.value)
             startActivity(new_intent);
         }
         binding.activityUserInfoLogout.setOnClickListener {
             binding.viewModel!!.logout {
                 SessionManager(requireContext()).removeAuthToken()
-                val new_intent = Intent(context, Login::class.java)
+                val new_intent = Intent(requireContext(), Login::class.java)
                 startActivity(new_intent)
             }
         }

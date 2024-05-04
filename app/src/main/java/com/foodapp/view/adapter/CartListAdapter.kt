@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.CartProduct
+import com.foodapp.helper.helper
 
 class CartListAdapter(private val dataList: MutableList<CartProduct>,
                       private val res : Int,
@@ -47,7 +48,7 @@ class CartListAdapter(private val dataList: MutableList<CartProduct>,
                 .load(data.image)
                 .into(image)
             name.text = data.name
-            price.text = String.format(null, "%.2f", data.unit_price * data.quantity)
+            price.text = String.format("%s VND", helper.formatter((data.unit_price * data.quantity).toInt()))
             count.text = data.quantity.toString()
             addButton.setOnClickListener {
                 data.quantity = data.quantity + 1

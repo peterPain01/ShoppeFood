@@ -53,7 +53,7 @@ class Fragment_Home : Fragment(R.layout.fragment_home) {
     private fun init() {
         binding.lifecycleOwner = this
         binding.viewModel = HomepageViewModel(SessionManager(requireContext())) {
-            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
             Log.d("FOODAPP:Fragment_Home", it)
         }
         binding.homepageViewPager.adapter = PhotoViewPager2Adapter(photoList)
@@ -71,7 +71,7 @@ class Fragment_Home : Fragment(R.layout.fragment_home) {
             }
         })
 
-        binding.homepageRecyclerViewHorizontal.layoutManager = GridLayoutManager(context, 2, RecyclerView.HORIZONTAL, false)
+        binding.homepageRecyclerViewHorizontal.layoutManager = GridLayoutManager(requireContext(), 2, RecyclerView.HORIZONTAL, false)
     }
 
     override fun onResume() {
@@ -81,11 +81,11 @@ class Fragment_Home : Fragment(R.layout.fragment_home) {
 
     fun intentActivity() {
         binding.homepageSearchBar.setOnClickListener {
-            val intent = Intent(context,Search::class.java)
+            val intent = Intent(requireContext(), Search::class.java)
             startActivity(intent);
         }
         binding.homepageNotify.setOnClickListener {
-            val intent = Intent(context, Order::class.java)
+            val intent = Intent(requireContext(), Order::class.java)
             startActivity(intent);
         }
     }
