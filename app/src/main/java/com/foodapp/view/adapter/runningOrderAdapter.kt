@@ -29,13 +29,10 @@ class runningOrderAdapter (private val dataList: List<Running>, private val res 
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tagTextView: TextView = itemView.findViewById(R.id.item_grid_running_tag)
         private val priceTextView: TextView = itemView.findViewById(R.id.item_grid_running_price)
         private val nameTextView: TextView = itemView.findViewById(R.id.item_grid_running_name)
 
         fun bind(order: Running) {
-
-            tagTextView.text = "break fast"
             priceTextView.text = "$${order.order_totalPrice}"
             nameTextView.text = order.order_user.phone
         }

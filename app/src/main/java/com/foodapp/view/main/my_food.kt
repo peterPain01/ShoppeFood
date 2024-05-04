@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -53,6 +55,12 @@ class my_food(val supportFragmentManager : FragmentManager) : Fragment() {
         val breakfast = view.findViewById<TextView>(R.id.my_food_breakfast)
         val dinner = view.findViewById<TextView>(R.id.my_food_dinner)
         val lunch = view.findViewById<TextView>(R.id.my_food_lunch)
+        val back = view.findViewById<ImageButton>(R.id.my_food_btn_back)
+
+        back.setOnClickListener {
+            Log.i("backkk", "pragment");
+            getFragmentManager()?.popBackStack();
+        }
 
         all?.setTextColor(Color.parseColor("#FB6D3A"))
         all?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))

@@ -32,6 +32,8 @@ class CreateProductViewModel(context: Context, spinner: Spinner, sessionManager:
     var product: Product = Product();
     var spinner = spinner;
     var context = context
+    var origin: String ?= null;
+    var discount: String ?= null;
     private var categories: List<Category> ?= null;
     init {
         service.getAllCategories().enqueue(
@@ -64,8 +66,8 @@ class CreateProductViewModel(context: Context, spinner: Spinner, sessionManager:
     }
     fun createProduct(image: File) {
         val Name = product.product_name?.toRequestBody("text/plain".toMediaTypeOrNull());
-        val originPrice = product.product_original_price.toString()?.toRequestBody("text/plain".toMediaTypeOrNull());
-        val discountPrice = product.product_discounted_price.toString()?.toRequestBody("text/plain".toMediaTypeOrNull());
+        val originPrice = origin?.toRequestBody("text/plain".toMediaTypeOrNull());
+        val discountPrice = discount?.toRequestBody("text/plain".toMediaTypeOrNull());
         val description = product.product_description.toRequestBody("text/plain".toMediaTypeOrNull());
         var idCategory: String = ""
         categories?.forEach {
