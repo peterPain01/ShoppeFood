@@ -14,6 +14,7 @@ class VerticalShopViewHolder(itemView: View) : DataViewHolder<Shop>(itemView) {
     private val titleTextView: TextView = itemView.findViewById(R.id.item_vertical_name)
     private val ratingTextView = itemView.findViewById<TextView>(R.id.item_vertical_rating)
     private val category: TextView = itemView.findViewById(R.id.item_vertical_category)
+    private val distance : TextView = itemView.findViewById(R.id.item_vertical_distance)
 
     override fun bind(data: Shop) {
         Glide.with(itemView.context)
@@ -27,5 +28,6 @@ class VerticalShopViewHolder(itemView: View) : DataViewHolder<Shop>(itemView) {
             itemView.context.startActivity(intent)
         }
         ratingTextView.text = data.avg_rating.toString()
+        distance.text = data.distance.toString()
     }
 }

@@ -21,5 +21,8 @@ class Shop (
     var openHour: String? = null,
     @SerializedName("close_hour")
     var closeHour: String? = null,
-    var isUserLiked: Boolean = false
+    var isUserLiked: Boolean = false,
+
+//  @param:distance: count from shop to homes user
+    var distance : Double = 0.0
 )

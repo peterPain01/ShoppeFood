@@ -45,6 +45,7 @@ class restaurant_view : AppCompatActivity() {
             Glide.with(this)
                 .load(it.image)
                 .into(binding.RestaurantViewBackGroundFood)
+            
         }
         HandleShowMoreDialogFragment()
     }

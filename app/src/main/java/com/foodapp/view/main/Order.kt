@@ -25,7 +25,6 @@ class Order : AppCompatActivity() {
     private lateinit var orderCashMethod: Button
     private lateinit var orderOtherMethod: Button
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)

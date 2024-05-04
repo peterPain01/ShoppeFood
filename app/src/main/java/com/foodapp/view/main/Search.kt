@@ -1,6 +1,7 @@
 package com.foodapp.view.main
 
 import ApiService
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -34,7 +35,7 @@ import java.util.ArrayList
 class Search : AppCompatActivity() {
     lateinit var cancel_btn : TextView
     lateinit var search_bar : EditText
-
+    lateinit var context: Context
     val service = RetrofitClient.retrofit.create(ApiService::class.java)
 
     lateinit var binding :ActivitySearchBinding
@@ -50,6 +51,7 @@ class Search : AppCompatActivity() {
         replaceFragment(Fragment_Init_Search())
         cancel_btn= findViewById(R.id.search_cancel)
         search_bar = findViewById(R.id.search_searchBar)
+        context = this
         initEvent();
     }
 
@@ -69,15 +71,19 @@ class Search : AppCompatActivity() {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             val userInput = s.toString()
+
+        }
+        override fun afterTextChanged(s: Editable?) {
+            val userInput = s.toString()
             if(userInput.isNullOrEmpty())
             {
                 replaceFragment(Fragment_Init_Search())
             }
             else
-                replaceFragment(Fragment_Search(userInput))
-        }
-        override fun afterTextChanged(s: Editable?) {
-            val userInput = s.toString()
+            {
+                val context : Context = context
+                replaceFragment(Fragment_Search(userInput, context))
+            }
         }
     }
 

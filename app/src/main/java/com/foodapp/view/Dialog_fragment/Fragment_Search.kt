@@ -1,6 +1,7 @@
 package com.foodapp.view.Dialog_fragment
 
 import ApiService
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,7 +19,7 @@ import com.foodapp.view.adapter.KeyWordRecentAdapter
 import retrofit2.Call
 import retrofit2.Response
 
-class Fragment_Search(val relatedString: String) :Fragment(R.layout.fragment_search) {
+class Fragment_Search(val relatedString: String, private val context : Context?) :Fragment(R.layout.fragment_search) {
     lateinit var relatedString_recycler : RecyclerView
     val service = RetrofitClient.retrofit.create(ApiService::class.java)
 
@@ -44,23 +45,25 @@ class Fragment_Search(val relatedString: String) :Fragment(R.layout.fragment_sea
 
     fun getRelatedStringFromServer(relatedString: String)
     {
+        if(relatedString.isNullOrEmpty()) return;
         service.getRelatedSearchString(relatedString).enqueue(object : retrofit2.Callback<ApiResult<List<String>>> {
                 override fun onResponse(call: Call<ApiResult<List<String>>>, response: Response<ApiResult<List<String>>>) {
                     if (response.code() == 200) {
                         val body = response.body()
                         if (body != null) {
                             Log.i("METAAAAAA", body.metadata.toString())
-                            relatedString_recycler.adapter = KeyWordRecentAdapter(requireContext(), body.metadata)
+                                relatedString_recycler.adapter =
+                                    context?.let { KeyWordRecentAdapter(it, body.metadata) }
                         } else {
                             Log.d("getRelatedSearchString", "[shop/get related string] Missing body")
                         }
                     } else {
-                        Toast.makeText(context, response.body()?.message ?: "", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext().applicationContext, response.body()?.message ?: "", Toast.LENGTH_LONG).show()
                     }
                 }
 
                 override fun onFailure(call: Call<ApiResult<List<String>>>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Toast.makeText(requireContext().applicationContext, t.message.toString() ?: "", Toast.LENGTH_LONG).show()
                 }
             })
     }

@@ -33,6 +33,7 @@ class KeyWordRecentAdapter(private val context: Context,private val keywordList:
     {
         val intent = Intent(context, SearchDetailActivity::class.java)
         intent.putExtra("keySearch", keySearch)
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent)
     }
 
