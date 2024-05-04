@@ -165,13 +165,13 @@ interface ApiService {
     ): Call<ApiResult<Nothing>>
 
     @Multipart
-    @PATCH("info")
+    @PATCH("user")
     fun updateUser(
         @Part("fullname") name: RequestBody,
         @Part("email") email: RequestBody,
         @Part("phone") phone: RequestBody,
         @Part("bio") bio: RequestBody,
-        @Part avatar: MultipartBody.Part
+        @Part avatar: MultipartBody.Part?
     ): Call<ApiResult<User>>
 
     @Multipart
