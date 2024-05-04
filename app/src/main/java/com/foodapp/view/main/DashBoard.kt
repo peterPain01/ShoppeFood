@@ -1,6 +1,9 @@
 package com.foodapp.view.main
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +13,11 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
+import com.foodapp.helper.helper
 import com.foodapp.utils.FakeData
 import com.foodapp.view.adapter.BottomSheetDiaglogRunning
 import com.foodapp.view.adapter.GridAdapter
@@ -41,6 +46,8 @@ class DashBoard : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+    private lateinit var shopViewModel: ShopViewModel
+    private lateinit var mNewOrderReceiver: BroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +63,8 @@ class DashBoard : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_dash_board, container, false)
         val showBottomSheetButton = view.findViewById<ImageButton>(R.id.dash_board_running)
-        var shopViewModel = ShopViewModel(requireActivity());
+        shopViewModel = ShopViewModel(requireActivity());
         val lineChart: LineChart = view.findViewById(R.id.lineChart)
-        val gridView = view.findViewById<RecyclerView>(R.id.dash_board_recycleview)
         val allreview = view.findViewById<TextView>(R.id.dash_board_view_all)
 
         allreview.setOnClickListener {
@@ -74,9 +80,33 @@ class DashBoard : Fragment() {
         drawLineChart(lineChart) // Pass the LineChart view to the function
 
         //call api
-        shopViewModel.getStatistic(view, gridView);
-
+        // shopViewModel.getStatistic(view, gridView);
         return view
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setUpNewOrderListener()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val gridView = this.requireView().findViewById<RecyclerView>(R.id.dash_board_recycleview)
+        shopViewModel.getStatistic(this.requireView(), gridView);
+    }
+
+
+    fun setUpNewOrderListener() {
+        val view = this.requireView()
+        mNewOrderReceiver = object: BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                val textView = view.findViewById<TextView>(R.id.dash_board_location5)
+                val cur = textView.text.toString()
+                textView.text = (cur.toInt() + 1).toString()
+            }
+        }
+        LocalBroadcastManager.getInstance(this.requireContext()).registerReceiver(mNewOrderReceiver, IntentFilter("new-order"))
+
     }
 
     fun drawLineChart(lineChart: LineChart) {

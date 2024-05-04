@@ -16,6 +16,7 @@ import com.foodapp.R
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.ActivityAddNewItemsBinding
 import com.foodapp.databinding.ActivityCreateRestaurantBinding
+import com.foodapp.helper.helper
 import com.foodapp.viewmodel.CreateProductViewModel
 import java.io.File
 
@@ -50,6 +51,9 @@ class AddNewItem : AppCompatActivity() {
 
         submit.setOnClickListener {
             file?.let { it1 -> createViewModel?.createProduct(it1) };
+            helper.displayPopup(this, "Success", helper.PopupType.Info) {
+                finish()
+            }
         }
 
         imageView.setOnClickListener {
