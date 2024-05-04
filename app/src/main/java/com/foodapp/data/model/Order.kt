@@ -31,3 +31,9 @@ data class Order(
     val createdAt: Date = Date(),
     val updatedAt: Date = Date()
 )
+
+data class Running(
+    val _id: String = "",
+    val order_user: OrderUser = OrderUser(),
+    val order_totalPrice: String = ""
+)
