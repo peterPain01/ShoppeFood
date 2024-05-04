@@ -165,18 +165,32 @@ interface ApiService {
     ): Call<ApiResult<Nothing>>
 
     @Multipart
-    @PATCH("info")
+    @PATCH("user")
     fun updateUser(
         @Part("fullname") name: RequestBody,
         @Part("email") email: RequestBody,
         @Part("phone") phone: RequestBody,
         @Part("bio") bio: RequestBody,
-        @Part avatar: MultipartBody.Part
+        @Part avatar: MultipartBody.Part?
     ): Call<ApiResult<User>>
 
     @POST("shipper/order/finish")
     fun finishOrder(
         @Query("orderId") orderId: String
     ): Call<ApiResult<Nothing>>
+
+    @Multipart
+    @POST("shop/product")
+    fun createProduct(
+        @Part("product_name") name: RequestBody,
+        @Part("product_description") description: RequestBody,
+        @Part("product_discounted_price") discounted: RequestBody,
+        @Part("product_category") category: RequestBody,
+        @Part("product_original_price") price: RequestBody,
+        @Part product_thumb: MultipartBody.Part
+    ): Call<ApiResult<Product>>
+
+    @GET("/shop/statistic/order/pending")
+    fun getAllPending(): Call<ApiResult<List<Running>>>
 }
 
