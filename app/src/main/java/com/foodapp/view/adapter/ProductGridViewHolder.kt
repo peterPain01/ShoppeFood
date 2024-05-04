@@ -14,7 +14,7 @@ class ProductGridViewHolder(itemView: View) : GridAdapter.ViewHolder<Product>(it
     val imageView: ImageView = itemView.findViewById(R.id.imageUrl)
     val name: TextView = itemView.findViewById(R.id.name)
     val desc: TextView = itemView.findViewById(R.id.desc)
-    val price: TextView = itemView.findViewById(R.id.price)
+    val price: TextView = itemView.findViewById(R.id.item_grid_checkout_price)
     override fun bind(data: Product) {
         Glide.with(itemView.context)
             .load(data.product_thumb)

@@ -106,6 +106,12 @@ interface ApiService {
         @Body address: UserAddress
     ): Call<ApiResult<Nothing>>
 
+    @POST("order/checkout/zalopay")
+    fun placeOrderWithZalo(
+        @Body address: UserAddress
+    ): Call<ApiResult<String>>
+
+
     @GET("comment/all/shop")
     fun getComment(): Call<ApiResult<List<Review>>>
 

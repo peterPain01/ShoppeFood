@@ -20,7 +20,7 @@ import kotlin.properties.Delegates
 
 class RestaurantViewModel(val shopId: String, sessionManager: SessionManager, val displayError: (String?) -> Unit): ViewModel() {
     var shop: MutableLiveData<Shop> = MutableLiveData(Shop(""))
-    var categoryAdapter: MutableLiveData<HorizontalAdapter> = MutableLiveData()
+//    var categoryAdapter: MutableLiveData<HorizontalAdapter> = MutableLiveData()
     var foodGridAdapter: MutableLiveData<GridAdapter<Product>> = MutableLiveData()
     var popularProductAdapter: MutableLiveData<PopularProductAdapter> = MutableLiveData()
 
@@ -41,7 +41,7 @@ class RestaurantViewModel(val shopId: String, sessionManager: SessionManager, va
                     val shopInfo = body!!.metadata
                     shop.value = shopInfo
 
-                    categoryAdapter.value = HorizontalAdapter(shop.value!!.category, R.layout.item_horizontal)
+//                    categoryAdapter.value = HorizontalAdapter(shop.value!!.category, R.layout.item_horizontal)
                     // TODO: call get all foods
 
                     service.getShopProducts(shop.value!!._id).enqueue(object: retrofit2.Callback<ApiResult<List<Product>>> {
