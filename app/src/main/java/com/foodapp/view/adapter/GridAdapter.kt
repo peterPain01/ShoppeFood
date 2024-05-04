@@ -3,7 +3,9 @@ package com.foodapp.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.foodapp.R
 
 class GridAdapter<T>(private val items: List<T>,
                      private val item_res : Int,
@@ -21,6 +23,7 @@ class GridAdapter<T>(private val items: List<T>,
     }
     open class ViewHolder<T>(itemView: View): RecyclerView.ViewHolder(itemView) {
         open fun bind(data: T) {
+
         }
     }
 }

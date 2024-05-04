@@ -2,7 +2,10 @@ package com.foodapp.viewmodel
 
 import ApiService
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.foodapp.R
@@ -18,15 +21,22 @@ import retrofit2.Call
 import retrofit2.Response
 
 
-class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val showError: (String, type: helper.PopupType) -> Unit): ViewModel() {
+class CartViewModel(
+    context: Context,
+    val displayMsg: (String) -> Unit,
+    val showError: (String, type: helper.PopupType) -> Unit
+) : ViewModel() {
     private var userService = UserRepository(SessionManager(context)).create(ApiService::class.java)
     var adapter: MutableLiveData<CartListAdapter> = MutableLiveData()
     var spinnerAdapter: MutableLiveData<AddressSpinnerAdapter> = MutableLiveData()
     var cart: MutableLiveData<Cart> = MutableLiveData()
     var totalPrice: MutableLiveData<String> = MutableLiveData()
 
+    private val contextLocal = context
+    var paymentMethod: String = "cash"
+
     init {
-        userService.getCart().enqueue(object: retrofit2.Callback<ApiResult<Cart?>> {
+        userService.getCart().enqueue(object : retrofit2.Callback<ApiResult<Cart?>> {
             override fun onResponse(
                 call: Call<ApiResult<Cart?>>,
                 response: Response<ApiResult<Cart?>>
@@ -38,7 +48,8 @@ class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val show
                         CartListAdapter(cart.value?.cart_products!!, R.layout.cart_item, {
                             totalPrice.value = helper.formatter(cart.value?.totalPrice!!.toInt())
                         }, add = addProduct, reduce = reduceProduct, remove = removeProduct)
-                        userService.getUserAddresses().enqueue(object: retrofit2.Callback<ApiResult<List<UserAddress>>> {
+                    userService.getUserAddresses()
+                        .enqueue(object : retrofit2.Callback<ApiResult<List<UserAddress>>> {
                             override fun onResponse(
                                 call: Call<ApiResult<List<UserAddress>>>,
                                 response: Response<ApiResult<List<UserAddress>>>
@@ -51,7 +62,10 @@ class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val show
                                 }
                             }
 
-                            override fun onFailure(call: Call<ApiResult<List<UserAddress>>>, t: Throwable) {
+                            override fun onFailure(
+                                call: Call<ApiResult<List<UserAddress>>>,
+                                t: Throwable
+                            ) {
                                 displayMsg(t.message ?: t.toString())
                             }
                         })
@@ -69,83 +83,14 @@ class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val show
     }
 
     val removeProduct: (String) -> Unit = {
-        userService.removeProductFromCart(it).enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
-            override fun onResponse(
-                call: Call<ApiResult<Nothing>>,
-                response: Response<ApiResult<Nothing>>
-            ) {
-                if (response.code() != 200) {
-                    displayMsg(response.errorBody().toString())
-                }
-            }
-
-            override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
-                displayMsg(t.message ?: t.toString())
-            }
-        })
-    }
-    val addProduct: (String) -> Unit = {
-        userService.increaseProductInCart(it).enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
-            override fun onResponse(
-                call: Call<ApiResult<Nothing>>,
-                response: Response<ApiResult<Nothing>>
-            ) {
-                if (response.code() != 200) {
-                    displayMsg(response.errorBody().toString())
-                }
-            }
-
-            override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
-                displayMsg(t.message ?: t.toString())
-            }
-        })
-    }
-    val reduceProduct: (String) -> Unit = {
-        userService.reduceProductInCart(it).enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
-            override fun onResponse(
-                call: Call<ApiResult<Nothing>>,
-                response: Response<ApiResult<Nothing>>
-            ) {
-                if (response.code() != 200) {
-                    displayMsg(response.errorBody().toString())
-                }
-            }
-
-            override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
-                displayMsg(t.message ?: t.toString())
-            }
-        })
-    }
-    fun updateNote() {
-        userService.updateNote(cart.value?.cart_note?:"").enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
-            override fun onResponse(
-                call: Call<ApiResult<Nothing>>,
-                response: Response<ApiResult<Nothing>>
-            ) {
-                if (response.code() != 200) {
-                    displayMsg(response.errorBody().toString())
-                }
-            }
-
-            override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
-                displayMsg(t.message ?: t.toString())
-            }
-        })
-    }
-
-    fun placeOrder(_view: View) {
-        if (spinnerAdapter.value?.selectedItem == null) {
-            showError("Please update address in user info page first!", helper.PopupType.Error)
-        } else {
-            userService.placeOrder(spinnerAdapter.value?.selectedItem!!).enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
+        userService.removeProductFromCart(it)
+            .enqueue(object : retrofit2.Callback<ApiResult<Nothing>> {
                 override fun onResponse(
                     call: Call<ApiResult<Nothing>>,
                     response: Response<ApiResult<Nothing>>
                 ) {
-                    if (response.code() != 201) {
+                    if (response.code() != 200) {
                         displayMsg(response.errorBody().toString())
-                    } else {
-                        showError("Successfully", helper.PopupType.Info)
                     }
                 }
 
@@ -153,6 +98,105 @@ class CartViewModel(context: Context, val displayMsg: (String) -> Unit, val show
                     displayMsg(t.message ?: t.toString())
                 }
             })
+    }
+    val addProduct: (String) -> Unit = {
+        userService.increaseProductInCart(it)
+            .enqueue(object : retrofit2.Callback<ApiResult<Nothing>> {
+                override fun onResponse(
+                    call: Call<ApiResult<Nothing>>,
+                    response: Response<ApiResult<Nothing>>
+                ) {
+                    if (response.code() != 200) {
+                        displayMsg(response.errorBody().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
+                    displayMsg(t.message ?: t.toString())
+                }
+            })
+    }
+    val reduceProduct: (String) -> Unit = {
+        userService.reduceProductInCart(it)
+            .enqueue(object : retrofit2.Callback<ApiResult<Nothing>> {
+                override fun onResponse(
+                    call: Call<ApiResult<Nothing>>,
+                    response: Response<ApiResult<Nothing>>
+                ) {
+                    if (response.code() != 200) {
+                        displayMsg(response.errorBody().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
+                    displayMsg(t.message ?: t.toString())
+                }
+            })
+    }
+
+    fun updateNote() {
+        userService.updateNote(cart.value?.cart_note ?: "")
+            .enqueue(object : retrofit2.Callback<ApiResult<Nothing>> {
+                override fun onResponse(
+                    call: Call<ApiResult<Nothing>>,
+                    response: Response<ApiResult<Nothing>>
+                ) {
+                    if (response.code() != 200) {
+                        displayMsg(response.errorBody().toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
+                    displayMsg(t.message ?: t.toString())
+                }
+            })
+    }
+
+    fun placeOrder(_view: View) {
+        // kiemt tra phuong thuc truoc khi order
+        if (spinnerAdapter.value?.selectedItem == null) {
+            showError("Please update address in user info page first!", helper.PopupType.Error)
+        } else {
+            if (paymentMethod == "zalopay") {
+                userService.placeOrderWithZalo(spinnerAdapter.value?.selectedItem!!)
+                    .enqueue(object : retrofit2.Callback<ApiResult<String>> {
+                        override fun onResponse(
+                            call: Call<ApiResult<String>>,
+                            response: Response<ApiResult<String>>
+                        ) {
+                            if (response.code() != 200) {
+                                displayMsg(response.errorBody().toString())
+                            } else {
+                                val url = response.body()?.metadata.toString()
+                                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                                ContextCompat.startActivity(contextLocal, browserIntent, null)
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ApiResult<String>>, t: Throwable) {
+                            displayMsg(t.message ?: t.toString())
+                        }
+                    })
+            } else {
+                userService.placeOrder(spinnerAdapter.value?.selectedItem!!)
+                    .enqueue(object : retrofit2.Callback<ApiResult<Nothing>> {
+                        override fun onResponse(
+                            call: Call<ApiResult<Nothing>>,
+                            response: Response<ApiResult<Nothing>>
+                        ) {
+                            if (response.code() != 201) {
+                                displayMsg(response.errorBody().toString())
+                            } else {
+                                showError("Successfully", helper.PopupType.Info)
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
+                            displayMsg(t.message ?: t.toString())
+                        }
+                    })
+            }
+
         }
     }
 }

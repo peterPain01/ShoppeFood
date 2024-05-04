@@ -174,16 +174,16 @@
                             android:src="@drawable/ic_heart_solid" />
                     </LinearLayout>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/restaurant_view_category_list"
-                        android:layout_width="0dp"
-                        android:layout_height="47dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:adapter="@{viewModel.categoryAdapter}"
-                        android:orientation="horizontal"
-                        android:background="@color/white"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/restaurant_view_category_list"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="47dp"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:layout_marginEnd="20dp"-->
+<!--                        android:adapter="@{viewModel.categoryAdapter}"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:background="@color/white"-->
+<!--                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -191,6 +191,7 @@
                         android:background="@color/white"
                         android:orientation="vertical"
                         android:paddingHorizontal="12dp"
+                        android:layout_marginTop="12dp"
                         >
 
                         <TextView
@@ -216,17 +217,20 @@
                         android:id="@+id/restaurant_view_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="12dp"
                         android:text="Popular Foods"
                         android:textColor="@color/black"
+                        android:paddingHorizontal="12dp"
+
                         android:textSize="20sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/restaurant_view_gridView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="6dp"
+                        android:layout_marginHorizontal="12dp"
                         android:layout_marginTop="10dp"
+
                         android:adapter="@{viewModel.foodGridAdapter}" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
