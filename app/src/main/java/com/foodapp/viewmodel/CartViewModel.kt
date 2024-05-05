@@ -78,7 +78,6 @@ class CartViewModel(
                     displayMsg(response.errorBody().toString())
                 }
             }
-
             override fun onFailure(call: Call<ApiResult<Cart?>>, t: Throwable) {
                 displayMsg(t.message ?: t.toString())
             }
