@@ -250,4 +250,9 @@ interface ApiService {
 
     @GET("shop/all")
     fun getAllShops(): Call<ApiResult<List<Shop>>>
+
+    @POST("comment/user/shop")
+    fun postComment(
+        @Body comment: Review
+    ): Call<ApiResult<Nothing>>
 }

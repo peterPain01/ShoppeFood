@@ -2,11 +2,13 @@ package com.foodapp.viewmodel
 
 import ApiService
 import android.content.Context
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.foodapp.data.model.ApiResult
 import com.foodapp.data.model.Product
+import com.foodapp.data.model.Review
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.data.repository.RetrofitClient
 import com.foodapp.data.repository.UserRepository
@@ -83,6 +85,24 @@ class FoodPaymentViewModel(val id: String,sessionManager: SessionManager, val di
             override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
                 displayMsg(t.message)
                 done()
+            }
+        })
+    }
+    fun addComment(review: Review) {
+        userService.postComment(review).enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
+            override fun onResponse(
+                call: Call<ApiResult<Nothing>>,
+                response: Response<ApiResult<Nothing>>
+            ) {
+                if (!response.isSuccessful) {
+                    displayMsg(response.errorBody().toString())
+                } else {
+                    commentAdapter.value?.add(review)
+                }
+            }
+
+            override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
+                displayMsg(t.stackTraceToString())
             }
         })
     }
