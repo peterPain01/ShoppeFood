@@ -45,11 +45,6 @@ class AuthViewModel(
                 try {
                     if (response.isSuccessful || response.code() == 201) {
                         val signUpResponse = response.body()
-                        if (signUpResponse != null) {
-                             sessionManager.saveAuthToken(signUpResponse.tokens, signUpResponse.user.id);
-                        } else {
-                            Log.e(TAG, "Sign up response body is null")
-                        }
                         callback(true, "Account successfully created")
                     } else if (response.code() == 409) {
                         callback(false, "Phone number existed, please try again")

@@ -52,10 +52,12 @@ class my_food(val supportFragmentManager : FragmentManager) : Fragment() {
         val view = inflater.inflate(R.layout.fragment_my_food, container, false)
 
         val all = view.findViewById<TextView>(R.id.my_food_all)
-        val breakfast = view.findViewById<TextView>(R.id.my_food_breakfast)
-        val dinner = view.findViewById<TextView>(R.id.my_food_dinner)
-        val lunch = view.findViewById<TextView>(R.id.my_food_lunch)
+        val publish = view.findViewById<TextView>(R.id.my_food_publish)
+        val unPublish = view.findViewById<TextView>(R.id.my_food_UnPublish)
         val back = view.findViewById<ImageButton>(R.id.my_food_btn_back)
+        val recyclerView_vertical = view.findViewById<RecyclerView>(R.id.my_food_total_items)
+        var viewModel = ShopViewModel(requireActivity());
+        viewModel.getProduct(view, recyclerView_vertical, "all")
 
         back.setOnClickListener {
             Log.i("backkk", "pragment");
@@ -73,39 +75,32 @@ class my_food(val supportFragmentManager : FragmentManager) : Fragment() {
             all?.setTextColor(Color.parseColor("#FB6D3A"))
             all?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
             prev = all;
+            viewModel.getProduct(view, recyclerView_vertical, "all")
         }
 
-        breakfast.setOnClickListener {
+        publish.setOnClickListener {
             prev?.setTextColor(Color.parseColor("#A5A7B9"))
             prev?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#A5A7B9"))
-            breakfast?.setTextColor(Color.parseColor("#FB6D3A"))
-            breakfast?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
-            prev = breakfast
+            publish?.setTextColor(Color.parseColor("#FB6D3A"))
+            publish?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
+            prev = publish
+            viewModel.getProduct(view, recyclerView_vertical, "publish")
         }
 
-        dinner.setOnClickListener {
+        unPublish.setOnClickListener {
             if(prev != null) {
                 prev?.setTextColor(Color.parseColor("#A5A7B9"))
                 prev?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#A5A7B9"))
             }
-            dinner?.setTextColor(Color.parseColor("#FB6D3A"))
-            dinner?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
-            prev = dinner
+            unPublish?.setTextColor(Color.parseColor("#FB6D3A"))
+            unPublish?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
+            prev = unPublish
+            viewModel.getProduct(view, recyclerView_vertical, "unPublish")
         }
 
-        lunch.setOnClickListener {
-            if(prev != null) {
-                prev?.setTextColor(Color.parseColor("#A5A7B9"))
-                prev?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#A5A7B9"))
-            }
-            lunch?.setTextColor(Color.parseColor("#FB6D3A"))
-            lunch?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
-            prev = lunch
-        }
-        val dummyList = FakeData.createItemMyFood()
-        val recyclerView_vertical = view.findViewById<RecyclerView>(R.id.my_food_total_items)
 
-        ShopViewModel(requireActivity()).getProduct(view, recyclerView_vertical)
+
+
 
         return view;
     }

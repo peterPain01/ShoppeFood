@@ -11,5 +11,6 @@ data class Product(
     var product_original_price: Double = 0.0,
     var product_thumb: String = "",
     var product_description: String = "",
-    var product_reviews : List<Review> = emptyList()
+    var product_reviews : List<Review> = emptyList(),
+    var isDraft: Boolean = true
 )
