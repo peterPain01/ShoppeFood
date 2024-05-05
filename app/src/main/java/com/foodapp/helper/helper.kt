@@ -97,6 +97,7 @@ open class helper {
             DecimalFormat("#,###")
                 .format(n)
                 .replace(",", ".")
+        fun formatter(n: Double) = formatter(n.toInt())
         fun formatDuration(seconds: Long): String = if (seconds < 60) {
             seconds.toString()
         } else {
