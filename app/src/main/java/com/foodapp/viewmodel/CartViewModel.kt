@@ -5,6 +5,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.view.View
+import android.widget.Adapter
+import android.widget.AdapterView
+import android.widget.Spinner
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -150,6 +153,14 @@ class CartViewModel(
                     displayMsg(t.message ?: t.toString())
                 }
             })
+    }
+    val onAddressSelected = object: AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            spinnerAdapter.value?.selectedItem = spinnerAdapter.value?.getItem(position)
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+        }
     }
 
     fun placeOrder(_view: View) {

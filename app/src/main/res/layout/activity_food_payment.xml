@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="helper"
+            type="com.foodapp.helper.helper.Companion" />
         <variable
             name="viewModel"
             type="com.foodapp.viewmodel.FoodPaymentViewModel" />
@@ -232,7 +234,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{String.format("%.2f", viewModel.totalPrice)}'
+                    android:text='@{String.format("%s VND", helper.formatter(viewModel.totalPrice))}'
                     android:textColor="@color/black"
                     android:textSize="28dp"
                     android:textStyle="bold" />
