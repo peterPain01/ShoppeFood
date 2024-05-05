@@ -53,6 +53,7 @@ class driver_info : AppCompatActivity() {
             val intent = Intent(this, MoneyMange::class.java)
             intent.putExtra("fullname", fullname)
             startActivity(intent)
+            overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left)
         }
         binding.activityDriverInfoLogout.setOnClickListener {
             logout {
@@ -60,6 +61,11 @@ class driver_info : AppCompatActivity() {
                 val new_intent = Intent(this, Login::class.java)
                 startActivity(new_intent)
             }
+        }
+        binding.activityDriverInfoHistory.setOnClickListener {
+            val newIntent = Intent(this, DriverHistoryOrder::class.java)
+            startActivity(newIntent)
+            overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left)
         }
     }
 
