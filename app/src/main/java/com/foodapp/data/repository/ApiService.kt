@@ -198,5 +198,11 @@ interface ApiService {
 
     @GET("/shop/statistic/order/pending")
     fun getAllPending(): Call<ApiResult<List<Running>>>
+
+    @GET("user/shippingFee")
+    fun getShippingFee(
+        @Query("lat") lat: Double,
+        @Query("lng") lng: Double
+    ): Call<ApiResult<Double>>
 }
 

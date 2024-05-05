@@ -4,6 +4,7 @@ import ApiService
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import android.widget.Adapter
 import android.widget.AdapterView
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModel
 import com.foodapp.R
 import com.foodapp.data.model.ApiResult
 import com.foodapp.data.model.Cart
+import com.foodapp.data.model.MapPosition
 import com.foodapp.data.model.UserAddress
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.data.repository.UserRepository
@@ -33,7 +35,21 @@ class CartViewModel(
     var adapter: MutableLiveData<CartListAdapter> = MutableLiveData()
     var spinnerAdapter: MutableLiveData<AddressSpinnerAdapter> = MutableLiveData()
     var cart: MutableLiveData<Cart> = MutableLiveData()
-    var totalPrice: MutableLiveData<String> = MutableLiveData()
+    var totalPriceRaw: Double = 0.0
+        set(value) {
+            field = value
+            totalPrice.value = String.format("%s VND", helper.formatter(value))
+            updateSum()
+        }
+    var shippingFeeRaw: Double = 0.0
+        set(value) {
+            field = value
+            shippingFee.value = String.format("%s VND", helper.formatter(value))
+            updateSum()
+        }
+    var totalPrice: MutableLiveData<String> = MutableLiveData("0.0")
+    var shippingFee: MutableLiveData<String> = MutableLiveData("0.0")
+    var sum: MutableLiveData<String> = MutableLiveData("0.0")
 
     private val contextLocal = context
     var paymentMethod: String = "cash"
@@ -46,10 +62,10 @@ class CartViewModel(
             ) {
                 if (response.code() == 200) {
                     cart.value = response.body()?.metadata!!
-                    totalPrice.value = helper.formatter(cart.value?.totalPrice!!.toInt())
+                    totalPriceRaw = cart.value?.totalPrice!!
                     adapter.value =
                         CartListAdapter(cart.value?.cart_products!!, R.layout.cart_item, {
-                            totalPrice.value = helper.formatter(cart.value?.totalPrice!!.toInt())
+                            totalPriceRaw = cart.value?.totalPrice!!
                         }, add = addProduct, reduce = reduceProduct, remove = removeProduct)
                     userService.getUserAddresses()
                         .enqueue(object : retrofit2.Callback<ApiResult<List<UserAddress>>> {
@@ -156,15 +172,38 @@ class CartViewModel(
     }
     val onAddressSelected = object: AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            spinnerAdapter.value?.selectedItem = spinnerAdapter.value?.getItem(position)
+            val addr = spinnerAdapter.value?.getItem(position)
+            spinnerAdapter.value?.selectedItem = addr
+            updateShippingFee(addr?.latlng!!)
         }
 
         override fun onNothingSelected(parent: AdapterView<*>?) {
         }
     }
 
+    fun updateShippingFee(pos: MapPosition) {
+        userService.getShippingFee(lat = pos.lat, lng = pos .lng).enqueue(object: retrofit2.Callback<ApiResult<Double>> {
+            override fun onResponse(
+                call: Call<ApiResult<Double>>,
+                response: Response<ApiResult<Double>>
+            ) {
+                if (response.code() == 200) {
+                    shippingFeeRaw = response.body()?.metadata!!
+                } else {
+                    displayMsg(response.errorBody().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ApiResult<Double>>, t: Throwable) {
+                displayMsg(t.message ?: t.toString())
+            }
+
+        })
+    }
+
     fun placeOrder(_view: View) {
         // kiemt tra phuong thuc truoc khi order
+        Log.d("FOODAPP:CartViewModel", spinnerAdapter.value?.selectedItem?.street.toString())
         if (spinnerAdapter.value?.selectedItem == null) {
             showError("Please update address in user info page first!", helper.PopupType.Error)
         } else {
@@ -209,5 +248,8 @@ class CartViewModel(
             }
 
         }
+    }
+    fun updateSum() {
+        sum.value = String.format("%s VND", helper.formatter(totalPriceRaw + shippingFeeRaw))
     }
 }
