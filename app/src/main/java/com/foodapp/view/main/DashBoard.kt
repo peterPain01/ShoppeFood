@@ -4,32 +4,23 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.foodapp.R
-import com.foodapp.helper.helper
-import com.foodapp.utils.FakeData
 import com.foodapp.view.adapter.BottomSheetDiaglogRunning
-import com.foodapp.view.adapter.GridAdapter
 import com.foodapp.viewmodel.ShopViewModel
 import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.YAxis
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import android.widget.ArrayAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,6 +39,7 @@ class DashBoard : Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var shopViewModel: ShopViewModel
     private lateinit var mNewOrderReceiver: BroadcastReceiver
+    private lateinit var lineChart: LineChart
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,8 +55,17 @@ class DashBoard : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_dash_board, container, false)
         val showBottomSheetButton = view.findViewById<ImageButton>(R.id.dash_board_running)
+        var spinner = view.findViewById<Spinner>(R.id.dash_board_filter)
+        val arraySpinner = listOf(
+            "Month", "Year"
+        )
+
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, arraySpinner)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.setAdapter(adapter)
+
         shopViewModel = ShopViewModel(requireActivity());
-        val lineChart: LineChart = view.findViewById(R.id.lineChart)
+        lineChart = view.findViewById(R.id.lineChart)
         val allreview = view.findViewById<TextView>(R.id.dash_board_view_all)
 
         allreview.setOnClickListener {
@@ -77,7 +78,7 @@ class DashBoard : Fragment() {
             bottomSheet.show(requireActivity().supportFragmentManager, "ModalBottomSheet")
         }
         // Get reference to LineChart view
-        drawLineChart(lineChart) // Pass the LineChart view to the function
+//        drawLineChart(lineChart) // Pass the LineChart view to the function
 
         //call api
         // shopViewModel.getStatistic(view, gridView);
@@ -92,7 +93,7 @@ class DashBoard : Fragment() {
     override fun onResume() {
         super.onResume()
         val gridView = this.requireView().findViewById<RecyclerView>(R.id.dash_board_recycleview)
-        shopViewModel.getStatistic(this.requireView(), gridView);
+        shopViewModel.getStatistic(this.requireView(), gridView, lineChart);
     }
 
 
@@ -111,43 +112,7 @@ class DashBoard : Fragment() {
 
     // gui mang 1 mang cac diem cua thang trong ngay
     // select theo thang
-    fun drawLineChart(lineChart: LineChart) {
-        val entries = arrayListOf<Entry>().apply {
-            add(Entry(0f, 4f))
-            add(Entry(1f, 8f))
-            add(Entry(2f, 6f))
-            add(Entry(3f, 2f))
-            add(Entry(4f, 7f))
-        }
 
-        val dataSet = LineDataSet(entries, "Total Revenue this month")
-
-        dataSet.color = Color.BLUE
-        dataSet.valueTextColor = Color.RED
-
-        val lineData = LineData(dataSet)
-
-        lineChart.data = lineData
-
-        lineChart.description.isEnabled = false
-        lineChart.setTouchEnabled(true)
-        lineChart.isDragEnabled = true
-        lineChart.setScaleEnabled(true)
-        lineChart.setDrawGridBackground(false)
-        lineChart.setBackgroundColor(Color.WHITE)
-
-        val xAxis: XAxis = lineChart.xAxis
-        xAxis.position = XAxis.XAxisPosition.BOTTOM
-
-        val leftAxis: YAxis = lineChart.axisLeft
-        leftAxis.setDrawGridLines(true)
-
-        val rightAxis: YAxis = lineChart.axisRight
-        rightAxis.isEnabled = false
-
-        val legend: Legend = lineChart.legend
-        legend.form = Legend.LegendForm.LINE
-    }
 
 
     companion object {

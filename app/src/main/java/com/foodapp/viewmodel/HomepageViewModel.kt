@@ -26,7 +26,6 @@ class HomepageViewModel(val sessionManager: SessionManager, val displayMsg: (Str
     val categoryAdapter: MutableLiveData<HorizontalAdapter> = MutableLiveData()
     val topRatedShopAdapter: MutableLiveData<VerticalAdapter<Shop, VerticalShopViewHolder>> = MutableLiveData()
     init {
-        loadOverview()
         (if (sessionManager.isLogin()) userService else service).getTopRated(10).enqueue(object : retrofit2.Callback<ApiResult<List<Shop>>> {
             override fun onResponse(
                 call: Call<ApiResult<List<Shop>>>,

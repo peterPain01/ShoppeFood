@@ -20,7 +20,7 @@ class FoodPaymentViewModel(val id: String,sessionManager: SessionManager, val di
     private val userService = UserRepository(sessionManager).create(ApiService::class.java)
     var product: MutableLiveData<Product>  = MutableLiveData(Product())
     var count: MutableLiveData<Int> = MutableLiveData(1)
-    var totalPrice: MutableLiveData<Int> = MutableLiveData(0)
+    var totalPrice: MutableLiveData<String> = MutableLiveData("0")
     var totalOriginalPrice: MutableLiveData<String> = MutableLiveData("")
     val commentAdapter: MutableLiveData<UserCommentAdapter> = MutableLiveData()
 
@@ -48,7 +48,7 @@ class FoodPaymentViewModel(val id: String,sessionManager: SessionManager, val di
         })
     }
     fun updatePrice() {
-        totalPrice.value = ((count.value ?: 1) * (product.value?.product_discounted_price ?: 0.0)).toInt()
+        totalPrice.value = String.format("%s VND", helper.formatter((count.value ?: 1) * (product.value?.product_discounted_price ?: 0.0)))
         if (product.value?.product_original_price != product.value?.product_discounted_price) {
             totalOriginalPrice.value = String.format(
                 "%s VND",

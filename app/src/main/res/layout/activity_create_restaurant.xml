@@ -236,9 +236,42 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
                 android:layout_margin="10dp"
+                android:paddingHorizontal="10dp"
                 android:height="40dp"
                 android:background="@drawable/btn_white"
-                android:text="Upload"
+                android:text="Upload Image"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/create_restaurant_cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="184dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="24dp"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/create_restaurant_cardView">
+
+            <ImageView
+                android:id="@+id/create_restaurant_BackGroundFood2"
+                android:layout_width="match_parent"
+                android:layout_height="182dp"
+                android:scaleType="fitXY"
+                tools:srcCompat="@color/black" />
+
+            <Button
+                android:id="@+id/create_restaurant_LoadImage2"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:paddingHorizontal="10dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_white"
+                android:text="Upload Avatar"
                 android:textStyle="bold" />
 
         </androidx.cardview.widget.CardView>
@@ -258,7 +291,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_restaurant_cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/create_restaurant_cardView2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

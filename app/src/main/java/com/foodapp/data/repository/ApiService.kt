@@ -49,7 +49,14 @@ interface ApiService {
     @GET("shop/statistic/overall")
     fun getStatistic(): Call<ApiResult<DashBoard>>
     @GET("shop/publish")
-    fun getProduct(): Call<ApiResult<List<Product>>>
+    fun getPublish(): Call<ApiResult<List<Product>>>
+
+    @GET("shop/drafts")
+    fun getUnPublish(): Call<ApiResult<List<Product>>>
+
+    @GET("shop/product/all")
+    fun getAllProduct(): Call<ApiResult<List<Product>>>
+
 
     @POST("cart")
     fun addToCart(
@@ -95,8 +102,9 @@ interface ApiService {
         @Part("close_hour") closeHour: RequestBody,
         @PartMap address: Map<String, @JvmSuppressWildcards RequestBody>,
         @Part category: List<MultipartBody.Part>,
-        @Part image: MultipartBody.Part
-    ): Call<ApiResult<Shop>>
+        @Part image: MultipartBody.Part,
+        @Part avatar: MultipartBody.Part
+    ): Call<ApiResult<Nothing>>
 
     @GET("cart")
     fun getCart(): Call<ApiResult<Cart?>>
@@ -202,5 +210,36 @@ interface ApiService {
 
     @GET("/shop/statistic/order/pending")
     fun getAllPending(): Call<ApiResult<List<Running>>>
+
+    @GET("user/shippingFee")
+    fun getShippingFee(
+        @Query("lat") lat: Double,
+        @Query("lng") lng: Double
+    ): Call<ApiResult<Double>>
+
+    @Multipart
+    @POST("shipper/create")
+    fun createShipper(
+        @Part("fullname") name: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("license_plate_number") license: RequestBody,
+        @Part avatar: MultipartBody.Part,
+        @Part vehicle_image: MultipartBody.Part
+    ): Call<ApiResult<Nothing>>
+
+    @POST("/shop/publish")
+    fun publish(
+        @Query("productId") shopId : String,
+    ): Call<ApiResult<Nothing>>
+
+    @POST("/shop/un-publish")
+    fun unPublish(
+        @Query("productId") shopId : String,
+    ): Call<ApiResult<Nothing>>
+
+    @GET("state")
+    fun setState(
+        @Query("state") state: String
+    ): Call<ApiResult<Nothing>>
 }
 
