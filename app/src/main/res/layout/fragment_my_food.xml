@@ -9,52 +9,31 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-        <ImageButton
-            android:id="@+id/my_food_btn_back"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="36dp"
-            android:background="@drawable/btn_circle"
-            android:contentDescription="back"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/my_food_imageView3"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/ic_back"
-            app:layout_constraintBottom_toBottomOf="@+id/my_food_btn_back"
-            app:layout_constraintEnd_toEndOf="@+id/my_food_btn_back"
-            app:layout_constraintStart_toStartOf="@+id/my_food_btn_back"
-            app:layout_constraintTop_toTopOf="@+id/my_food_btn_back" />
 
         <TextView
+            android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:textSize="20sp"
+            android:layout_marginTop="44dp"
             android:text="My Food List"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/my_food_btn_back"
-            app:layout_constraintStart_toEndOf="@+id/my_food_btn_back"
-            app:layout_constraintTop_toTopOf="@+id/my_food_btn_back"
-            app:layout_constraintVertical_bias="0.516" />
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/my_food_all"
             android:layout_width="120dp"
             android:layout_height="35dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="36dp"
             android:background="@drawable/textline_bottom"
-            android:gravity="center_horizontal"
             android:backgroundTint="#DDE2E6"
+            android:gravity="center_horizontal"
             android:text="All"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/my_food_btn_back"
-            app:layout_constraintTop_toBottomOf="@+id/my_food_btn_back" />
+            app:layout_constraintStart_toStartOf="@+id/textView7"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <TextView
             android:id="@+id/my_food_publish"

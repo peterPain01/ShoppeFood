@@ -23,7 +23,11 @@ class ProductShopGridViewHolder(itemView: View) : GridAdapter.ViewHolder<Product
             .load(data.product_thumb)
             .into(imageView)
         name.text = data.product_name
-        desc.text = data.product_description
+        if(data.product_description.length > 20){
+            desc.text = data.product_description.substring(0, 20) + "...";
+        }else{
+            desc.text = data.product_description
+        }
         price.text = String.format("%s VND", helper.formatter(data.product_discounted_price.toInt()))
         plus.visibility = View.INVISIBLE;
     }

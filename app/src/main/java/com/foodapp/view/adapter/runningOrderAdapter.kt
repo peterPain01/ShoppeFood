@@ -33,7 +33,7 @@ class runningOrderAdapter (private val dataList: List<Running>, private val res 
         private val nameTextView: TextView = itemView.findViewById(R.id.item_grid_running_name)
 
         fun bind(order: Running) {
-            priceTextView.text = "$${order.order_totalPrice}"
+            priceTextView.text = "${helper.formatCurrency(order.order_totalPrice.toDouble())}"
             nameTextView.text = order.order_user.phone
         }
     }

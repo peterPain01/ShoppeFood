@@ -18,9 +18,7 @@ class BottomSheetDiaglogRunning : BottomSheetDialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.bottom_sheet_running, container, false)
 
-        val dummyList = FakeData.createRunningOrder()
         val recyclerView_vertical = view.findViewById<RecyclerView>(R.id.dash_board_list_item)
-        // Inflate the layout for this fragment
         RunningOrderViewModel(requireContext(), recyclerView_vertical, SessionManager(requireContext()));
 
         return view
