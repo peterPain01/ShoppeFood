@@ -109,6 +109,7 @@
                     app:cardCornerRadius="10dp">
 
                     <Spinner
+                        android:id="@+id/activity_order_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#6B6E82"

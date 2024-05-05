@@ -20,6 +20,7 @@ class AddressSpinnerAdapter(context: Context, val items: List<UserAddress>)
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         return createView(position, convertView, parent)
     }
+
     private fun createView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.item_address_spinner, parent, false)
         val name = view.findViewById<TextView>(R.id.item_address_spinner_name)
@@ -35,9 +36,6 @@ class AddressSpinnerAdapter(context: Context, val items: List<UserAddress>)
             image.setImageResource(R.drawable.ic_work)
         } else {
             image.setBackgroundColor(0x101010)
-        }
-        view.setOnClickListener {
-            selectedItem = items[position]
         }
         return view
     }
