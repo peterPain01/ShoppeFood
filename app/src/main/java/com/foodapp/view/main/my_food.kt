@@ -54,15 +54,9 @@ class my_food(val supportFragmentManager : FragmentManager) : Fragment() {
         val all = view.findViewById<TextView>(R.id.my_food_all)
         val publish = view.findViewById<TextView>(R.id.my_food_publish)
         val unPublish = view.findViewById<TextView>(R.id.my_food_UnPublish)
-        val back = view.findViewById<ImageButton>(R.id.my_food_btn_back)
         val recyclerView_vertical = view.findViewById<RecyclerView>(R.id.my_food_total_items)
         var viewModel = ShopViewModel(requireActivity());
         viewModel.getProduct(view, recyclerView_vertical, "all")
-
-        back.setOnClickListener {
-            Log.i("backkk", "pragment");
-            getFragmentManager()?.popBackStack();
-        }
 
         all?.setTextColor(Color.parseColor("#FB6D3A"))
         all?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FB6D3A"))
@@ -97,10 +91,6 @@ class my_food(val supportFragmentManager : FragmentManager) : Fragment() {
             prev = unPublish
             viewModel.getProduct(view, recyclerView_vertical, "unPublish")
         }
-
-
-
-
 
         return view;
     }

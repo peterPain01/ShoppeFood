@@ -220,6 +220,7 @@
                             android:text="Open Restaurants" />
 
                         <TextView
+                            android:id="@+id/homepage_see_all"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="See All &gt;"

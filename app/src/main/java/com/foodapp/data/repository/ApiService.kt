@@ -180,7 +180,7 @@ interface ApiService {
 
     @GET("shipper/")
     fun getShipperInfo(
-    ): Call<ApiResult<>>
+    ): Call<ApiResult<Shipper>>
 
     @Multipart
     @PATCH("user")
@@ -247,5 +247,13 @@ interface ApiService {
     fun setState(
         @Query("state") state: String
     ): Call<ApiResult<Nothing>>
-}
 
+    @GET("shipper/revenue/overview")
+    fun getShipperRevenueOverview(): Call<ApiResult<ShipperOverview>>
+
+    @GET("shipper/history/orders")
+    fun getShipperHistoryOrders(): Call<ApiResult<List<Order>>>
+
+    @GET("shop/all")
+    fun getAllShops(): Call<ApiResult<List<Shop>>>
+}

@@ -51,6 +51,9 @@ class ShopViewModel  (private val context: Context){
                     view.findViewById<TextView>(R.id.dash_board_location5).text = data.numPendingOrder.toString();
                     view.findViewById<TextView>(R.id.dash_board_location6).text = data.numShippingOrder.toString();
                     view.findViewById<TextView>(R.id.dash_board_revenue).text = data.totalRevenueToday.toString();
+                    view.findViewById<TextView>(R.id.dash_board_total).text = "Total " + data.totalComments + " Reviews";
+                    view.findViewById<TextView>(R.id.dash_board_address).text = data.address.street;
+
                     val adapte_grid = GridAdapter<Product>(data.trendingProducts, R.layout.item_grid_checkout, ::ProductShopGridViewHolder)
                     gridView.layoutManager = GridLayoutManager(context, 2)
                     gridView.adapter = adapte_grid
