@@ -232,5 +232,10 @@ interface ApiService {
     fun unPublish(
         @Query("productId") shopId : String,
     ): Call<ApiResult<Nothing>>
+
+    @GET("state")
+    fun setState(
+        @Query("state") state: String
+    ): Call<ApiResult<Nothing>>
 }
 

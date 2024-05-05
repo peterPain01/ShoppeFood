@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.foodapp.MyApplication
 import com.foodapp.R
 
 class SessionManager(private val context: Context) {
@@ -23,6 +24,7 @@ class SessionManager(private val context: Context) {
         editor.putString(REFRESH_TOKEN, tokens.refreshToken)
         editor.putString(USER_ID, user_id)
         editor.apply()
+        MyApplication.isNew = false
     }
 
     fun saveRole(role: String) {
@@ -47,11 +49,13 @@ class SessionManager(private val context: Context) {
         editor.remove(ACCESS_TOKEN)
         editor.remove(REFRESH_TOKEN)
         editor.remove(USER_ID)
+        editor.remove(ROLE)
         editor.apply()
     }
 
     fun isLogin(): Boolean {
         val userId = prefs.getString(USER_ID, null)
+        Log.d("FOODAPP:Session", userId.toString())
         return userId != null
     }
 }

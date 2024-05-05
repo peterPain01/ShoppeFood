@@ -23,6 +23,7 @@ class Login : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     lateinit var authViewModel: AuthViewModel
     lateinit var sessionManager: SessionManager
+    var isLogging = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +35,18 @@ class Login : AppCompatActivity() {
         binding.lifecycleOwner = this
     }
 
+    override fun onResume() {
+        super.onResume()
+        isLogging = false
+    }
+
     override fun onStart() {
         super.onStart()
         val errorMsg = findViewById<TextView>(R.id.errorMsg)
         val btnLogin = findViewById<AppCompatButton>(R.id.login_btnLogin)
         btnLogin.setOnClickListener{
+            if (isLogging) return@setOnClickListener
+            isLogging = true
             authViewModel.login { isSuccess, user, Message ->
                 if(isSuccess)
                 {
@@ -62,6 +70,7 @@ class Login : AppCompatActivity() {
                 else{
                     errorMsg.text = Message
                 }
+                isLogging = false
             }
         }
     }
