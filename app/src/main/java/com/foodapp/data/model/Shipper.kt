@@ -14,10 +14,5 @@ data class Shipper(
     var fullname: String = "Pham Hoang Gia Huy",
     var isActive: Boolean = false   ,
     var balance: Double = 0.0,
-    var device_token: String =
-    // only have lat lng
-//    var currentPosition: UserAddress? = null,
-
-
 
     )

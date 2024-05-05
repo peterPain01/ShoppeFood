@@ -19,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ShipperRecharge"
+            android:exported="false" />
+        <activity
             android:name=".view.CreateShipper"
             android:exported="false" />
         <activity
@@ -67,9 +70,9 @@
         <activity
             android:name=".view.main.driver_confirm"
             android:exported="false" />
-
-        <activity android:name=".view.main.MoneyMange"
-            android:exported="false"/>
+        <activity
+            android:name=".view.main.MoneyMange"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
