@@ -14,6 +14,7 @@ class SessionManager(private val context: Context) {
         const val ACCESS_TOKEN = "access_token"
         const val REFRESH_TOKEN = "refresh_token"
         const val USER_ID = "user_id"
+        const val ROLE = "role"
     }
 
     fun saveAuthToken(tokens: Tokens, user_id: String) {
@@ -22,6 +23,15 @@ class SessionManager(private val context: Context) {
         editor.putString(REFRESH_TOKEN, tokens.refreshToken)
         editor.putString(USER_ID, user_id)
         editor.apply()
+    }
+
+    fun saveRole(role: String) {
+        val editor = prefs.edit()
+        editor.putString(ROLE, role)
+        editor.apply()
+    }
+    fun getRole(): String {
+        return prefs.getString(ROLE, null)!!
     }
 
     data class UserAuthInfo(val userId: String?, val accessToken: String?)

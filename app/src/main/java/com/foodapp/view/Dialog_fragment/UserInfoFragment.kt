@@ -11,9 +11,11 @@ import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.FragmentUserInfoBinding
+import com.foodapp.view.CreateShipper
 import com.foodapp.view.auth.Login
 import com.foodapp.view.main.PersonalInfo
 import com.foodapp.view.main.UserAddress
+import com.foodapp.view.main.create_restaurant
 import com.foodapp.viewmodel.UserInfoViewModel
 
 class UserInfoFragment : Fragment(R.layout.fragment_user_info) {
@@ -57,6 +59,14 @@ class UserInfoFragment : Fragment(R.layout.fragment_user_info) {
                 val new_intent = Intent(requireContext(), Login::class.java)
                 startActivity(new_intent)
             }
+        }
+        binding.activityUserInfoCreateShop.setOnClickListener {
+            val newIntent = Intent(requireContext(), create_restaurant::class.java)
+            startActivity(newIntent)
+        }
+        binding.activityUserInfoCreateShipper.setOnClickListener {
+            val newIntent = Intent(requireContext(), CreateShipper::class.java)
+            startActivity(newIntent)
         }
     }
 }

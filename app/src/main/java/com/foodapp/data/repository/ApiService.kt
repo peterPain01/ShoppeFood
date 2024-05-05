@@ -95,8 +95,9 @@ interface ApiService {
         @Part("close_hour") closeHour: RequestBody,
         @PartMap address: Map<String, @JvmSuppressWildcards RequestBody>,
         @Part category: List<MultipartBody.Part>,
-        @Part image: MultipartBody.Part
-    ): Call<ApiResult<Shop>>
+        @Part image: MultipartBody.Part,
+        @Part avatar: MultipartBody.Part
+    ): Call<ApiResult<Nothing>>
 
     @GET("cart")
     fun getCart(): Call<ApiResult<Cart?>>
@@ -204,5 +205,15 @@ interface ApiService {
         @Query("lat") lat: Double,
         @Query("lng") lng: Double
     ): Call<ApiResult<Double>>
+
+    @Multipart
+    @POST("shipper/create")
+    fun createShipper(
+        @Part("fullname") name: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("license_plate_number") license: RequestBody,
+        @Part avatar: MultipartBody.Part,
+        @Part vehicle_image: MultipartBody.Part
+    ): Call<ApiResult<Nothing>>
 }
 
