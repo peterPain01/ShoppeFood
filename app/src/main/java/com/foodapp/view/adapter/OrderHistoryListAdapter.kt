@@ -1,5 +1,6 @@
 package com.foodapp.view.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.foodapp.R
 import com.foodapp.data.model.Order
 import com.foodapp.helper.helper
+import com.foodapp.view.main.DetailOrder
 import java.text.SimpleDateFormat
 
 class OrderHistoryListAdapter(val orders: List<Order>, val res: Int): RecyclerView.Adapter<DataViewHolder<Order>>() {
@@ -42,6 +44,11 @@ class OrderHistoryListAdapter(val orders: List<Order>, val res: Int): RecyclerVi
             count.text = String.format("%d items", data.order_listProducts.sumOf { it.quantity })
             val formatter = SimpleDateFormat("dd MMM, HH:mm")
             date.text = formatter.format(data.updatedAt)
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailOrder::class.java)
+                intent.putExtra("orderId", data._id)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 }

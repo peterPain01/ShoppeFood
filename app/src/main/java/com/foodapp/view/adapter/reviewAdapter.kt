@@ -49,7 +49,7 @@ class reviewAdapter(private val dataList: List<Review>, private val res : Int) :
         fun bind(data: Review) {
             img?.let { imageView ->
                 helper.ShowImageUrl(
-                    data.comment_content_image,
+                    data.comment_userAvatar,
                     imageView
                 )
             }
