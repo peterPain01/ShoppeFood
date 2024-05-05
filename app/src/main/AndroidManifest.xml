@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -66,6 +67,9 @@
         <activity
             android:name=".view.main.driver_confirm"
             android:exported="false" />
+
+        <activity android:name=".view.main.MoneyMange"
+            android:exported="false"/>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

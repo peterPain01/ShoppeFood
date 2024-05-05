@@ -178,6 +178,10 @@ interface ApiService {
         @Query("orderId") id: String
     ): Call<ApiResult<Nothing>>
 
+    @GET("shipper/")
+    fun getShipperInfo(
+    ): Call<ApiResult<>>
+
     @Multipart
     @PATCH("user")
     fun updateUser(
@@ -231,6 +235,11 @@ interface ApiService {
     @POST("/shop/un-publish")
     fun unPublish(
         @Query("productId") shopId : String,
+    ): Call<ApiResult<Nothing>>
+
+    @GET("state")
+    fun setState(
+        @Query("state") state: String
     ): Call<ApiResult<Nothing>>
 }
 
