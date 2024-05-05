@@ -247,4 +247,7 @@ interface ApiService {
 
     @GET("shipper/history/orders")
     fun getShipperHistoryOrders(): Call<ApiResult<List<Order>>>
+
+    @GET("shop/all")
+    fun getAllShops(): Call<ApiResult<List<Shop>>>
 }
