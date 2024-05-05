@@ -6,6 +6,9 @@
     >
     <data>
         <variable
+            name="helper"
+            type="com.foodapp.helper.helper.Companion" />
+        <variable
             name="viewModel"
             type="com.foodapp.viewmodel.CartViewModel" />
     </data>
@@ -154,7 +157,58 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/activity_order_textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0"
+                    android:text="Price: "
+                    android:textColor="#32343E"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text='@{viewModel.totalPrice}'
+                    android:textColor="#6B6E82"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0"
+                    android:text="Ship: "
+                    android:textColor="#32343E"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text='@{viewModel.shippingFee}'
+                    android:textColor="#6B6E82"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -164,11 +218,11 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/activity_order_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text='@{String.format("%s VND", viewModel.totalPrice)}'
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:text='@{viewModel.sum}'
                     android:textColor="#6B6E82"
                     android:textSize="18sp"
                     android:textStyle="bold" />

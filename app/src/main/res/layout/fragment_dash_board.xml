@@ -165,13 +165,13 @@
                     app:layout_constraintStart_toEndOf="@+id/dash_board_text_total"
                     app:layout_constraintTop_toTopOf="@+id/dash_board_text_total" />
 
-                    <com.github.mikephil.charting.charts.LineChart
-                        android:id="@+id/lineChart"
-                        android:layout_width="match_parent"
-                        android:layout_height="128dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingClass" />
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingClass" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

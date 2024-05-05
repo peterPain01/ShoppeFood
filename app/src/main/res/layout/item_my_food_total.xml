@@ -105,4 +105,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/item_my_food_total_rating"
         app:layout_constraintStart_toEndOf="@+id/item_my_food_total_rating"
         app:layout_constraintTop_toTopOf="@+id/item_my_food_total_rating" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/item_my_food_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/item_my_food_total_review"
+        app:layout_constraintEnd_toEndOf="@+id/item_my_food_total_running_price"
+        app:layout_constraintTop_toTopOf="@+id/item_my_food_total_review" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

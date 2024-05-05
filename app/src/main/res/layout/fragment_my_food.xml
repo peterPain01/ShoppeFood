@@ -45,60 +45,45 @@
 
         <TextView
             android:id="@+id/my_food_all"
-            android:layout_width="90dp"
+            android:layout_width="120dp"
             android:layout_height="35dp"
             android:layout_marginTop="28dp"
             android:background="@drawable/textline_bottom"
             android:gravity="center_horizontal"
             android:backgroundTint="#DDE2E6"
             android:text="All"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/my_food_btn_back"
             app:layout_constraintTop_toBottomOf="@+id/my_food_btn_back" />
 
         <TextView
-            android:id="@+id/my_food_breakfast"
-            android:layout_width="90dp"
+            android:id="@+id/my_food_publish"
+            android:layout_width="120dp"
             android:layout_height="35dp"
             android:background="@drawable/textline_bottom"
-            android:text="Breakfast"
+            android:text="Publish"
             android:textColor="@color/black"
             android:gravity="center_horizontal"
             android:backgroundTint="#DDE2E6"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/my_food_all"
             app:layout_constraintStart_toEndOf="@+id/my_food_all"
             app:layout_constraintTop_toTopOf="@+id/my_food_all"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/my_food_lunch"
-            android:layout_width="90dp"
+            android:id="@+id/my_food_UnPublish"
+            android:layout_width="120dp"
             android:layout_height="35dp"
-            android:text="Lunch"
+            android:text="UnPublish"
             android:textColor="@color/black"
             android:background="@drawable/textline_bottom"
             android:backgroundTint="#DDE2E6"
             android:gravity="center_horizontal"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/my_food_breakfast"
-            app:layout_constraintStart_toEndOf="@+id/my_food_breakfast"
-            app:layout_constraintTop_toTopOf="@+id/my_food_breakfast"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/my_food_dinner"
-            android:layout_width="90dp"
-            android:layout_height="35dp"
-            android:text="Dinner"
-            android:textColor="@color/black"
-            android:background="@drawable/textline_bottom"
-            android:gravity="center_horizontal"
-            android:backgroundTint="#DDE2E6"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/my_food_lunch"
-            app:layout_constraintStart_toEndOf="@+id/my_food_lunch"
-            app:layout_constraintTop_toTopOf="@+id/my_food_lunch"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/my_food_publish"
+            app:layout_constraintStart_toEndOf="@+id/my_food_publish"
+            app:layout_constraintTop_toTopOf="@+id/my_food_publish"
             app:layout_constraintVertical_bias="0.0" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -110,7 +95,7 @@
             android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_food_breakfast" />
+            app:layout_constraintTop_toBottomOf="@+id/my_food_publish" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

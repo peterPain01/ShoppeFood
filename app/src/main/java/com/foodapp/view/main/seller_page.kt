@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.foodapp.R
+import com.foodapp.view.Dialog_fragment.UserInfoFragment
 import okhttp3.internal.notify
 
 class seller_page : AppCompatActivity() {
@@ -81,6 +82,9 @@ class seller_page : AppCompatActivity() {
             temp = btnSetting;
             value_temp = R.drawable.ic_human;
             btnSetting?.setImageResource(R.drawable.ic_human_primary);
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.seller_page_your_fragment_id, ShopInfo())
+                .commit()
         }
         btnCreate?.setOnClickListener {
             val new_intent = Intent(this, AddNewItem::class.java);

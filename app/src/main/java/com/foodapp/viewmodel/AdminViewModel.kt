@@ -33,6 +33,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
+import java.net.SocketTimeoutException
 import kotlin.random.Random
 
 class AdminViewModel (private val context: Context, private val spinner: Spinner){
@@ -61,14 +62,16 @@ class AdminViewModel (private val context: Context, private val spinner: Spinner
             }
         })
     }
-    fun CreateShop(phone: String, open_hour: String, close_hour: String, addresses: com.foodapp.data.model.UserAddress, image: File) {
+    fun CreateShop(phone: String, open_hour: String, close_hour: String, addresses: com.foodapp.data.model.UserAddress, image: File, avatar: File, onSuccess: () -> Unit) {
         val Name = shopInfo.name.toRequestBody("text/plain".toMediaTypeOrNull());
         val Description = shopInfo.description.toRequestBody("text/plain".toMediaTypeOrNull());
         val Phone = shopInfo.phone.toRequestBody("text/plain".toMediaTypeOrNull());
         val Open_hour = open_hour.toRequestBody("text/plain".toMediaTypeOrNull());
         val Close_hour = close_hour.toRequestBody("text/plain".toMediaTypeOrNull());
-        val requestFile = image.asRequestBody("image/jpeg".toMediaTypeOrNull())
-        val imagePart = MultipartBody.Part.createFormData("image", image.name, requestFile)
+        val requestImage = image.asRequestBody("image/jpeg".toMediaTypeOrNull())
+        val imagePart = MultipartBody.Part.createFormData("image", image.name, requestImage)
+        val requestAvatar = avatar.asRequestBody("image/jpeg".toMediaTypeOrNull())
+        val avatarPart = MultipartBody.Part.createFormData("avatar", avatar.name, requestAvatar)
         var Category: List<MultipartBody.Part> = listOf()
 
         val userRequestBody = createUserRequestBody(addresses)
@@ -85,18 +88,13 @@ class AdminViewModel (private val context: Context, private val spinner: Spinner
             }
         }
 
-        service.createShop(Name, Description, Phone, Open_hour, Close_hour, userPartMap, Category, imagePart).enqueue(object : Callback<ApiResult<Shop>> {
+        service.createShop(Name, Description, Phone, Open_hour, Close_hour, userPartMap, Category, imagePart, avatarPart).enqueue(object : Callback<ApiResult<Nothing>> {
             override fun onResponse(
-                call: Call<ApiResult<Shop>>,
-                response: Response<ApiResult<Shop>>
+                call: Call<ApiResult<Nothing>>,
+                response: Response<ApiResult<Nothing>>
             ) {
-                if (response.isSuccessful) {
-                    val shopResult = response.body()
-                    if (shopResult != null) {
-                        Toast.makeText(context, "Shop created successfully!", Toast.LENGTH_LONG).show()
-                    } else {
-                        Toast.makeText(context, "Shop creation succeeded but no data received!", Toast.LENGTH_LONG).show()
-                    }
+                if (response.code() == 201) {
+                    onSuccess()
                 } else {
                     val errorMessage = response.errorBody()?.string() ?: "Unknown error"
                     Log.e("CreateShop", "Error creating shop: $errorMessage")
@@ -104,12 +102,13 @@ class AdminViewModel (private val context: Context, private val spinner: Spinner
                 }
             }
 
-            override fun onFailure(
-                call: Call<ApiResult<Shop>>,
-                t: Throwable
-            ) {
-                Log.e("CreateShop", "Error: ${t.message ?: "Unknown error"}")
-                Toast.makeText(context, t.message ?: "Unknown error", Toast.LENGTH_LONG).show()
+            override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
+                if (t is SocketTimeoutException) {
+                    onSuccess()
+                } else {
+                    Log.e("CreateShop", "Error: ${t.message ?: "Unknown error"}")
+                    Toast.makeText(context, t.message ?: "Unknown error", Toast.LENGTH_LONG).show()
+                }
             }
         })
     }

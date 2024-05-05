@@ -17,19 +17,27 @@ import com.foodapp.view.main.dashboard_admin
 import com.foodapp.view.main.driver_home
 import com.foodapp.view.main.seller_page
 import com.foodapp.viewmodel.AuthViewModel
+import kotlinx.coroutines.GlobalScope
 
 class Login : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     lateinit var authViewModel: AuthViewModel
+    lateinit var sessionManager: SessionManager
+    var isLogging = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        val sessionManager = SessionManager(this)
+        sessionManager = SessionManager(this)
         authViewModel = AuthViewModel(sessionManager)
         binding.loginViewModel = authViewModel
         binding.lifecycleOwner = this
+    }
+
+    override fun onResume() {
+        super.onResume()
+        isLogging = false
     }
 
     override fun onStart() {
@@ -37,9 +45,12 @@ class Login : AppCompatActivity() {
         val errorMsg = findViewById<TextView>(R.id.errorMsg)
         val btnLogin = findViewById<AppCompatButton>(R.id.login_btnLogin)
         btnLogin.setOnClickListener{
+            if (isLogging) return@setOnClickListener
+            isLogging = true
             authViewModel.login { isSuccess, user, Message ->
                 if(isSuccess)
                 {
+                    user?.role?.let { sessionManager.saveRole(it) }
                     var klazz: Class<*>?
                     when (user?.role) {
                         "user" -> klazz = Homepage::class.java
@@ -59,6 +70,7 @@ class Login : AppCompatActivity() {
                 else{
                     errorMsg.text = Message
                 }
+                isLogging = false
             }
         }
     }
