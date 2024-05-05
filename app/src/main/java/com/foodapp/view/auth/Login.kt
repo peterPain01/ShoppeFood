@@ -17,16 +17,18 @@ import com.foodapp.view.main.dashboard_admin
 import com.foodapp.view.main.driver_home
 import com.foodapp.view.main.seller_page
 import com.foodapp.viewmodel.AuthViewModel
+import kotlinx.coroutines.GlobalScope
 
 class Login : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     lateinit var authViewModel: AuthViewModel
+    lateinit var sessionManager: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        val sessionManager = SessionManager(this)
+        sessionManager = SessionManager(this)
         authViewModel = AuthViewModel(sessionManager)
         binding.loginViewModel = authViewModel
         binding.lifecycleOwner = this
@@ -40,6 +42,7 @@ class Login : AppCompatActivity() {
             authViewModel.login { isSuccess, user, Message ->
                 if(isSuccess)
                 {
+                    user?.role?.let { sessionManager.saveRole(it) }
                     var klazz: Class<*>?
                     when (user?.role) {
                         "user" -> klazz = Homepage::class.java
