@@ -142,6 +142,27 @@ class ShopViewModel  (private val context: Context){
         })
     }
 
+    fun logout(done: () -> Unit) {
+        service.logout().enqueue(object: retrofit2.Callback<ApiResult<Nothing>> {
+            override fun onResponse(
+                call: Call<ApiResult<Nothing>>,
+                response: Response<ApiResult<Nothing>>
+            ) {
+                val body = response.body()!!
+                if (response.code() == 200) {
+                    done()
+                    // sessionManager.removeAuthToken()
+                } else {
+                    //displayMsg(body.message)
+                }
+            }
+
+            override fun onFailure(call: Call<ApiResult<Nothing>>, t: Throwable) {
+                //displayMsg(t.message)
+            }
+        })
+    }
+
     fun drawLineChart(lineChart: LineChart, lists: List<Statistic>) {
         val entries = arrayListOf<Entry>();
         lists.forEach {

@@ -39,6 +39,7 @@ class Signup : AppCompatActivity() {
                     errorMsg.text = Message
                 }
             }
+           // finish();
         }
     }
 }
