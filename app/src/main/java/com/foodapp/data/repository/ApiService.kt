@@ -49,7 +49,14 @@ interface ApiService {
     @GET("shop/statistic/overall")
     fun getStatistic(): Call<ApiResult<DashBoard>>
     @GET("shop/publish")
-    fun getProduct(): Call<ApiResult<List<Product>>>
+    fun getPublish(): Call<ApiResult<List<Product>>>
+
+    @GET("shop/drafts")
+    fun getUnPublish(): Call<ApiResult<List<Product>>>
+
+    @GET("shop/product/all")
+    fun getAllProduct(): Call<ApiResult<List<Product>>>
+
 
     @POST("cart")
     fun addToCart(
@@ -198,5 +205,15 @@ interface ApiService {
 
     @GET("/shop/statistic/order/pending")
     fun getAllPending(): Call<ApiResult<List<Running>>>
+
+    @POST("/shop/publish")
+    fun publish(
+        @Query("productId") shopId : String,
+    ): Call<ApiResult<Nothing>>
+
+    @POST("/shop/un-publish")
+    fun unPublish(
+        @Query("productId") shopId : String,
+    ): Call<ApiResult<Nothing>>
 }
 

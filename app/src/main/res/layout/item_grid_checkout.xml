@@ -66,6 +66,7 @@
                 android:layout_weight="1"
                 />
            <ImageButton
+               android:id="@+id/grid_checkout_plus"
                android:layout_width="30dp"
                android:layout_height="30dp"
                android:background="@drawable/circle_button_background"

@@ -78,12 +78,14 @@ object FakeData {
 
         for (i in 1..8) {
             val order = ItemMyFood(
+                id = "1231",
                 imageUrl = "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg",
                 tag = "breakfast",
                 price = 60.0,
                 star = 4.9,
                 review = "(10 reviews)",
-                name = "Chicken Thai Biriyani"
+                name = "Chicken Thai Biriyani",
+                isDraft = true
             )
             dummyData.add(order)
         }
