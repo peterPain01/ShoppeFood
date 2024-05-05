@@ -5,5 +5,7 @@ data class DashBoard(
     val numShippingOrder: String = "",
     val totalRevenueToday: String = "",
     val trendingProducts: List<Product> = listOf(),
-    val reportRevenue: List<Statistic> = listOf()
+    val reportRevenue: List<Statistic> = listOf(),
+    val totalComments : String = "",
+    val address: UserAddress = UserAddress()
 )
