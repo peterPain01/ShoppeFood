@@ -105,20 +105,35 @@
                         android:layout_height="0.3dp"
                         android:background="#cecece"
                         />
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Reviews"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:paddingVertical="12dp"
-                        />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:text="Reviews"
+                           android:textStyle="bold"
+                           android:textColor="@color/black"
+                           android:textSize="14sp"
+                           android:paddingVertical="12dp"
+                           />
+                       <ImageButton
+                           android:id="@+id/activity_food_payment_add_comment_btn"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:background="@color/transparent"
+                           android:layout_gravity="center_vertical"
+                           android:layout_marginEnd="10dp"
+                           android:src="@drawable/ic_pluscircle"/>
+                   </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/Food_payment_comment_rcv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:adapter="@{viewModel.commentAdapter}"
                         />
                 </LinearLayout>

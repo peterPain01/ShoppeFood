@@ -5,15 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.foodapp.R
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.foodapp.data.model.Category
+import com.foodapp.R
 import com.foodapp.data.model.Review
-import com.foodapp.view.adapter.HorizontalAdapter
-import java.text.SimpleDateFormat
+import com.foodapp.data.model.UserAddress
 
-class UserCommentAdapter (val dataList : List<Review>): RecyclerView.Adapter<UserCommentAdapter.ViewHolder>() {
+class UserCommentAdapter (val dataList : MutableList<Review>): RecyclerView.Adapter<UserCommentAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
     {
@@ -50,4 +48,8 @@ class UserCommentAdapter (val dataList : List<Review>): RecyclerView.Adapter<Use
         holder.bind(dataList[position])
     }
 
+    fun add(rv: Review) {
+        dataList.add(rv)
+        notifyItemInserted(dataList.size)
+    }
 }
