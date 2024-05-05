@@ -14,41 +14,24 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageButton
-                android:id="@+id/dash_board_more"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/circle_button_background"
-                android:contentDescription="."
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_seller_menu"
-                app:layout_constraintBottom_toBottomOf="@+id/dash_board_more"
-                app:layout_constraintEnd_toEndOf="@+id/dash_board_more"
-                app:layout_constraintStart_toStartOf="@+id/dash_board_more"
-                app:layout_constraintTop_toTopOf="@+id/dash_board_more" />
 
             <TextView
                 android:id="@+id/dash_board_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
                 android:text="LOCATION"
                 android:textColor="#FC6E2A"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/dash_board_more"
-                app:layout_constraintTop_toTopOf="@+id/dash_board_more" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/dash_board_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="12dp"
                 android:text="277 Nguyen Van Cu"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/dash_board_location"
@@ -58,11 +41,11 @@
                 android:id="@+id/dash_board_running"
                 android:layout_width="160dp"
                 android:layout_height="115dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="34dp"
                 android:background="@drawable/btn_seller_quantity"
                 android:contentDescription="Back"
-                app:layout_constraintStart_toStartOf="@+id/dash_board_more"
-                app:layout_constraintTop_toBottomOf="@+id/dash_board_more" />
+                app:layout_constraintStart_toStartOf="@+id/dash_board_address"
+                app:layout_constraintTop_toBottomOf="@+id/dash_board_address" />
 
             <TextView
                 android:id="@+id/dash_board_location5"
@@ -209,6 +192,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/dash_board_text_review" />
 
                 <TextView
+                    android:id="@+id/dash_board_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
