@@ -19,6 +19,7 @@ import com.foodapp.data.repository.RetrofitClient
 import com.foodapp.databinding.FragmentHomeBinding
 import com.foodapp.utils.getLocalData
 import com.foodapp.view.adapter.PhotoViewPager2Adapter
+import com.foodapp.view.main.AllShop
 import com.foodapp.view.main.Order
 import com.foodapp.view.main.Search
 import com.foodapp.viewmodel.HomepageViewModel
@@ -70,7 +71,10 @@ class Fragment_Home : Fragment(R.layout.fragment_home) {
                 handler.postDelayed(runnable, 3000)
             }
         })
-
+        binding.homepageSeeAll.setOnClickListener {
+            val newIntent = Intent(this.requireContext(), AllShop::class.java)
+            startActivity(newIntent)
+        }
         binding.homepageRecyclerViewHorizontal.layoutManager = GridLayoutManager(requireContext(), 2, RecyclerView.HORIZONTAL, false)
     }
 
