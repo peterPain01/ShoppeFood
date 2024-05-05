@@ -197,6 +197,12 @@ interface ApiService {
         @Query("orderId") orderId: String
     ): Call<ApiResult<Nothing>>
 
+    @POST("shipper/recharge")
+    fun rechargeShipper(
+        @Query("amount") amount: Number
+    ): Call<ApiResult<String>>
+
+
     @Multipart
     @POST("shop/product")
     fun createProduct(
