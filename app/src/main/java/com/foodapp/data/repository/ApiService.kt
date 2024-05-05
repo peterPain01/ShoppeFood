@@ -170,6 +170,10 @@ interface ApiService {
         @Query("orderId") id: String
     ): Call<ApiResult<Nothing>>
 
+    @GET("shipper/")
+    fun getShipperInfo(
+    ): Call<ApiResult<>>
+
     @Multipart
     @PATCH("user")
     fun updateUser(
