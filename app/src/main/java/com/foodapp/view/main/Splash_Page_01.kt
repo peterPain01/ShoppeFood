@@ -1,6 +1,7 @@
 package com.foodapp.view.main
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,7 @@ class Splash_Page_01 : AppCompatActivity() {
         next.setOnClickListener{
             val new_intent = Intent(this, Onboarding_02::class.java)
             startActivity(new_intent)
+            overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left);
         }
 
         skip.setOnClickListener {

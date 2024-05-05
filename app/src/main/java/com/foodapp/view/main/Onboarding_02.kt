@@ -21,11 +21,13 @@ class Onboarding_02 : AppCompatActivity() {
         next.setOnClickListener{
             val new_intent = Intent(this, onboarding_03::class.java)
             startActivity(new_intent)
+            overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left);
         }
 
         skip.setOnClickListener {
             val new_intent = Intent(this, Login::class.java)
             startActivity(new_intent)
+            overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left);
         }
     }
 }

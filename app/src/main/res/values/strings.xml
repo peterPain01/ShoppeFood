@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Food</string>
     <string name="signin_helper">Please sign in to your existing account</string>
     <string name="resend_otp"><u>Resend</u></string>
     <!-- TODO: Remove or change this placeholder text -->
