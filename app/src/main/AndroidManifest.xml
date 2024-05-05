@@ -12,8 +12,8 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher_round"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
@@ -27,6 +27,9 @@
             android:exported="false" />
         <activity
             android:name=".view.main.DriverHistoryOrder"
+            android:exported="false" />
+        <activity
+            android:name=".ShipperRecharge"
             android:exported="false" />
         <activity
             android:name=".view.CreateShipper"
@@ -77,9 +80,9 @@
         <activity
             android:name=".view.main.driver_confirm"
             android:exported="false" />
-        <activity
-            android:name=".view.main.MoneyMange"
-            android:exported="false" />
+
+        <activity android:name=".view.main.MoneyMange"
+            android:exported="false"/>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

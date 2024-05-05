@@ -36,7 +36,6 @@ class Order : AppCompatActivity() {
                 this.finish()
             }
         })
-
     }
 
     override fun onStart() {
@@ -113,6 +112,3 @@ class Order : AppCompatActivity() {
     }
 
 }
-
-// cho phep thay doi khi nhan nut
-//place order
