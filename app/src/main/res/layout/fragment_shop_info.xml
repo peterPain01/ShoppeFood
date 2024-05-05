@@ -26,7 +26,7 @@
                 android:paddingVertical="10dp"
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/activity_user_info_constraintLayout3"
+                    android:id="@+id/fragment_shop_info_constraintLayout3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/activity_user_info_cardview1"
+                        android:id="@+id/fragment_shop_info_cardview1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_marginStart="15dp"
@@ -44,7 +44,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:id="@+id/activity_user_info_image"
+                            android:id="@+id/fragment_shop_info_image"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="#FFBF6D" />
@@ -58,7 +58,7 @@
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/activity_user_info_cardview1"
+                        app:layout_constraintStart_toEndOf="@id/fragment_shop_info_cardview1"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
@@ -90,7 +90,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/activity_user_info_constraintLayout3">
+                    app:layout_constraintTop_toBottomOf="@id/fragment_shop_info_constraintLayout3">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -98,7 +98,7 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/activity_user_info_cardview11"
+                            android:id="@+id/fragment_shop_info_cardview11"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/transparent"
@@ -115,7 +115,7 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/activity_user_info_cardview5"
+                            android:id="@+id/fragment_shop_info_cardview5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
@@ -131,12 +131,12 @@
                                 android:padding="18dp">
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:id="@+id/activity_user_info_personal_info"
+                                    android:id="@+id/fragment_shop_info_personal_info"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent">
 
                                     <androidx.cardview.widget.CardView
-                                        android:id="@+id/activity_user_info_cardview3"
+                                        android:id="@+id/fragment_shop_info_cardview3"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         app:cardCornerRadius="20dp"
@@ -161,7 +161,7 @@
                                         android:textColor="#32343E"
                                         android:textSize="16sp"
                                         app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toEndOf="@id/activity_user_info_cardview3"
+                                        app:layout_constraintStart_toEndOf="@id/fragment_shop_info_cardview3"
                                         app:layout_constraintTop_toTopOf="parent" />
 
                                     <ImageView
@@ -181,13 +181,13 @@
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:id="@+id/activity_user_info_address_container"
+                                    android:id="@+id/fragment_shop_info_address_container"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_marginTop="15dp">
 
                                     <androidx.cardview.widget.CardView
-                                        android:id="@+id/activity_user_info_cardview4"
+                                        android:id="@+id/fragment_shop_info_cardview4"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         app:cardCornerRadius="20dp"
@@ -212,7 +212,7 @@
                                         android:textColor="#32343E"
                                         android:textSize="16sp"
                                         app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toEndOf="@id/activity_user_info_cardview4"
+                                        app:layout_constraintStart_toEndOf="@id/fragment_shop_info_cardview4"
                                         app:layout_constraintTop_toTopOf="parent" />
 
                                     <ImageView
@@ -236,7 +236,7 @@
 
 
                         <androidx.cardview.widget.CardView
-                            android:id="@+id/activity_user_info_cardview15"
+                            android:id="@+id/fragment_shop_info_cardview15"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
@@ -256,7 +256,7 @@
                                     android:layout_height="match_parent">
 
                                     <androidx.cardview.widget.CardView
-                                        android:id="@+id/activity_user_info_cardview12"
+                                        android:id="@+id/fragment_shop_info_cardview12"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         app:cardCornerRadius="20dp"
@@ -281,7 +281,7 @@
                                         android:textColor="#32343E"
                                         android:textSize="16sp"
                                         app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toEndOf="@id/activity_user_info_cardview12"
+                                        app:layout_constraintStart_toEndOf="@id/fragment_shop_info_cardview12"
                                         app:layout_constraintTop_toTopOf="parent" />
 
                                     <ImageView
@@ -306,7 +306,7 @@
                                     android:layout_marginTop="15dp">
 
                                     <androidx.cardview.widget.CardView
-                                        android:id="@+id/activity_user_info_cardview13"
+                                        android:id="@+id/fragment_shop_info_cardview13"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         app:cardCornerRadius="20dp"
@@ -331,7 +331,7 @@
                                         android:textColor="#32343E"
                                         android:textSize="16sp"
                                         app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toEndOf="@id/activity_user_info_cardview13"
+                                        app:layout_constraintStart_toEndOf="@id/fragment_shop_info_cardview13"
                                         app:layout_constraintTop_toTopOf="parent" />
 
                                     <ImageView
@@ -356,7 +356,7 @@
                                     android:layout_marginTop="15dp">
 
                                     <androidx.cardview.widget.CardView
-                                        android:id="@+id/activity_user_info_cardview14"
+                                        android:id="@+id/fragment_shop_info_cardview14"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         app:cardCornerRadius="20dp"
@@ -381,7 +381,7 @@
                                         android:textColor="#32343E"
                                         android:textSize="16sp"
                                         app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toEndOf="@id/activity_user_info_cardview14"
+                                        app:layout_constraintStart_toEndOf="@id/fragment_shop_info_cardview14"
                                         app:layout_constraintTop_toTopOf="parent" />
 
                                     <ImageView
@@ -419,12 +419,12 @@
                                 android:padding="18dp">
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:id="@+id/activity_user_info_logout"
+                                    android:id="@+id/fragment_shop_info_logout"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent">
 
                                     <androidx.cardview.widget.CardView
-                                        android:id="@+id/activity_user_info_cardview16"
+                                        android:id="@+id/fragment_shop_info_cardview16"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         app:cardCornerRadius="20dp"
@@ -449,7 +449,7 @@
                                         android:textColor="#32343E"
                                         android:textSize="16sp"
                                         app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toEndOf="@id/activity_user_info_cardview16"
+                                        app:layout_constraintStart_toEndOf="@id/fragment_shop_info_cardview16"
                                         app:layout_constraintTop_toTopOf="parent" />
 
                                     <ImageView

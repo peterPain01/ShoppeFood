@@ -1,15 +1,20 @@
 package com.foodapp.view.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import com.foodapp.R
+import com.foodapp.data.model.auth.SessionManager
 import com.foodapp.databinding.FragmentShopInfoBinding
 import com.foodapp.databinding.FragmentUserInfoBinding
+import com.foodapp.view.auth.Login
 import com.foodapp.viewmodel.ShopViewModel
+import com.foodapp.viewmodel.UserInfoViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,6 +40,14 @@ class ShopInfo : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        binding.viewModel?.getInfo(requireView().findViewById<ImageView>(R.id.activity_user_info_image))
+        binding.viewModel?.getInfo(requireView().findViewById<ImageView>(R.id.fragment_shop_info_image))
+
+        requireView().findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.fragment_shop_info_logout).setOnClickListener {
+            binding.viewModel?.logout {
+                SessionManager(requireContext()).removeAuthToken()
+                val new_intent = Intent(requireContext(), Login::class.java)
+                startActivity(new_intent)
+            }
+        }
     }
 }
