@@ -18,130 +18,128 @@
         android:layout_height="match_parent"
         tools:context=".view.main.food_payment">
 
-       <androidx.core.widget.NestedScrollView
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintTop_toTopOf="parent"
-           >
+        <LinearLayout
+            android:id="@+id/activity_food_payment_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <!--    Image -->
+            <RelativeLayout
+                android:id="@+id/Food_payment_productImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/FoodPaymentBackGroundFood"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/kfc"
+                    app:cardCornerRadius="30dp" />
+
+                <ImageButton
+                    android:id="@+id/Food_payment_btn_back"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="14dp"
+                    android:background="@drawable/btn_circle"
+                    android:backgroundTint="#60000000"
+                    android:contentDescription="Back"
+                    android:src="@drawable/ic_back"
+                    app:tint="@color/white" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/Food_payment_product_mainInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="6dp"
+                android:paddingTop="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Food_payment_productImage">
+
+                <TextView
+                    android:id="@+id/Food_payment_NameFood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@{viewModel.product.product_name}"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/Food_payment_DetailFood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@{viewModel.product.product_description}"
+                    android:textColor="#A0A5BA" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--    Comment Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:paddingStart="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_food_payment_info"
+            app:layout_constraintBottom_toTopOf="@id/activity_food_payment_relative">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#cecece"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <!--    Image -->
-                <RelativeLayout
-                    android:id="@+id/Food_payment_productImage"
-                    android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/FoodPaymentBackGroundFood"
-                        android:layout_width="match_parent"
-                        android:layout_height="260dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/kfc"
-                        app:cardCornerRadius="30dp" />
-
-                    <ImageButton
-                        android:id="@+id/Food_payment_btn_back"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="14dp"
-                        android:background="@drawable/btn_circle"
-                        android:backgroundTint="#60000000"
-                        android:contentDescription="Back"
-                        android:src="@drawable/ic_back"
-                        app:tint="@color/white" />
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:id="@+id/Food_payment_product_mainInfo"
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:text="Reviews"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:paddingVertical="12dp"
+                    />
+                <ImageButton
+                    android:id="@+id/activity_food_payment_add_comment_btn"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="6dp"
-                    android:paddingTop="6dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Food_payment_productImage">
-
-                    <TextView
-                        android:id="@+id/Food_payment_NameFood"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="@{viewModel.product.product_name}"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/Food_payment_DetailFood"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="@{viewModel.product.product_description}"
-                        android:textColor="#A0A5BA" />
-                </LinearLayout>
-
-
-                <!--    Comment Section -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingStart="8dp"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Food_payment_productInfo_layout">
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:background="#cecece"
-                        />
-                   <LinearLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:orientation="horizontal">
-
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_weight="1"
-                           android:text="Reviews"
-                           android:textStyle="bold"
-                           android:textColor="@color/black"
-                           android:textSize="14sp"
-                           android:paddingVertical="12dp"
-                           />
-                       <ImageButton
-                           android:id="@+id/activity_food_payment_add_comment_btn"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:background="@color/transparent"
-                           android:layout_gravity="center_vertical"
-                           android:layout_marginEnd="10dp"
-                           android:src="@drawable/ic_pluscircle"/>
-                   </LinearLayout>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/Food_payment_comment_rcv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:adapter="@{viewModel.commentAdapter}"
-                        />
-                </LinearLayout>
-
+                    android:background="@color/transparent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_pluscircle"/>
             </LinearLayout>
-       </androidx.core.widget.NestedScrollView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Food_payment_comment_rcv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adapter="@{viewModel.commentAdapter}"
+                />
+        </LinearLayout>
+
         <!--    Order Section -->
         <RelativeLayout
+            android:id="@+id/activity_food_payment_relative"
             android:layout_width="match_parent"
             android:layout_height="184dp"
             android:background="@drawable/detail_page_relative_radius"

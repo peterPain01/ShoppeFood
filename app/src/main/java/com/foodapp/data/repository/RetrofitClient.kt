@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    public const val BASE_URL = "http://172.16.1.246:1234"
+    public const val BASE_URL = "https://34ee-115-73-214-48.ngrok-free.app"
     private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     private val okHttpClient = OkHttpClient.Builder().addInterceptor(logging).build()
 

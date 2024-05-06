@@ -21,6 +21,13 @@ class UserCommentAdapter (val dataList : MutableList<Review>): RecyclerView.Adap
         // rating
         private val item_review_content : TextView = itemView.findViewById(R.id.item_view_content)
         private val item_review_content_image : ImageView = itemView.findViewById(R.id.item_review_content_image)
+        private val starList = listOf(
+            R.id.item_review_star1,
+            R.id.item_review_star2,
+            R.id.item_review_star3,
+            R.id.item_review_star4,
+            R.id.item_review_star5,
+        )
 
         fun bind(data: Review) {
             item_review_title.text = data.comment_title
@@ -32,6 +39,14 @@ class UserCommentAdapter (val dataList : MutableList<Review>): RecyclerView.Adap
             Glide.with(itemView.context)
                 .load(data.comment_content_image)
                 .into(item_review_content_image)
+            for (i in 0..<data.comment_star) {
+                val itemView = itemView.findViewById<ImageView>(starList[i])
+                itemView.setImageResource(R.drawable.star)
+            }
+            for (i in data.comment_star..<starList.size) {
+                val itemView = itemView.findViewById<ImageView>(starList[i])
+                itemView.setImageResource(R.drawable.ic_star)
+            }
         }
     }
 
