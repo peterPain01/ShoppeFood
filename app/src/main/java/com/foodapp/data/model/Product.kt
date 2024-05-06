@@ -5,7 +5,7 @@ data class Product(
     var product_sold: Int = 0,
     var product_like: Int = 0,
     var category: String = "",
-    var product_shop: String = "",
+    var product_shop: Shop? = null,
     var product_name: String = "",
     var product_discounted_price: Double = 0.0,
     var product_original_price: Double = 0.0,
