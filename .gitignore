@@ -15,3 +15,4 @@
 local.properties
 secrets.properties
 local.defaults.properties
+google-services.json
